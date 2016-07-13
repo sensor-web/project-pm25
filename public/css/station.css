@@ -9,6 +9,14 @@ body {
 	margin: 10px 20px;
 }
 
+.addthis_sharing_toolbox {
+	text-align: right;
+}
+
+#latest-status {
+	display: inline-block;
+	text-align: left;
+}
 
 #feedback-modal {
   width: 60%;

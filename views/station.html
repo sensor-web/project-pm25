@@ -18,12 +18,14 @@
     </head>
     <body>
       <div class="card">
-        <div class="addthis_sharing_toolbox"></div>
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<div class="addthis_sharing_toolbox"></div>
         <h1><span id="latest-pm25"></span>&micro;g/m&sup3;</h1>
         <h2>PM2.5 濃度</h2>
         <h3 id="location">@{{ location }}</h3>
         <h3>上次更新於 <time id="latest-time"></time></h3>
         <div id="latest-status"></div>
+	<br>
         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal">空氣不好時通知我</a>
       </div>
 
@@ -63,6 +65,7 @@
         var did = '{{ device_id }}';
       </script>
     	<script src="/pm25/js/station.js"></script>
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
     </body>
 </html>

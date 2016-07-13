@@ -7,7 +7,9 @@ var request = require('request');
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 
-app.use('/pm25', express.static('public'));
+if (config.debug) {
+  app.use('/pm25', express.static('public'));
+}
 
 app.get('/pm25/station/*/', function(req, res) {
   // res.sendFile(__dirname + '/station.html');
