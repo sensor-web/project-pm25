@@ -1,3 +1,4 @@
+(function() {
 $('.modal-trigger').leanModal();
 
 var REFRESH = 60 * 10 * 1000;
@@ -50,3 +51,4 @@ if (typeof did !== 'undefined' && did != '') {
 } else {
   //No device id
 }
+})();
