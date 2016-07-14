@@ -70,7 +70,13 @@ a:hover {
   text-align: left;
 }
 #submit-area {
-  text-align: right;
+  text-align: center;
+}
+#subscribe-sensor {
+  padding-top: 15px;
+}
+#subscribe-form .mute{
+  margin-bottom: 300px;
 }
 
 /*Sections*/
