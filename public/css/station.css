@@ -140,6 +140,7 @@ margin-left: -0.5rem !important;
 
 .caret {
   color: #5CC7B9 !important;
+  top: 57px !important;
 }
 
 /*
@@ -156,6 +157,22 @@ margin-left: -0.5rem !important;
 
 .projects-textarea.set-margin {
 	/*margin-bottom: 36px !important;*/
+}
+
+#subscribe label {
+  text-align: left !important;
+  font-size: .9em;
+  float: left;
+  height: 40px;
+  padding-top: 10px;
+  color: #5CC7B9;
+}
+
+.dropdown-content{
+  width: 250px !important;
+  margin-top:49px;
+  z-index: 10;
+  top: 40px !important;
 }
 
 #form-header {
@@ -304,6 +321,14 @@ h3, h4 {
   font-weight: 700;
 }
 
+.mute {
+  margin-top: 20px;
+  text-align: center;
+  font-size: .8em;
+  color: #757575;
+  line-height: 1.5;
+}
+
 #latest-pm25 {
   font-size: 1.4em;
 }
@@ -340,12 +365,6 @@ h3, h4 {
   font-weight: 200;
   color: #9b9b9b;
   margin: 10px auto 30px auto;
-}
-
-.dropdown-content{
-  width: 250px !important;
-  margin-top:49px;
-  z-index: 10;
 }
 
 .contents{

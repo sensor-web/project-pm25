@@ -41,15 +41,19 @@
             <form action="https://docs.google.com/a/mozilla.com/forms/d/e/1FAIpQLSeZ9OEFQrRhmtz3azHVwbMDoraNo14r1qiq2TOp8APRWQY12g/formResponse" target="_self" method="POST" id="mG61Hd">
                <input name="entry.301006003" class="projects-input" jsname="L9xHkb" type="text" placeholder="電子郵件">
                <input name="entry.319252376" class="projects-input" jsname="L9xHkb" type="text" placeholder="姓名">
+
+               <label>你平常一週中有幾天在此區域活動？</label>
                <select name="entry.226467370" jsname="L9xHkb" type="text">
-                  <option disabled="" selected="" value="">你平常一週中有幾天在此區域活動？</option>
+                  <option disabled="" selected="" value="">請選擇一項</option>
                   <option value="幾乎每天">幾乎每天</option>
                   <option value="一週五天">一週五天</option>
                   <option value="一週兩天">一週兩天</option>
                   <option value="很少">很少</option>
                </select>
+               <span></span>
+               <label>你為何關心pm2.5數值?</label>
                <select multiple name="entry.565411271" jsname="ekGZBc" type="text">
-                  <option disabled="" selected="" value="">你為何關心 PM2.5？</option>
+                  <option disabled="" selected="" value="">請勾選所有相關選項</option>
                   <option value="我有心血管／呼吸系統疾病">我有心血管／呼吸系統疾病</option>
                   <option value="我的家人有心血管／呼吸系統疾病">我的家人有心血管／呼吸系統疾病</option>
                   <option value="我在意自己的健康">我在意自己的健康</option>
@@ -63,14 +67,15 @@
                   " type="hidden">
                <input name="pageHistory" value="0" type="hidden">
                <input name="fbzx" value="365822309556244423" type="hidden">
-               <input name="submit" value="送出" id="projects-other-submit" class="waves-effect waves-light btn-large" type="submit">
+               <input name="submit" value="提交" id="projects-other-submit" class="waves-effect waves-light btn-large" type="submit">
+               <p class="mute">按下提交，表示你同意mozilla的<a href="/privacy.html" target="_blank">隱私權政策</a></p>
             </form>
          </div>
       </div>
       <footer>
          <a id="email" href="mailto:sensorweb@mozilla.com"><i class="material-icons">email</i>sensorweb@mozilla.com</a>
          <br>
-         <a href="/privacy.html" target="_blank">Privacy Notice</a>
+         <a href="/privacy.html" target="_blank">隱私權政策</a>
       </footer>
       <script src="/pm25/js/jquery-2.1.1.min.js"></script>
       <script src="/pm25/js/materialize.js"></script>
