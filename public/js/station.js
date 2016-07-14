@@ -1,6 +1,7 @@
 $('select').material_select();
 $('.modal-trigger').leanModal();
 
+
 var REFRESH = 60 * 10 * 1000;
 var ISO_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ';
 
