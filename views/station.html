@@ -5,6 +5,8 @@
         <title>{{ title }}</title>
         <link rel="stylesheet" href="/pm25/css/materialize.css">
         <link rel="stylesheet" href="/pm25/css/station.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -18,15 +20,17 @@
     </head>
     <body>
       <div class="card">
+      <div id="logo"></div>
+      <div id="share"><i class="material-icons">share</i></div>
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<div class="addthis_sharing_toolbox"></div>
-        <h1><span id="latest-pm25"></span>&micro;g/m&sup3;</h1>
-        <h2>PM2.5 濃度</h2>
+        <h1><span id="latest-pm25"></span><span id="unit">&micro;g/m&sup3;</span></h1>
+        <h2 id="pm25">PM2.5數值</h2>
         <h3 id="location">@{{ location }}</h3>
-        <h3>上次更新於 <time id="latest-time"></time></h3>
+        <h3 id="update">上次更新於 <time id="latest-time"></time></h3>
         <div id="latest-status"></div>
 	<br>
-        <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal">空氣不好時通知我</a>
+        <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>空氣不好時通知我</a>
       </div>
 
       <div id="subscribe-modal" class="modal">
@@ -71,9 +75,9 @@
       </div>
 
       <footer>
-        <a href="mailto:sensorweb@mozilla.com">sensorweb@mozilla.com</a>
+        <a id="email" href="mailto:sensorweb@mozilla.com"><i class="material-icons">email</i>sensorweb@mozilla.com</a>
         <br>
-        <a href="/privacy.html">Privacy Notice</a>
+        <a href="/privacy.html" target="_blank">Privacy Notice</a>
       </footer>
       <script src="/pm25/js/jquery-2.1.1.min.js"></script>
       <script src="/pm25/js/materialize.js"></script>
