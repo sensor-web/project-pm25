@@ -1,6 +1,8 @@
 $('select').material_select();
 $('.modal-trigger').leanModal();
-
+$('#subscribe').click(function(e) {
+  ga('send', 'event', 'data', 'subscribe', 'pm25');
+});
 
 var REFRESH = 60 * 10 * 1000;
 var ISO_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ';
