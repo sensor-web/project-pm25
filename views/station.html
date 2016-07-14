@@ -1,88 +1,91 @@
+
+
 <html>
-    <head>
-        <meta http-equiv="refresh" content="600">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{{ title }}</title>
-        <link rel="stylesheet" href="/pm25/css/materialize.css">
-        <link rel="stylesheet" href="/pm25/css/station.css">
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-75040994-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    </head>
-    <body>
+   <head>
+      <meta http-equiv="refresh" content="600">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>{{ title }}</title>
+      <link rel="stylesheet" href="/pm25/css/materialize.css">
+      <link rel="stylesheet" href="/pm25/css/station.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+         rel="stylesheet">
+      <script>
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+         
+         ga('create', 'UA-75040994-1', 'auto');
+         ga('send', 'pageview');
+      </script>
+   </head>
+   <body>
       <div class="card">
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<div class="addthis_sharing_toolbox"></div>
-        <h1><span id="latest-pm25"></span>&micro;g/m&sup3;</h1>
-        <h2>PM2.5 濃度</h2>
-        <h3 id="location">@{{ location }}</h3>
-        <h3>上次更新於 <time id="latest-time"></time></h3>
-        <div id="latest-status"></div>
-	<br>
-        <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal">空氣不好時通知我</a>
+         <div id="logo"></div>
+         <a href="#">
+            <div id="share"><i class="material-icons">share</i></div>
+         </a>
+         <!-- Go to www.addthis.com/dashboard to customize your tools -->
+         <div class="addthis_sharing_toolbox"></div>
+         <h1><span id="latest-pm25"></span><span id="unit">&micro;g/m&sup3;</span></h1>
+         <h2 id="pm25">PM2.5數值</h2>
+         <h3 id="location">@{{ location }}</h3>
+         <h3 id="update">上次更新於 <time id="latest-time"></time></h3>
+         <div id="latest-status"></div>
+         <br>
+         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>空氣不好時通知我</a>
       </div>
-
       <div id="subscribe-modal" class="modal">
-        <div id="subscribe" class="modal-content">
-      <form action="https://docs.google.com/a/mozilla.com/forms/d/e/1FAIpQLSeZ9OEFQrRhmtz3azHVwbMDoraNo14r1qiq2TOp8APRWQY12g/formResponse" target="_self" method="POST" id="mG61Hd">
-      
-      <input name="entry.301006003" class="projects-input" jsname="L9xHkb" type="text" placeholder="電子郵件">
+         <div id="form-header">PM2.5空氣品質通知</div>
+         <div id="subscribe" class="modal-content">
+            <form action="https://docs.google.com/a/mozilla.com/forms/d/e/1FAIpQLSeZ9OEFQrRhmtz3azHVwbMDoraNo14r1qiq2TOp8APRWQY12g/formResponse" target="_self" method="POST" id="mG61Hd">
+               <input name="entry.301006003" class="projects-input" jsname="L9xHkb" type="text" placeholder="電子郵件">
+               <input name="entry.319252376" class="projects-input" jsname="L9xHkb" type="text" placeholder="姓名">
 
-      <input name="entry.319252376" class="projects-input" jsname="L9xHkb" type="text" placeholder="姓名">
-
-
-      <select name="entry.226467370" jsname="L9xHkb" type="text">
-        <option disabled="" selected="" value="">你平常一週中有幾天在此區域活動？</option>
-        <option value="幾乎每天">幾乎每天</option>
-        <option value="一週五天">一週五天</option>
-        <option value="一週兩天">一週兩天</option>
-        <option value="很少">很少</option>
-      </select>
-
-      <select multiple name="entry.565411271" jsname="ekGZBc" type="text">
-        <option disabled="" selected="" value="">你為何關心 PM2.5？</option>
-        <option value="我有心血管／呼吸系統疾病">我有心血管／呼吸系統疾病</option>
-        <option value="我的家人有心血管／呼吸系統疾病">我的家人有心血管／呼吸系統疾病</option>
-        <option value="我在意自己的健康">我在意自己的健康</option>
-        <option value="我在意孩子和長輩的健康">我在意孩子和長輩的健康</option>
-        <option value="我想協助改善社區／城市居住環境">我想協助改善社區／城市居住環境</option>
-      </select>
-
-      <input name="entry.68562270" jsname="ekGZBc" value="" type="hidden">
-
-<input name="entry.1918318603" jsname="L9xHkb" type="hidden" value="{{ device_id }}">
-
-<input name="fvv" value="1" type="hidden">
-<input name="draftResponse" value="[,,&quot;365822309556244423&quot;]
-" type="hidden">
-<input name="pageHistory" value="0" type="hidden">
-<input name="fbzx" value="365822309556244423" type="hidden">
-
-<input name="submit" value="Send" id="projects-other-submit" class="waves-effect waves-light btn-large" type="submit">
-</form>
-        </div>
+               <label>你平常一週中有幾天在此區域活動？</label>
+               <select name="entry.226467370" jsname="L9xHkb" type="text">
+                  <option disabled="" selected="" value="">請選擇一項</option>
+                  <option value="幾乎每天">幾乎每天</option>
+                  <option value="一週五天">一週五天</option>
+                  <option value="一週兩天">一週兩天</option>
+                  <option value="很少">很少</option>
+               </select>
+               <span></span>
+               <label>你為何關心pm2.5數值?</label>
+               <select multiple name="entry.565411271" jsname="ekGZBc" type="text">
+                  <option disabled="" selected="" value="">請勾選所有相關選項</option>
+                  <option value="我有心血管／呼吸系統疾病">我有心血管／呼吸系統疾病</option>
+                  <option value="我的家人有心血管／呼吸系統疾病">我的家人有心血管／呼吸系統疾病</option>
+                  <option value="我在意自己的健康">我在意自己的健康</option>
+                  <option value="我在意孩子和長輩的健康">我在意孩子和長輩的健康</option>
+                  <option value="我想協助改善社區／城市居住環境">我想協助改善社區／城市居住環境</option>
+               </select>
+               <input name="entry.68562270" jsname="ekGZBc" value="" type="hidden">
+               <input name="entry.1918318603" jsname="L9xHkb" type="hidden" value="{{ device_id }}">
+               <input name="fvv" value="1" type="hidden">
+               <input name="draftResponse" value="[,,&quot;365822309556244423&quot;]
+                  " type="hidden">
+               <input name="pageHistory" value="0" type="hidden">
+               <input name="fbzx" value="365822309556244423" type="hidden">
+               <input name="submit" value="提交" id="projects-other-submit" class="waves-effect waves-light btn-large" type="submit">
+               <p class="mute">按下提交，表示你同意mozilla的<a href="/privacy.html" target="_blank">隱私權政策</a></p>
+            </form>
+         </div>
       </div>
-
       <footer>
-        <a href="mailto:sensorweb@mozilla.com">sensorweb@mozilla.com</a>
-        <br>
-        <a href="/privacy.html">Privacy Notice</a>
+         <a id="email" href="mailto:sensorweb@mozilla.com"><i class="material-icons">email</i>sensorweb@mozilla.com</a>
+         <br>
+         <a href="/privacy.html" target="_blank">隱私權政策</a>
       </footer>
       <script src="/pm25/js/jquery-2.1.1.min.js"></script>
       <script src="/pm25/js/materialize.js"></script>
       <script src="/pm25/js/moment-with-locales.min.js" type="text/javascript"></script>
       <script>
-        var did = '{{ device_id }}';
+         var did = '{{ device_id }}';
       </script>
-    	<script src="/pm25/js/station.js"></script>
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
-    </body>
+      <script src="/pm25/js/station.js"></script>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
+   </body>
 </html>
+
