@@ -3,6 +3,9 @@ $('.modal-trigger').leanModal();
 $('#subscribe').click(function(e) {
   ga('send', 'event', 'data', 'subscribe', 'pm25');
 });
+$('#subscribe-sensor').click(function(e) {
+  ga('send', 'event', 'data', 'submit-subscription', 'pm25');
+});
 
 var REFRESH = 60 * 10 * 1000;
 var ISO_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ';
