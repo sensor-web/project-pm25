@@ -10,6 +10,9 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
          rel="stylesheet">
       <link rel="icon" type="image/x-icon" href="/pm25/images/favicon.ico">
+      <link rel="apple-touch-icon" href="/pm25/images/favicon-192x192.png"/>
+      <link rel="apple-touch-icon-precomposed" href="/pm25/images/favicon-192x192.png"/>
+
       <meta property="og:image" content="/pm25/images/thumbnail.png">
       <meta property="og:image:type" content="image/png">
       <meta property="og:image:width" content="1200">
@@ -37,7 +40,7 @@
          <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>空氣不好時通知我</a>
       </div>
       <div id="subscribe-modal" class="modal">
-         <div id="form-header">PM2.5空氣品質通知</div>
+         <div id="form-header">PM2.5空氣品質通知<i class="material-icons modal-close" id="close">close</i></div>
          <div id="subscribe" class="modal-content">
             <form action="https://docs.google.com/a/mozilla.com/forms/d/e/1FAIpQLSeZ9OEFQrRhmtz3azHVwbMDoraNo14r1qiq2TOp8APRWQY12g/formResponse" method="POST" id="subscribe-form" target="temp_iframe" onsubmit="submitted=true;">
                <input name="entry.301006003" class="projects-input" jsname="L9xHkb" type="text" placeholder="電子郵件（必填）" required="">

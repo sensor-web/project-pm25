@@ -198,6 +198,13 @@ margin-left: -0.5rem !important;
   padding: 1rem;
 }
 
+#form-header i{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  cursor: pointer;
+}
+
 .form-submit .btn-large {
   padding: 0;
 }
