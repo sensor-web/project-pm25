@@ -6,6 +6,18 @@ $('#subscribe').click(function(e) {
 $('#subscribe-sensor').click(function(e) {
   ga('send', 'event', 'data', 'submit-subscription', 'pm25');
 });
+$('#sub-email').on('blur', function() {
+  ga('send', 'event', 'sensor-form', 'email-change', 'pm25');
+});
+$('#sub-name').on('blur', function() {
+  ga('send', 'event', 'sensor-form', 'name-change', 'pm25');
+});
+$('#sub-freq').on('change', function() {
+  ga('send', 'event', 'sensor-form', 'freq-change', 'pm25');
+});
+$('#sub-reason').on('change', function() {
+  ga('send', 'event', 'sensor-form', 'reason-change', 'pm25');
+});
 
 var REFRESH = 60 * 10 * 1000;
 var ISO_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ';
