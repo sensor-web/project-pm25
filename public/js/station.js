@@ -4,6 +4,7 @@ $('#subscribe').click(function(e) {
   ga('send', 'event', 'data', 'subscribe', 'pm25');
 });
 $('#subscribe-sensor').click(function(e) {
+  Materialize.toast('提交成功！我們將在空氣品質變糟時發出電子郵件通知。', 5000);
   ga('send', 'event', 'data', 'submit-subscription', 'pm25');
 });
 $('#sub-email').on('blur', function() {
