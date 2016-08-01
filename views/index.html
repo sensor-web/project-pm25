@@ -1,0 +1,98 @@
+
+<html>
+   <head>
+      <meta http-equiv="refresh" content="600">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>台北市 PM2.5 即時濃度</title>
+      <link rel="stylesheet" href="/pm25/css/materialize.css">
+      <link rel="stylesheet" href="/pm25/css/station.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+         rel="stylesheet">
+      <link rel="icon" type="image/x-icon" href="/pm25/images/favicon.ico">
+      <link rel="apple-touch-icon" href="/pm25/images/favicon-192x192.png"/>
+      <link rel="apple-touch-icon-precomposed" href="/pm25/images/favicon-192x192.png"/>
+
+      <meta property="og:image" content="/pm25/images/thumbnail.png">
+      <meta property="og:image:type" content="image/png">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="1200">
+      <script>
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+         
+         ga('create', 'UA-75040994-1', 'auto');
+         ga('send', 'pageview');
+      </script>
+   </head>
+   <body>
+      <div class="card">
+         <!-- Go to www.addthis.com/dashboard to customize your tools -->
+         <div class="addthis_sharing_toolbox"></div>
+         <h1><span id="latest-pm25">{{ average.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
+         <h2 id="pm25">PM2.5 平均濃度</h2>
+         <h3 id="location">@台北市</h3>
+         <h3 id="update">上次更新於 <time id="latest-time" data-livestamp="{{ average.Create_at }}"></time></h3>
+         <div id="latest-status"></div>
+         <br>
+         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>空氣不好時通知我</a>
+      </div>
+      <div class="card">
+         <h2></h2>
+         <ul>
+            {{#each byConcentration}}
+               <li>
+                  <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                  <span>{{ this.display_name }}</span>
+                  <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
+               </li>
+            {{/each}}
+         </ul>
+      </div>
+      <div id="subscribe-modal" class="modal">
+         <div id="form-header">PM2.5空氣品質通知<i class="material-icons modal-close" id="close">close</i></div>
+         <div id="subscribe" class="modal-content">
+            <form action="https://docs.google.com/a/mozilla.com/forms/d/e/1FAIpQLSeZ9OEFQrRhmtz3azHVwbMDoraNo14r1qiq2TOp8APRWQY12g/formResponse" method="POST" id="subscribe-form" target="temp_iframe" onsubmit="submitted=true;">
+               <input id="sub-email" name="entry.301006003" class="projects-input" jsname="L9xHkb" type="text" placeholder="電子郵件（必填）" required="">
+               <input id="sub-name" name="entry.319252376" class="projects-input" jsname="L9xHkb" type="text" placeholder="姓名">
+
+               <input name="entry.68562270" jsname="ekGZBc" value="" type="hidden">
+               <input name="entry.1918318603" jsname="L9xHkb" type="hidden" value="">
+               <input name="fvv" value="1" type="hidden">
+               <input name="draftResponse" value="[,,&quot;365822309556244423&quot;]
+                  " type="hidden">
+               <input name="pageHistory" value="0" type="hidden">
+               <input name="fbzx" value="365822309556244423" type="hidden">
+               <div id="submit-area">
+                 <input name="submit" value="提交" id="subscribe-sensor" class="waves-effect waves-light btn-large" type="submit">
+               </div>
+               <p class="mute">按下提交，表示你同意mozilla的<a href="/privacy.html" target="_blank">隱私權政策</a></p>
+            </form>
+         </div>
+      </div>
+
+  <script type="text/javascript">
+    var submitted=false;
+  </script>
+  <iframe name="temp_iframe" id="temp_iframe" style="display:none;" onload="if (submitted) {$('#subscribe-modal').closeModal();Materialize.toast('提交成功！我們將在空氣品質變糟時發出電子郵件通知。', 5000);}">
+  </iframe>
+
+      <footer>
+         <a id="email" href="mailto:sensorweb@mozilla.com"><i class="material-icons">email</i>sensorweb@mozilla.com</a>
+         <br>
+         <a href="/privacy.html" target="_blank">隱私權政策</a>
+      </footer>
+
+
+      <script src="/pm25/js/jquery-2.1.1.min.js"></script>
+      <script src="/pm25/js/materialize.js"></script>
+      <script src="/pm25/js/moment-with-locales.min.js" type="text/javascript"></script>
+      <script src="/pm25/js/livestamp.min.js" type="text/javascript"></script>
+      <script src="/pm25/js/station.js"></script>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
+   </body>
+</html>
+

@@ -2,6 +2,7 @@ var express = require('express');
 var config = require('./config.json');
 var stations = require('./data/stations.json');
 var redirect = require('./data/redirect.json');
+var homefeed = require('./data/test/homefeed.json');
 var app = express();
 var request = require('request');
 
@@ -11,6 +12,9 @@ app.engine('html', require('hbs').__express);
 if (config.debug) {
   app.use('/pm25', express.static('public'));
 }
+app.get('/pm25/', function(req, res) {
+    res.render('index', homefeed);
+});
 
 app.get('/pm25/station/*/', function(req, res) {
   var segments = req.path.split('/');
