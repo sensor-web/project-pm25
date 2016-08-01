@@ -44,9 +44,11 @@
          <ul>
             {{#each byConcentration}}
                <li>
-                  <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
-                  <span>{{ this.display_name }}</span>
-                  <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
+                  <a href="/pm25/station/{{ this.slug }}/">
+                     <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                     <span>{{ this.display_name }}</span>
+                     <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
+                  </a>
                </li>
             {{/each}}
          </ul>
