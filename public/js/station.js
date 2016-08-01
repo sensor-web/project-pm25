@@ -1,3 +1,8 @@
+moment.locale('zh-tw');
+var $pm25 = $('#latest-pm25');
+$pm25.attr('class', getDAQIStatus(Number.parseInt($pm25.text())));
+$('#latest-status').text(getDAQIStatusText(Number.parseInt($pm25.text())));
+
 $('select').material_select();
 $('.modal-trigger').leanModal();
 $('#subscribe').click(function(e) {
@@ -18,9 +23,6 @@ $('#sub-freq').on('change', function() {
 $('#sub-reason').on('change', function() {
   ga('send', 'event', 'sensor-form', 'reason-change', 'pm25');
 });
-
-var REFRESH = 60 * 10 * 1000;
-var ISO_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ';
 
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -52,20 +54,4 @@ function getDAQIStatusText(index) {
   } else {
     return '空氣品質指標高危險，任何人如果有不適，如眼痛，咳嗽或喉嚨痛等，應減少體力消耗，特別是減少戶外活動。';
   }
-}
-
-if (typeof did !== 'undefined' && did != '') {
-  var api = 'http://nrl.iis.sinica.edu.tw/LASS/history-hourly.php?device_id=' + did;
-  $.get(api, function (data) {
-    var feeds = $.parseJSON(data)['feeds'];
-    var latest = feeds[feeds.length - 1];
-    var pm25 = latest['PM2_5'];
-    $('#latest-pm25').text(parseInt(pm25)).attr('class', getDAQIStatus(pm25));
-    moment.locale('zh-tw');
-    $('#latest-status').text(getDAQIStatusText(pm25));
-    $('#latest-time').text(moment(latest['timestamp'], ISO_FORMAT).fromNow());
-    moment.locale('en');
-  });
-} else {
-  //No device id
 }

@@ -1,6 +1,7 @@
 var express = require('express');
 var config = require('./config.json');
-var slug = require('./slug.json');
+var stations = require('./data/stations.json');
+var redirect = require('./data/redirect.json');
 var app = express();
 var request = require('request');
 
@@ -12,17 +13,18 @@ if (config.debug) {
 }
 
 app.get('/pm25/station/*/', function(req, res) {
-  // res.sendFile(__dirname + '/station.html');
   var segments = req.path.split('/');
   var location = decodeURIComponent(segments[3]);
-  var device_id = slug[location];
-  var data = {
-  	title: location + ' PM2.5 即時濃度',
-  	location: location,
-  	device_id: device_id
+  if (redirect[location]) {
+    res.redirect('/pm25/station/'+redirect[location]+'/');
+    return;
   }
-
-  res.render('station', data);
+  if (stations[location]) {
+    res.render('station', stations[location]);
+  } else {
+    res.status(404);
+    res.type('txt').send('Not found');
+  }
 });
 
 app.listen(config.port, function () {
