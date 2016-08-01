@@ -2,7 +2,7 @@ var express = require('express');
 var config = require('./config.json');
 var stations = require('./data/stations.json');
 var redirect = require('./data/redirect.json');
-var homefeed = require('./data/test/homefeed.json');
+var homefeed = require('./data/homefeed.json');
 var app = express();
 var request = require('request');
 
