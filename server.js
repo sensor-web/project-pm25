@@ -12,6 +12,7 @@ app.engine('html', require('hbs').__express);
 if (config.debug) {
   app.use('/pm25', express.static('public'));
 }
+
 app.get('/pm25/', function(req, res) {
     res.render('index', homefeed);
 });
@@ -29,6 +30,10 @@ app.get('/pm25/station/*/', function(req, res) {
     res.status(404);
     res.type('txt').send('Not found');
   }
+});
+
+app.get('/sitemap.xml', function(req, res) {
+    res.sendfile('./data/sitemap.xml');
 });
 
 app.listen(config.port, function () {

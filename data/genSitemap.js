@@ -1,7 +1,11 @@
 var sm = require('sitemap');
 var fs = require('fs');
 var stations = require('./stations.json');
-var urls = [];
+var urls = [{
+	url: 'https://sensorweb.io/pm25/',
+	changefreq: 'hourly',
+	priority: 0.8
+}];
 for (var slug in stations) {
 	var url = {
 		url: 'https://sensorweb.io/pm25/station/'+slug+'/',
