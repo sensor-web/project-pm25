@@ -79,6 +79,58 @@ a:hover {
   margin-bottom: 300px;
 }
 
+/*Lists*/
+
+.card h2 {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0px auto 10px auto;
+  letter-spacing: .05em;
+  color: #454545;
+}
+
+.card ul li.nodata,
+.card ul li.nodata:first-child {
+  border-top: none;
+  border-bottom: none;
+}
+.card ul li.nodata a {
+  display: inline;
+}
+
+.card ul li {
+  display: block;
+  border-bottom: 1px dotted #9b9b9b;
+}
+.card ul li:first-child {
+  border-top: 1px dotted #9b9b9b;
+}
+.card ul li a {
+  display: block;
+  text-decoration: none;
+  clear: both;
+  color: none;
+  padding-bottom: 32px;
+}
+
+.card ul li a .concentration {
+  display: block;
+  text-align: left;
+  color: #454545;
+  font-size: 1.8em;
+  font-weight: 400;
+}
+.card ul li a .location {
+  float: left;
+  color: #454545;
+  font-size: 1em;
+}
+.card ul li a .update-time {
+  float: right;
+  color: #9b9b9b;
+  font-size: .8em;
+}
+
 /*Sections*/
 
 .fullscreen{

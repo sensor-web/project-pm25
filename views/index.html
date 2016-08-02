@@ -42,7 +42,6 @@
       <div class="card">
          <h2>離我最近的測站</h2>
          <ul id="nearby-stations">
-            <li><div class="progress"><div class="indeterminate"></div></div></li>
          </ul>
       </div>
       <div class="card">
@@ -51,8 +50,10 @@
             {{#each stateRank}}
                <li>
                   <a href="/pm25/station/{{ this.slug }}/">
-                     <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
-                     <span>{{ this.display_name }}</span>
+                     <span class="concentration">
+                        <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                     </span>
+                     <span class="location">@{{ this.display_name }}</span>
                      <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
                   </a>
                </li>
@@ -64,9 +65,11 @@
          <ul id="country-rank">
             {{#each countryRank}}
                <li>
-                  <a href="/pm25/station/{{ this.slug }}/">
-                     <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
-                     <span>{{ this.display_name }}</span>
+                  <a class="clearfix" href="/pm25/station/{{ this.slug }}/">
+                     <span class="concentration">
+                        <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                     </span>
+                     <span class="location">@{{ this.display_name }}</span>
                      <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
                   </a>
                </li>

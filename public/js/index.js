@@ -2,7 +2,7 @@ var $nearbyStations = $('#nearby-stations');
 loadNearbyStations();
 
 function loadNearbyStations() {
-  $nearbyStations.html('<li><div class="progress"><div class="indeterminate"></div></div></li>');
+  $nearbyStations.html('<li class="nodata"><div class="progress"><div class="indeterminate"></div></div></li>');
   getGeolocation().then(function(coords) {
     console.log(coords);
     $.get('/pm25/search', coords, function(stations) {
@@ -12,8 +12,8 @@ function loadNearbyStations() {
         items += `
                   <li>
                       <a href="/pm25/station/${station.slug}/">
-                         <span>${ station.data.Dust2_5 }</span><span id="unit">&micro;g/m&sup3;</span>
-                         <span>${ station.display_name }</span>
+                         <span class="concentration"><span>${ station.data.Dust2_5 }</span><span id="unit">&micro;g/m&sup3;</span></span>
+                         <span class="location">@${ station.display_name }</span>
                          <time class="update-time" data-livestamp="${ station.data.Create_at }"></time>
                       </a>
                    </li>`;
@@ -22,7 +22,7 @@ function loadNearbyStations() {
       $nearbyStations.html(items);
     });
   }).catch(function() {
-      $nearbyStations.html('<li>無法取得 GPS 定位資訊，請<a href="javascript:loadNearbyStations();">點此再試一次</a>。</li>');
+      $nearbyStations.html('<li class="nodata">無法取得 GPS 定位資訊，請<a href="javascript:loadNearbyStations();">點此再試一次</a>。</li>');
   });
 }
 
