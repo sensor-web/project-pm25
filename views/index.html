@@ -40,6 +40,11 @@
          <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>空氣不好時通知我</a>
       </div>
       <div class="card">
+         <h2>離我最近的測站</h2>
+         <ul id="nearby-stations">
+         </ul>
+      </div>
+      <div class="card">
          <h2>台北市測站空汙排行</h2>
          <ul>
             {{#each byConcentration}}
@@ -90,6 +95,7 @@
       <script src="/pm25/js/materialize.js"></script>
       <script src="/pm25/js/moment-with-locales.min.js" type="text/javascript"></script>
       <script src="/pm25/js/livestamp.min.js" type="text/javascript"></script>
+      <script src="/pm25/js/index.js"></script>
       <script src="/pm25/js/station.js"></script>
       <!-- Go to www.addthis.com/dashboard to customize your tools -->
       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
