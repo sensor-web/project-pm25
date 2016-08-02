@@ -51,7 +51,7 @@
                <li>
                   <a href="/pm25/station/{{ this.slug }}/">
                      <span class="concentration">
-                        <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                        <span class="concentration-value">{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
                      </span>
                      <span class="location">@{{ this.display_name }}</span>
                      <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
@@ -67,7 +67,7 @@
                <li>
                   <a class="clearfix" href="/pm25/station/{{ this.slug }}/">
                      <span class="concentration">
-                        <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                        <span class="concentration-value">{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
                      </span>
                      <span class="location">@{{ this.display_name }}</span>
                      <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
