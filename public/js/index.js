@@ -2,7 +2,7 @@ var $nearbyStations = $('#nearby-stations');
 loadNearbyStations();
 
 function loadNearbyStations() {
-  $nearbyStations.empty();
+  $nearbyStations.html('<li><div class="progress"><div class="indeterminate"></div></div></li>');
   getGeolocation().then(function(coords) {
     console.log(coords);
     $.get('/pm25/search', coords, function(stations) {

@@ -42,12 +42,27 @@
       <div class="card">
          <h2>離我最近的測站</h2>
          <ul id="nearby-stations">
+            <li><div class="progress"><div class="indeterminate"></div></div></li>
          </ul>
       </div>
       <div class="card">
-         <h2>台北市測站空汙排行</h2>
-         <ul>
-            {{#each byConcentration}}
+         <h2>臺北市測站 PM2.5 排行</h2>
+         <ul id="state-rank">
+            {{#each stateRank}}
+               <li>
+                  <a href="/pm25/station/{{ this.slug }}/">
+                     <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                     <span>{{ this.display_name }}</span>
+                     <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
+                  </a>
+               </li>
+            {{/each}}
+         </ul>
+      </div>
+      <div class="card">
+         <h2>臺灣測站 PM2.5 排行</h2>
+         <ul id="country-rank">
+            {{#each countryRank}}
                <li>
                   <a href="/pm25/station/{{ this.slug }}/">
                      <span>{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
@@ -59,7 +74,7 @@
          </ul>
       </div>
       <div id="subscribe-modal" class="modal">
-         <div id="form-header">PM2.5空氣品質通知<i class="material-icons modal-close" id="close">close</i></div>
+         <div id="form-header">PM2.5 空氣品質通知<i class="material-icons modal-close" id="close">close</i></div>
          <div id="subscribe" class="modal-content">
             <form action="https://docs.google.com/a/mozilla.com/forms/d/e/1FAIpQLSeZ9OEFQrRhmtz3azHVwbMDoraNo14r1qiq2TOp8APRWQY12g/formResponse" method="POST" id="subscribe-form" target="temp_iframe" onsubmit="submitted=true;">
                <input id="sub-email" name="entry.301006003" class="projects-input" jsname="L9xHkb" type="text" placeholder="電子郵件（必填）" required="">
