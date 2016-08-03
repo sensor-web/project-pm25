@@ -421,6 +421,21 @@ h3, h4 {
   letter-spacing: 0px !important;
 }
 
+.description {
+  padding: 10px 40px 40px 40px !important;
+}
+
+.description p {
+  line-height: 1.8rem;
+  margin-bottom: 35px;
+}
+
+.description ul, .description li {
+  line-height: 1.8rem;
+}
+
+
+
 .mute {
   margin-top: 20px;
   text-align: center;
