@@ -100,7 +100,7 @@ a:hover {
 
 .card ul li {
   display: block;
-  padding: 10px 0;
+  padding: 5px 0;
   border-bottom: 1px dotted #9b9b9b;
 }
 .card ul li:first-child {
@@ -402,6 +402,11 @@ h3, h4 {
   color: #454545;
   font-size: 1.8em;
   font-weight: 700;
+}
+
+.medium {
+  font-size: 1.4em !important;
+  letter-spacing: 0px !important;
 }
 
 .mute {
