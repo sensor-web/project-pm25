@@ -4,28 +4,17 @@
       <meta http-equiv="refresh" content="600">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>台北市 PM2.5 即時濃度</title>
+      {{> meta}}
+      <meta property="og:title" content="臺北市 PM2.5 即時濃度平均" />
+      <title>臺北市 PM2.5 即時濃度平均</title>
+
       <link rel="stylesheet" href="/pm25/css/materialize.css">
       <link rel="stylesheet" href="/pm25/css/station.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
          rel="stylesheet">
-      <link rel="icon" type="image/x-icon" href="/pm25/images/favicon.ico">
-      <link rel="apple-touch-icon" href="/pm25/images/favicon-192x192.png"/>
-      <link rel="apple-touch-icon-precomposed" href="/pm25/images/favicon-192x192.png"/>
 
-      <meta property="og:image" content="/pm25/images/thumbnail.png">
-      <meta property="og:image:type" content="image/png">
-      <meta property="og:image:width" content="1200">
-      <meta property="og:image:height" content="1200">
-      <script>
-         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-         
-         ga('create', 'UA-75040994-1', 'auto');
-         ga('send', 'pageview');
-      </script>
+      {{> ga}}
+
    </head>
    <body>
       <div class="card">
@@ -33,7 +22,7 @@
          <!-- Go to www.addthis.com/dashboard to customize your tools -->
          <div class="addthis_sharing_toolbox"></div>
          <h1><span id="latest-pm25">{{ average.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
-         <h2 id="pm25"><span class="marked">PM2.5</span> 平均濃度<a class="question-mark" href="javascript:void(0);"><i class="material-icons">help_outline</i></a></h2>
+         <h2 id="pm25"><span class="marked">PM2.5</span> 即時濃度平均<a class="question-mark" href="javascript:void(0);"><i class="material-icons">help_outline</i></a></h2>
          <h3 id="location">@台北市</h3>
          <h3 id="update">上次更新於 <time id="latest-time" data-livestamp="{{ average.Create_at }}"></time></h3>
          <div id="latest-status"></div>
