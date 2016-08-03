@@ -20,7 +20,13 @@ app.get('/pm25/', function(req, res) {
 
 app.get('/pm25/search', function(req, res) {
   //TODO: check query params and accepted format
-  res.json(findNearbyStations(req.query));
+  if (req.query.ids) {
+    res.json(findStationsByIds(req.query.ids));
+  } else if (req.query.latitude != undefined && req.query.longitude != undefined) {
+    res.json(findNearbyStations(req.query));
+  } else if (req.query.state) {
+    //TODO: load state average
+  }
 });
 
 app.get('/pm25/station/:slug/', function(req, res) {
@@ -44,6 +50,28 @@ app.get('/sitemap.xml', function(req, res) {
 app.listen(config.port, function () {
 	 console.log('Server listening on port ' + config.port);
 });
+
+function findStationsByIds(ids) {
+  if (!Array.isArray(ids)) {
+    ids = [ids];
+  }
+  var localStations = [];
+  var homefeed = {average:{Create_at: new Date().toISOString()}};
+  var now = new Date().getTime();
+  for (var slug in stations) {
+    if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.Create_at).getTime() < 1000 * 60 * 60 * 3) {
+      for (var id of ids) {
+        if (stations[slug].id == id) {
+          var station = JSON.parse(JSON.stringify(stations[slug]));
+          delete station.address;
+          localStations.push(station);
+        }
+      }
+    }
+  }
+  return localStations;
+}
+
 
 function findNearbyStations(coords) {
   var localStations = [];

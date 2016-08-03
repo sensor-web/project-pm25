@@ -13,7 +13,7 @@ function loadNearbyStations() {
                   <li>
                       <a href="/pm25/station/${station.slug}/">
                          <span class="concentration"><span class="concentration-value ${level}">${ station.data.Dust2_5 }</span><span id="unit">&micro;g/m&sup3;</span></span>
-                         <span class="location">@${ station.display_name }</span>
+                         <span class="location">@${ station.display_name } (距離 ${station.distance/1000} 公里)</span>
                          <time class="update-time" data-livestamp="${ station.data.Create_at }"></time>
                       </a>
                    </li>`;
