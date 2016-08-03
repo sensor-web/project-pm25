@@ -5,17 +5,15 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       {{> meta}}
-      <meta property="og:title" content="{{ display_name }} PM2.5 即時濃度" />
-      <title>{{ display_name }} PM2.5 即時濃度</title>
-
+      <title>{{ page_title }}</title>
       <link rel="stylesheet" href="/pm25/css/materialize.css">
       <link rel="stylesheet" href="/pm25/css/station.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
          rel="stylesheet">
-
       {{> ga}}
    </head>
    <body>
+      {{> fb}}
       <div class="card">
          <a id="logo" href="/pm25/"></a>
          <!-- Go to www.addthis.com/dashboard to customize your tools -->

@@ -1,4 +1,6 @@
 {
-  "port": 8082,
-  "debug": true
+    "site_url": "https://sensorweb.io",
+    "fb_app_id": "557124531078753",
+    "port": 8082,
+    "debug": true
 }
