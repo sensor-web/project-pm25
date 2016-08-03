@@ -41,7 +41,7 @@ $('.marked').click(function() {
   ga('send', 'event', 'pm25-tip', 'click', 'pm2.5 text');
   $('#pm25-modal').openModal();
 });
-$('.postscript').click(function() {
+$('.question-mark').click(function() {
   ga('send', 'event', 'pm25-tip', 'click', 'question mark');
   $('#pm25-modal').openModal();
 });
