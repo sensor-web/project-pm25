@@ -100,11 +100,17 @@ a:hover {
 
 .card ul li {
   display: block;
+  padding: 10px 0;
   border-bottom: 1px dotted #9b9b9b;
 }
 .card ul li:first-child {
-  border-top: 1px dotted #9b9b9b;
+  border-top: 1px solid #ccc;
 }
+
+.card ul li:last-child {
+  border-bottom: 1px solid #ccc;
+}
+
 .card ul li a {
   display: block;
   text-decoration: none;
@@ -496,6 +502,10 @@ h3, h4 {
   height: 265px;
   background-color: #222 !important;
   width: 100%;
+}
+
+footer {
+  padding-bottom: 30px;
 }
 
 .container {
