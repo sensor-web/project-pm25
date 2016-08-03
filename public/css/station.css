@@ -20,6 +20,8 @@ a:hover {
 }
 
 .marked {
+  -webkit-text-decoration-style: dotted;
+  -webkit-text-decoration-color: #9b9b9b;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-color: #9b9b9b;
