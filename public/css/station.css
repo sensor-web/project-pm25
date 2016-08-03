@@ -129,7 +129,12 @@ a:hover {
 .card ul li a .location {
   float: left;
   color: #454545;
-  font-size: 1em;
+  font-size: .8em;
+  text-align: left;
+}
+.card ul li a .distance {
+  display: inline-block;
+  font-size: .7em;
 }
 .card ul li a .update-time {
   float: right;
