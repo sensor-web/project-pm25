@@ -582,6 +582,7 @@ footer {
   box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
   color: #FFF !important;
   margin-top: 30px;
+  padding: 0 1.2rem;
 }
 
 .btn-large i{
@@ -657,34 +658,6 @@ footer {
   width: 100%;
 }
 
-
-@media only screen and (max-width : 992px) {
-  .place-image {
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-  .banner, #what, #other-projects {
-    text-align: center;
-  }
-}
-@media only screen and (min-width : 992px) {
-
-  .image-right {
-    float: right;
-  }
-
-  .image-left {
-    float: left;
-  }
-
-}
-
-@media only screen and (max-width : 600px) {
-  /*#index-banner .section {
-    top: 0;
-  }*/
-}
 
 .icon-block {
   padding: 0 15px;
@@ -817,16 +790,6 @@ h3.subtitle {
   min-width: 400px;
 }
 
-@media only screen and (max-width: 992px) {
-  .modal {
-    width: 95%;
-    min-width: auto;
-    top: 2% !important;
-  }
-  .modal .modal-content {
-    padding: 12px;
-  }
-}
 
 .modal-content .terms {
   color: gray;
@@ -848,3 +811,36 @@ h3.subtitle {
   box-sizing: border-box;
 }
 
+@media only screen and (max-width : 992px) {
+  .place-image {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .banner, #what, #other-projects {
+    text-align: center;
+  }
+
+  .image-right {
+    float: right;
+  }
+
+  .image-left {
+    float: left;
+  }
+
+  .modal {
+    width: 95%;
+    min-width: auto;
+    top: 2% !important;
+  }
+  .modal .modal-content {
+    padding: 12px;
+  }
+}
+
+@media only screen and (max-width : 480px) {
+  .card ul li a .location {
+    width: 160px;
+  }
+}
