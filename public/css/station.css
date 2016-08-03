@@ -1,7 +1,36 @@
+html,body {
+  height: 100%;
+  font-size: 12pt;
+}
+
 body {
   text-align: center;
   background-color: #f7f7f7;
   overflow-x: hidden;
+}
+
+/* Typography */
+
+p {
+  line-height: 2rem;
+  color: #333;
+}
+
+h1 {
+  margin-top: 60px;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: 3.2em;
+  letter-spacing: 1.5px;
+}
+
+h3,h4 {
+  margin-bottom: 40px;
+  color: #454545;
+  font-size: 1.8em;
+  font-weight: 700;
 }
 
 a {
@@ -13,56 +42,7 @@ a:hover {
   color: #00BDAF;
 }
 
-.pm25-content {
-  text-align: left;
-  padding: 40px;
-}
-
-.marked {
-  -webkit-text-decoration-style: dotted;
-  -webkit-text-decoration-color: #9b9b9b;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: #9b9b9b;
-  cursor: pointer;
-}
-
-#logo {
-  display: block;
-  width: 60px;
-  height: 60px;
-  background-image: url(../images/logo.png);
-  background-size: contain;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-#share {
-  display: block;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-#share i {
-  color: #85D9D1;
-  font-size: 40px;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
-
-#email {
-  text-decoration: none;
-}
-
-#email i {
-  position: relative;
-  top: 6px;
-  margin-right: 6px;
-}
+/* Cards */
 
 .card {
   display: block;
@@ -70,28 +50,6 @@ a:hover {
   margin: 22px 22px;
   padding: 30px;
 }
-
-.addthis_sharing_toolbox {
-  text-align: right;
-}
-
-#subscribe-form {
-  text-align: left;
-}
-
-#submit-area {
-  text-align: center;
-}
-
-#subscribe-sensor {
-  padding-top: 15px;
-}
-
-#subscribe-form .mute {
-  margin-bottom: 300px;
-}
-
-/*Lists*/
 
 .card h2 {
   font-size: 1.8em;
@@ -158,9 +116,9 @@ a:hover {
   font-size: .8em;
 }
 
-/*Sections*/
+/* Form */
 
-.projects-input,
+.subscribe-input,
 .select-dropdown {
   border: 1px solid #5CC7B9 !important;
   box-sizing: border-box;
@@ -168,12 +126,12 @@ a:hover {
   color: #333;
 }
 
-.projects-input:focus:not([readonly]) {
+.subscribe-input:focus:not([readonly]) {
   border-bottom: 2px;
   box-shadow: unset;
 }
 
-.projects-input,
+.subscribe-input,
 .select-dropdown {
   padding-left: 1rem !important;
   margin-left: -0.5rem !important;
@@ -191,6 +149,22 @@ a:hover {
   height: 40px;
   padding-top: 10px;
   color: #5CC7B9;
+}
+
+#subscribe-form {
+  text-align: left;
+}
+
+#submit-area {
+  text-align: center;
+}
+
+#subscribe-sensor {
+  padding-top: 15px;
+}
+
+#subscribe-form .mute {
+  margin-bottom: 300px;
 }
 
 #form-header {
@@ -223,38 +197,78 @@ a:hover {
   color: #aaa;
 }
 
-html,body {
-  height: 100%;
-  font-size: 12pt;
+/* Buttons */
+
+.marked {
+  -webkit-text-decoration-style: dotted;
+  -webkit-text-decoration-color: #9b9b9b;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #9b9b9b;
+  cursor: pointer;
 }
 
-.projects {
-  padding: 3rem 0;
+#logo {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-image: url(../images/logo.png);
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/*Typography*/
-
-p {
-  line-height: 2rem;
-  color: #333;
+#share {
+  display: block;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#share i {
+  color: #85D9D1;
+  font-size: 40px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
-h1 {
-  margin-top: 60px;
-  margin-bottom: 5px;
+.addthis_sharing_toolbox {
+  text-align: right;
 }
 
-h2 {
-  font-size: 3.2em;
-  letter-spacing: 1.5px;
+.btn-large {
+  height: 55px;
+  width: auto;
+  text-align: center;
+  border-radius: 55px !important;
+  text-transform: capitalize;
+  font-size: 1.1em;
+  background-color: #5cc7b8;
+  -webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
+  box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
+  color: #FFF !important;
+  margin-top: 30px;
+  padding: 0 1.2rem;
 }
 
-h3,h4 {
-  margin-bottom: 40px;
-  color: #454545;
-  font-size: 1.8em;
-  font-weight: 700;
+.btn-large i {
+  position: relative;
+  top: 6px;
+  margin-right: 6px;
+  margin-top: -8px;
 }
+
+.btn-large:hover {
+  -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
+  -moz-box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
+}
+
+/* Text */
 
 .medium {
   font-size: 1.4em !important;
@@ -334,95 +348,30 @@ h3,h4 {
 }
 
 
-/*Footer*/
+/* Footer */
 
-.page-footer a {
-  color: #d2d2d2 !important;
-  line-height: 1.8em;
-  font-size: .95em;
+#email {
+  text-decoration: none;
 }
 
-.page-footer li a:hover {
-  color: #fff !important;
-}
-
-.page-footer {
-  height: 265px;
-  background-color: #222 !important;
-  width: 100%;
+#email i {
+  position: relative;
+  top: 6px;
+  margin-right: 6px;
 }
 
 footer {
   padding-bottom: 30px;
 }
 
-@media only screen and (max-width: 992px) {
-  .page-footer {
-    height: auto;
-    position: relative;
-  }
-}
+/* Modal */
 
-/*Button*/
-
-.btn-large {
-  height: 55px;
-  width: auto;
-  text-align: center;
-  border-radius: 55px !important;
-  text-transform: capitalize;
-  font-size: 1.1em;
-  background-color: #5cc7b8;
-  -webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
-  box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
-  color: #FFF !important;
-  margin-top: 30px;
-  padding: 0 1.2rem;
-}
-
-.btn-large i {
-  position: relative;
-  top: 6px;
-  margin-right: 6px;
-  margin-top: -8px;
-}
-
-.btn-large:hover {
-  -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
-  -moz-box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
-  box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
-}
-
-#sensorweb-projects .card:hover .btn-ghost {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  background-color: #fff;
-  color: #454545 !important;
-}
-
-/*
-.button-collapse {
-  color: #26a69a;
-}*/
-
-/*Parallax*/
-
-footer.page-footer {
-  margin: 0;
-}
-
-.logo-mozilla {
-  margin-top: 4px;
-  display: block;
-  width: 96px;
-  height: 26px;
-  margin-bottom: 20px;
+.pm25-content {
+  text-align: left;
+  padding: 40px;
 }
 
 .modal {
-  /*padding: 1rem;*/
   max-height: 100%;
 }
 
@@ -431,19 +380,12 @@ footer.page-footer {
   margin: 20px auto;
 }
 
-#sensorweb-projects {
-  padding-bottom: 0;
-}
-
-#sensorweb-projects .card {
-  margin-bottom: 40px;
-}
-
 .modal {
   min-width: 400px;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
+
   .modal {
     width: 95%;
     min-width: auto;
