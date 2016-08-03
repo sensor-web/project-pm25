@@ -30,8 +30,8 @@ app.get('/pm25/search', function(req, res) {
     res.json(findStationsByIds(req.query.ids));
   } else if (req.query.latitude != undefined && req.query.longitude != undefined) {
     res.json(findNearbyStations(req.query));
-  } else if (req.query.state) {
-    //TODO: load state average
+  } else if (req.query.region) {
+    return homefeed.average; //hardcoded Taipei average
   }
 });
 
@@ -102,4 +102,3 @@ function findNearbyStations(coords) {
   });
   return localStations.slice(0, 10);
 }
-
