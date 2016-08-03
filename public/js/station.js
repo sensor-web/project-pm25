@@ -28,6 +28,23 @@ $('#sub-freq').on('change', function() {
 $('#sub-reason').on('change', function() {
   ga('send', 'event', 'sensor-form', 'reason-change', 'pm25');
 });
+$('#nearby-stations li a').click(function () {
+  ga('send', 'event', 'nearby-stations', 'click', $(this).find('.location').text());
+});
+$('#state-rank li a').click(function () {
+  ga('send', 'event', 'state-rank-stations', 'click', $(this).find('.location').text());
+});
+$('#country-rank li a').click(function () {
+  ga('send', 'event', 'country-rank-stations', 'click', $(this).find('.location').text());
+});
+$('.marked').click(function() {
+  ga('send', 'event', 'pm25-tip', 'click', 'pm2.5 text');
+  $('#pm25-modal').openModal();
+});
+$('.postscript').click(function() {
+  ga('send', 'event', 'pm25-tip', 'click', 'question mark');
+  $('#pm25-modal').openModal();
+});
 
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);

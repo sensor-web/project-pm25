@@ -22,7 +22,7 @@ function loadNearbyStations() {
       $nearbyStations.html(items);
     });
   }).catch(function() {
-      $nearbyStations.html('<li class="nodata">無法取得 GPS 定位資訊，請<a href="javascript:loadNearbyStations();">點此再試一次</a>。</li>');
+      $nearbyStations.html('<li class="nodata">無法取得 GPS 定位資訊，請檢查 GPS 定位功能是否開啟，並<a href="javascript:loadNearbyStations();">點此再試一次</a>。</li>');
   });
 }
 

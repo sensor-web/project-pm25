@@ -14,6 +14,30 @@ a:hover {
   color: #00BDAF;
 }
 
+.pm25-content {
+  text-align: left;
+  padding: 40px;
+}
+
+.postscript {
+  display: block;
+  font-size: .7em;
+  color: #cccccc;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #9b9b9b;
+  cursor: pointer;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.marked {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #9b9b9b;
+  cursor: pointer;
+}
+
 #logo {
   display: block;
   width: 60px;

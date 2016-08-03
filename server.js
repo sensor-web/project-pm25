@@ -1,14 +1,17 @@
 var express = require('express');
+var app = express();
+var hbs = require('hbs');
 var geolib = require('geolib');
 var config = require('./config.json');
 var stations = require('./data/stations.json');
 var redirect = require('./data/redirect.json');
 var homefeed = require('./data/homefeed.json');
-var app = express();
 var request = require('request');
 
+hbs.registerPartials(__dirname + '/views/partials');
+
 app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
+app.engine('html', hbs.__express);
 
 if (config.debug) {
   app.use('/pm25', express.static('public'));
