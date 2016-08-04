@@ -39,7 +39,7 @@ app.get('/pm25/search', function(req, res) {
   } else if (req.query.latitude != undefined && req.query.longitude != undefined) {
     res.json(findNearbyStations(req.query));
   } else if (req.query.region) {
-    return homefeed.average; //hardcoded Taipei average
+    res.json(homefeed.average); //hardcoded Taipei average
   }
 });
 
