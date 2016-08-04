@@ -18,8 +18,12 @@ if (config.debug) {
 }
 
 app.get('/pm25/', function(req, res) {
-  if (req.url[req.url.length - 1] != '/') {
-    res.redirect(req.url + '/');
+  if (req.path[req.path.length - 1] != '/') {
+    if (-1 == req.url.indexOf('?')) {
+      res.redirect(req.path + '/');
+    } else {
+      res.redirect(req.path + '/' + req.url.substr(req.url.indexOf('?')));
+    }
     return;
   }
   homefeed.fb_app_id = config.fb_app_id;
@@ -40,8 +44,12 @@ app.get('/pm25/search', function(req, res) {
 });
 
 app.get('/pm25/station/:slug/', function(req, res) {
-  if (req.url[req.url.length - 1] != '/') {
-    res.redirect(req.url + '/');
+  if (req.path[req.path.length - 1] != '/') {
+    if (-1 == req.url.indexOf('?')) {
+      res.redirect(req.path + '/');
+    } else {
+      res.redirect(req.path + '/' + req.url.substr(req.url.indexOf('?')));
+    }
     return;
   }
   var location = req.params.slug;
