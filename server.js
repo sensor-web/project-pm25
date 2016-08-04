@@ -18,6 +18,10 @@ if (config.debug) {
 }
 
 app.get('/pm25/', function(req, res) {
+  if (req.url[req.url.length - 1] != '/') {
+    res.redirect(req.url + '/');
+    return;
+  }
   homefeed.fb_app_id = config.fb_app_id;
   homefeed.page_title = '臺北市 PM2.5 即時濃度平均';
   homefeed.page_url = config.site_url + req.url;
@@ -36,6 +40,10 @@ app.get('/pm25/search', function(req, res) {
 });
 
 app.get('/pm25/station/:slug/', function(req, res) {
+  if (req.url[req.url.length - 1] != '/') {
+    res.redirect(req.url + '/');
+    return;
+  }
   var location = req.params.slug;
   if (redirect[location]) {
     res.redirect('/pm25/station/'+redirect[location]+'/');
