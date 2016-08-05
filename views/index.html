@@ -64,25 +64,8 @@
          </ul>
       </div>
       {{> pm25_modal}}
-      <div id="subscribe-modal" class="modal">
-         <div id="form-header">PM2.5 空氣品質通知<i class="material-icons modal-close" id="close">close</i></div>
-         <div id="subscribe" class="modal-content">
-            <form action="https://docs.google.com/a/mozilla.com/forms/d/e/1FAIpQLSeZ9OEFQrRhmtz3azHVwbMDoraNo14r1qiq2TOp8APRWQY12g/formResponse" method="POST" id="subscribe-form" target="temp_iframe" onsubmit="submitted=true;">
-               <input id="sub-email" name="entry.301006003" class="subscribe-input" jsname="L9xHkb" type="text" placeholder="電子郵件（必填）" required="">
-               <input name="entry.68562270" jsname="ekGZBc" value="" type="hidden">
-               <input name="entry.1918318603" jsname="L9xHkb" type="hidden" value="region_taipei">
-               <input name="fvv" value="1" type="hidden">
-               <input name="draftResponse" value="[,,&quot;365822309556244423&quot;]
-                  " type="hidden">
-               <input name="pageHistory" value="0" type="hidden">
-               <input name="fbzx" value="365822309556244423" type="hidden">
-               <div id="submit-area">
-                 <input name="submit" value="提交" id="subscribe-sensor" class="waves-effect waves-light btn-large" type="submit">
-               </div>
-               <p class="mute">按下提交，表示你同意mozilla的<a href="/privacy.html" target="_blank">隱私權政策</a></p>
-            </form>
-         </div>
-      </div>
+      {{> subscribe_modal}}
+
 
   <script type="text/javascript">
     var submitted=false;

@@ -17,7 +17,7 @@ if (config.debug) {
   app.use('/pm25', express.static('public'));
 }
 
-app.get('/pm25/', function(req, res) {
+app.get('/pm25/b?', function(req, res) {
   if (req.path[req.path.length - 1] != '/') {
     if (-1 == req.url.indexOf('?')) {
       res.redirect(req.path + '/');
@@ -26,6 +26,8 @@ app.get('/pm25/', function(req, res) {
     }
     return;
   }
+  homefeed.id = 'region_taipei';
+  homefeed.survey = req.path == '/pm25/';
   homefeed.fb_app_id = config.fb_app_id;
   homefeed.page_title = '臺北市 PM2.5 即時濃度平均';
   homefeed.page_url = config.site_url + req.url;
