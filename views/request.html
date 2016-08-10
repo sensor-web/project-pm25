@@ -91,12 +91,7 @@
   <iframe name="temp_iframe" id="temp_iframe" style="display:none;" onload="if (submitted) {$('#subscribe-modal').closeModal();Materialize.toast('提交成功！我們將在空氣品質變糟時發出電子郵件通知。', 5000);}">
   </iframe>
 
-      <footer>
-         <a id="email" href="mailto:sensorweb@mozilla.com"><i class="material-icons">email</i>sensorweb@mozilla.com</a>
-         <br>
-         <a href="/privacy.html" target="_blank">隱私權政策</a>
-      </footer>
-
+      {{> footer}}
 
       <script src="/pm25/js/jquery-2.1.1.min.js"></script>
       <script src="/pm25/js/materialize.js"></script>
