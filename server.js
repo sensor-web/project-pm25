@@ -33,6 +33,21 @@ app.get('/pm25/b?', function(req, res) {
   homefeed.page_url = config.site_url + req.url;
   res.render('index', homefeed);
 });
+app.get('/pm25/request', function(req, res) {
+  if (req.path[req.path.length - 1] != '/') {
+    if (-1 == req.url.indexOf('?')) {
+      res.redirect(req.path + '/');
+    } else {
+      res.redirect(req.path + '/' + req.url.substr(req.url.indexOf('?')));
+    }
+    return;
+  }
+  var data = {};
+  data.fb_app_id = config.fb_app_id;
+  data.page_title = '申請架設測站';
+  data.page_url = config.site_url + req.url;
+  res.render('request', data);
+});
 
 app.get('/pm25/search', function(req, res) {
   //TODO: check query params and accepted format

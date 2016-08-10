@@ -82,14 +82,13 @@ a:hover {
   border-bottom: 1px solid #ccc;
 }
 
-.card ul li a {
+.card ul. li a {
   display: block;
   text-decoration: none;
   clear: both;
   color: none;
   padding-bottom: 32px;
 }
-
 .card ul li a .concentration {
   display: block;
   text-align: left;
@@ -114,6 +113,19 @@ a:hover {
   float: right;
   color: #9b9b9b;
   font-size: .8em;
+}
+
+.collapsible-body {
+  text-align: left;
+  padding: 40px;
+}
+
+ul.requirements {
+  list-style-type: disc;
+}
+ul.requirements li {
+  list-style-type: disc;
+  margin-left: 20px;
 }
 
 /* Form */
@@ -166,7 +178,10 @@ a:hover {
 #subscribe-form .mute {
   margin-bottom: 300px;
 }
-
+#place-input {
+  display: inline-block;
+  width: auto;
+}
 #form-header {
   display: block;
   width: 100%;

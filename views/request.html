@@ -1,0 +1,110 @@
+
+<html>
+   <head>
+      <meta http-equiv="refresh" content="600">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      {{> meta}}
+      <title>{{ page_title }}</title>
+      <link rel="stylesheet" href="/pm25/css/materialize.css">
+      <link rel="stylesheet" href="/pm25/css/station.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+         rel="stylesheet">
+      {{> ga}}
+   </head>
+   <body>
+      {{> fb}}
+      <div class="card">
+         <a id="logo" href="/pm25/"></a>
+         <!-- Go to www.addthis.com/dashboard to customize your tools -->
+         <div class="addthis_sharing_toolbox"></div>
+         <p>
+         我想要在 <input type="text" id="place-input" placeholder="例：台北市信義區某建築"> 架設測站
+         <p>
+      </div>
+         <div>你可以選擇：</div>
+     <ul class="collapsible" data-collapsible="accordion">
+       <li>
+        <div class="collapsible-header"><i class="material-icons">credit_card</i><b>1. 購買測站</b></div>
+        <div class="collapsible-body">
+        <span>我們計畫推出一款安裝簡單且價格合理的測站產品，請留下你的聯絡信箱，我們將在第一時間通知你。</span>
+        <br>
+        <ul class="requirements">
+          <b>安裝環境需求</b>
+          <li>Wifi 網路環境（不支援 captive portal, WPA enterprise）</li>
+          <li>電源插座</li>
+          <li>建議安裝室外防雨處（陽台、窗台）</li>
+        </ul>
+        <ul class="requirements">
+          <b>功能特色</b>
+          <li>體積小（約六立方公分）</li>
+          <li>彩色 LED 燈顯示目前空氣狀況</li>
+          <li>網頁顯示即時及歷史資料</li>
+          <li>可訂閱空汙通知警示</li>
+        </ul>
+         <a id="buy" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>可購買時通知我</a>
+        </div>
+       </li>
+       <li>
+        <div class="collapsible-header"><i class="material-icons">settings</i><b>2. 自造測站</b></div>
+        <div class="collapsible-body">
+         <span>有微控制器應用開發經驗嗎？試試用你熟悉的開發板來架設測站，申請使用 API 金鑰即可將資料上傳至 SensorWeb。</span>
+        <br>
+         <ul class="requirements">
+           <b>安裝環境需求</b>
+           <li>Wifi 網路環境（不支援 captive portal, WPA enterprise）</li>
+           <li>電源插座</li>
+           <li>建議安裝室外防雨處（陽台、窗台）</li>
+         </ul>
+         <ul class="requirements">
+           <b>技術需求</b>
+           <li>基本電路概念及使用麵包板經驗</li>
+           <li>壓製杜邦線頭</li>
+           <li>基本程式設計概念</li>
+         </ul>
+         <ul class="requirements">
+           <b>支援開發板</b>
+           我們針對幾款開發板提供組裝說明
+           <li><a href="https://github.com/sensor-web/arduino-station/tree/master/station/particle-photon" target="_blank">Particle Photon 組裝說明</a></li>
+           <li><a href="https://github.com/sensor-web/arduino-station/tree/master/station/nodemcu" target="_blank">NodeMCU 組裝說明</a></li>
+           <li><a href="https://github.com/sensor-web/pi-station" target="_blank">Raspberry Pi 2 組裝說明</a></li>
+         </ul>
+         <br>
+         <a id="get-api-key" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">vpn_key</i>取得 API 金鑰</a>
+        </div>
+       </li>
+       <li>
+        <div class="collapsible-header"><i class="material-icons">add_alert</i><b>3. 等候消息</b></div>
+        <div class="collapsible-body">
+         <span>覺得架設測站太困難？別擔心，SensorWeb 是一個群眾參與的感測網路，留下你的聯絡信箱，我們將在此處有測站資料時通知你。</span>
+         <br>
+         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>此處有測站時通知我</a>
+        </div>
+       </li>
+     </ul>
+      {{> pm25_modal}}
+      {{> subscribe_modal}}
+
+  <script type="text/javascript">
+    var submitted=false;
+  </script>
+  <iframe name="temp_iframe" id="temp_iframe" style="display:none;" onload="if (submitted) {$('#subscribe-modal').closeModal();Materialize.toast('提交成功！我們將在空氣品質變糟時發出電子郵件通知。', 5000);}">
+  </iframe>
+
+      <footer>
+         <a id="email" href="mailto:sensorweb@mozilla.com"><i class="material-icons">email</i>sensorweb@mozilla.com</a>
+         <br>
+         <a href="/privacy.html" target="_blank">隱私權政策</a>
+      </footer>
+
+
+      <script src="/pm25/js/jquery-2.1.1.min.js"></script>
+      <script src="/pm25/js/materialize.js"></script>
+      <script src="/pm25/js/moment-with-locales.min.js" type="text/javascript"></script>
+      <script src="/pm25/js/livestamp.min.js" type="text/javascript"></script>
+      <script src="/pm25/js/station.js"></script>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
+   </body>
+</html>
+
