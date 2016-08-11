@@ -98,7 +98,6 @@ function findStationsByIds(ids) {
     ids = [ids];
   }
   var localStations = [];
-  var homefeed = {average:{Create_at: new Date().toISOString()}};
   var now = new Date().getTime();
   for (var slug in stations) {
     if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.Create_at).getTime() < 1000 * 60 * 60 * 3) {
@@ -117,7 +116,6 @@ function findStationsByIds(ids) {
 
 function findNearbyStations(coords) {
   var localStations = [];
-  var homefeed = {average:{Create_at: new Date().toISOString()}};
   var now = new Date().getTime();
   for (var slug in stations) {
     if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.Create_at).getTime() < 1000 * 60 * 60 * 3) {

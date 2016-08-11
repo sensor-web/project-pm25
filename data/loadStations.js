@@ -12,14 +12,18 @@ var stations = require('./stations.json');
 loadSensorDataRecursive();
 
 function changeFieldNames(data) {
-	data.pm2_5 = data.Dust2_5;
+	if (data.Dust2_5) {
+		data.pm2_5 = data.Dust2_5;
+	}
 	if (data.Temperature) {
 		data.temperature = data.Temperature;
 	}
 	if (data.Humidity) {
 		data.humidity = data.Humidity;
 	}
-	data.create_time = data.Create_at;
+	if (data.Create_at) {
+		data.create_time = data.Create_at;
+	}
 	delete data.Dust2_5;
 	delete data.Temperature;
 	delete data.Humidity;
@@ -33,6 +37,8 @@ function updateStations() {
 			if (stations[slug].id == id) {
 				console.log('update data for '+id);
 				stations[slug].data = changeFieldNames(data[id].data);
+			} else {
+				stations[slug].data = changeFieldNames(stations[slug].data);
 			}
 		}
 	}

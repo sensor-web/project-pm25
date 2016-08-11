@@ -1,15 +1,16 @@
 var stations = require('./stations.json');
 var fs = require('fs');
 var countryStations = [];
-var homefeed = {average:{Create_at: new Date().toISOString().replace(/\.[0-9]+Z/, 'Z')}};
+var homefeed = {average:{create_time: new Date().toISOString().replace(/\.[0-9]+Z/, 'Z')}};
 var now = new Date().getTime();
 for (var slug in stations) {
-	if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.Create_at).getTime() < 1000 * 60 * 60 * 3 && stations[slug].data.Dust2_5 < 1000) {
+		console.log(slug);
+	if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.create_time).getTime() < 1000 * 60 * 60 * 3 && stations[slug].data.pm2_5 < 1000) {
 		countryStations.push(stations[slug]);
 	}
 }
 countryStations.sort(function(a, b) {
-	return b.data.Dust2_5 - a.data.Dust2_5;
+	return b.data.pm2_5 - a.data.pm2_5;
 });
 
 var stateStations = countryStations.filter(function(s) {
@@ -17,9 +18,9 @@ var stateStations = countryStations.filter(function(s) {
 });
 var sum = 0;
 for (var stateStation of stateStations) {
-	sum += stateStation.data.Dust2_5;
+	sum += stateStation.data.pm2_5;
 }
-homefeed.average.Dust2_5 = Math.round(sum/stateStations.length);
+homefeed.average.pm2_5 = Math.round(sum/stateStations.length);
 
 homefeed.countryRank = countryStations.slice(0, 10);
 homefeed.stateRank = stateStations.slice(0, 10);

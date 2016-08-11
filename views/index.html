@@ -18,10 +18,10 @@
          <a id="logo" href="/pm25/"></a>
          <!-- Go to www.addthis.com/dashboard to customize your tools -->
          <div class="addthis_sharing_toolbox"></div>
-         <h1><span id="latest-pm25">{{ average.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
+         <h1><span id="latest-pm25">{{ average.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
          <h2 id="pm25"><span class="marked">PM2.5</span> 即時濃度平均<a class="question-mark" href="javascript:void(0);"><i class="material-icons">help_outline</i></a></h2>
          <h3 id="location">@台北市</h3>
-         <h3 id="update">上次更新於 <time id="latest-time" data-livestamp="{{ average.Create_at }}"></time></h3>
+         <h3 id="update">上次更新於 <time id="latest-time" data-livestamp="{{ average.create_time }}"></time></h3>
          <div id="latest-status"></div>
          <br>
          <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>空氣不好時通知我</a>
@@ -38,10 +38,10 @@
                <li>
                   <a href="/pm25/station/{{ this.slug }}/">
                      <span class="concentration">
-                        <span class="concentration-value">{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                        <span class="concentration-value">{{ this.data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
                      </span>
                      <span class="location">@{{ this.display_name }}</span>
-                     <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
+                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
                   </a>
                </li>
             {{/each}}
@@ -54,10 +54,10 @@
                <li>
                   <a class="clearfix" href="/pm25/station/{{ this.slug }}/">
                      <span class="concentration">
-                        <span class="concentration-value">{{ this.data.Dust2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                        <span class="concentration-value">{{ this.data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
                      </span>
                      <span class="location">@{{ this.slug }}</span>
-                     <time class="update-time" data-livestamp="{{ this.data.Create_at }}"></time>
+                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
                   </a>
                </li>
             {{/each}}
