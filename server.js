@@ -100,7 +100,7 @@ function findStationsByIds(ids) {
   var localStations = [];
   var now = new Date().getTime();
   for (var slug in stations) {
-    if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.Create_at).getTime() < 1000 * 60 * 60 * 3) {
+    if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.create_time).getTime() < 1000 * 60 * 60 * 3) {
       for (var id of ids) {
         if (stations[slug].id == id) {
           var station = JSON.parse(JSON.stringify(stations[slug]));
@@ -118,11 +118,13 @@ function findNearbyStations(coords) {
   var localStations = [];
   var now = new Date().getTime();
   for (var slug in stations) {
-    if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.Create_at).getTime() < 1000 * 60 * 60 * 3) {
+    if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.create_time).getTime() < 1000 * 60 * 60 * 3) {
       var station = JSON.parse(JSON.stringify(stations[slug]));
       delete station.address;
-      station.distance = geolib.getDistance(coords, station.coords);
-      localStations.push(station);
+      if (station.coords && station.coords.latitude && station.coords.longitude) {
+        station.distance = geolib.getDistance(coords, station.coords);
+        localStations.push(station);
+      }
     }
   }
   localStations = localStations.filter(function(s) {

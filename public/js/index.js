@@ -8,13 +8,13 @@ function loadNearbyStations() {
       // console.log(stations);
       var items = '';
       for (var station of stations) {
-        var level = getDAQIStatus(Number.parseInt(station.data.Dust2_5));
+        var level = getDAQIStatus(Number.parseInt(station.data.pm2_5));
         items += `
                   <li>
                       <a href="/pm25/station/${station.slug}/">
-                         <span class="concentration"><span class="concentration-value ${level}">${ station.data.Dust2_5 }</span><span id="unit">&micro;g/m&sup3;</span></span>
+                         <span class="concentration"><span class="concentration-value ${level}">${ station.data.pm2_5 }</span><span id="unit">&micro;g/m&sup3;</span></span>
                          <span class="location">@${ station.display_name } <span class="distance">(距離 ${station.distance/1000} 公里)</span></span>
-                         <time class="update-time" data-livestamp="${ station.data.Create_at }"></time>
+                         <time class="update-time" data-livestamp="${ station.data.create_time }"></time>
                       </a>
                    </li>`;
 
