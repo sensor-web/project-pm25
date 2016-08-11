@@ -29,7 +29,7 @@ app.get('/pm25/b?', function(req, res) {
   homefeed.id = 'region_taipei';
   homefeed.survey = req.path == '/pm25/';
   homefeed.fb_app_id = config.fb_app_id;
-  homefeed.page_title = '臺北市 PM2.5 即時濃度平均';
+  homefeed.page_title = '臺北市 PM2.5 即時濃度平均 - Project SensorWeb';
   homefeed.page_url = config.site_url + req.url;
   res.render('index', homefeed);
 });
@@ -44,7 +44,7 @@ app.get('/pm25/request', function(req, res) {
   }
   var data = {};
   data.fb_app_id = config.fb_app_id;
-  data.page_title = '申請架設測站';
+  data.page_title = '申請架設 PM2.5 測站 - Project SensorWeb';
   data.page_url = config.site_url + req.url;
   res.render('request', data);
 });
@@ -76,7 +76,7 @@ app.get('/pm25/station/:slug/', function(req, res) {
   }
   if (stations[location]) {
     stations[location].fb_app_id = config.fb_app_id;
-    stations[location].page_title = stations[location].display_name + ' PM2.5 即時濃度';
+    stations[location].page_title = stations[location].display_name + ' PM2.5 即時濃度 - Project SensorWeb';
     stations[location].page_url = config.site_url + req.url;
     res.render('station', stations[location]);
   } else {
