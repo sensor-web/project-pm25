@@ -4,7 +4,6 @@ var countryStations = [];
 var homefeed = {average:{create_time: new Date().toISOString().replace(/\.[0-9]+Z/, 'Z')}};
 var now = new Date().getTime();
 for (var slug in stations) {
-		console.log(slug);
 	if (stations[slug].address.country_code == 'tw' && now - new Date(stations[slug].data.create_time).getTime() < 1000 * 60 * 60 * 3 && stations[slug].data.pm2_5 < 1000) {
 		countryStations.push(stations[slug]);
 	}
