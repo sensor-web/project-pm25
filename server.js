@@ -46,6 +46,7 @@ app.get('/pm25/request', function(req, res) {
   data.fb_app_id = config.fb_app_id;
   data.page_title = '申請架設 PM2.5 測站 - Project SensorWeb';
   data.page_url = config.site_url + req.url;
+  data.location = true;
   res.render('request', data);
 });
 

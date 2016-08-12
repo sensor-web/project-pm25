@@ -11,6 +11,17 @@ body {
 
 /* Typography */
 
+h1.heading {
+  text-align: center;
+  top: 0;
+  font-size: 1.2em;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding-top: 40px;
+  width: 100%;
+  font-weight: 700;
+}
+
 p {
   line-height: 2rem;
   color: #333;
@@ -43,6 +54,10 @@ a:hover {
 }
 
 /* Cards */
+
+.no-padding {
+  padding: 0;
+}
 
 .card {
   display: block;
@@ -113,6 +128,38 @@ a:hover {
   float: right;
   color: #9b9b9b;
   font-size: .8em;
+}
+
+.card ul.collapsible .collapsible-header i {
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
+}
+.card ul.collapsible .collapsible-header b {
+  vertical-align: middle;
+}
+
+.card ul.collapsible {
+  box-shadow: none;
+  border-left: none;
+  border-right: none;
+}
+.card ul.collapsible li a {
+  display: inline-block;
+  padding-bottom: 0;
+}
+
+.card ul.collapsible li {
+  padding: 0;
+  border-bottom: none;
+}
+
+.card ul li:first-child {
+  border-top: none;
+}
+
+.card ul li:last-child {
+  border-bottom: none;
 }
 
 .collapsible-body {
@@ -415,5 +462,10 @@ footer {
 @media only screen and (max-width : 480px) {
   .card ul li a .location {
     width: 160px;
+  }
+  .collapsible-body {
+    text-align: left;
+    padding: 20px;
+    font-size: .8em;
   }
 }
