@@ -12,16 +12,16 @@ var stations = require('./stations.json');
 loadSensorDataRecursive();
 
 function changeFieldNames(data) {
-	if (data.Dust2_5) {
+	if (data.Dust2_5 != undefined) {
 		data.pm2_5 = data.Dust2_5;
 	}
-	if (data.Temperature) {
+	if (data.Temperature != undefined) {
 		data.temperature = data.Temperature;
 	}
-	if (data.Humidity) {
+	if (data.Humidity != undefined) {
 		data.humidity = data.Humidity;
 	}
-	if (data.Create_at) {
+	if (data.Create_at != undefined) {
 		data.create_time = data.Create_at;
 	}
 	delete data.Dust2_5;
