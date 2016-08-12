@@ -1,11 +1,11 @@
 <div id="subscribe-modal" class="modal">
-   <div id="form-header">PM2.5 空氣品質通知<i class="material-icons modal-close" id="close">close</i></div>
+   <div id="form-header"><span id="modal-header">{{#if location}}{{else}}PM2.5 空氣品質通知{{/if}}</span><i class="material-icons modal-close" id="close">close</i></div>
    <div id="subscribe" class="modal-content">
       <form action="https://docs.google.com/a/mozilla.com/forms/d/e/1FAIpQLSeZ9OEFQrRhmtz3azHVwbMDoraNo14r1qiq2TOp8APRWQY12g/formResponse" method="POST" id="subscribe-form" target="temp_iframe" onsubmit="submitted=true;">
          <input id="sub-email" name="entry.301006003" class="subscribe-input" jsname="L9xHkb" type="text" placeholder="電子郵件（必填）" required="">
 
          {{#if location}}
-         <input type="text" id="place-input" placeholder="架設地點，例：台北市信義區某建築">
+         <input type="text" class="subscribe-input" id="place-input" placeholder="架設地點，例：台北市信義區某建築">
          {{/if}}
          {{#if survey}}
          <input id="sub-name" name="entry.319252376" class="subscribe-input" jsname="L9xHkb" type="hidden" value="">

@@ -10,6 +10,12 @@ $('.concentration-value').each(function() {
 
 $('select').material_select();
 $('.modal-trigger').leanModal();
+$('.modal-trigger').click(function() {
+  var $header = $(this).attr('data-modal-header');
+  if ($header) {
+    $('#modal-header').text($header);
+  }
+});
 $('#subscribe').click(function(e) {
   ga('send', 'event', 'data', 'subscribe', 'pm25');
 });
