@@ -28,9 +28,6 @@ $('#sub-freq').on('change', function() {
 $('#sub-reason').on('change', function() {
   ga('send', 'event', 'sensor-form', 'reason-change', 'pm25');
 });
-$('#nearby-stations li a').click(function () {
-  ga('send', 'event', 'nearby-stations', 'click', $(this).find('.location').text());
-});
 $('#state-rank li a').click(function () {
   ga('send', 'event', 'state-rank-stations', 'click', $(this).find('.location').text());
 });

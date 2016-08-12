@@ -20,6 +20,9 @@ function loadNearbyStations() {
 
       }
       $nearbyStations.html(items);
+      $nearbyStations.find('li a').click(function () {
+        ga('send', 'event', 'nearby-stations', 'click', $(this).find('.location').text());
+      });
     });
   }).catch(function() {
       $nearbyStations.html('<li class="nodata">無法取得 GPS 定位資訊，請檢查 GPS 定位功能是否開啟，並<a href="javascript:loadNearbyStations();">點此再試一次</a>。</li>');
