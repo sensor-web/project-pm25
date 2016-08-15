@@ -19,12 +19,12 @@
          <!-- Go to www.addthis.com/dashboard to customize your tools -->
          <div class="addthis_sharing_toolbox"></div>
          <h1><span id="latest-pm25">{{ data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
-         <h2 id="pm25"><span class="marked">PM2.5</span> 即時濃度<a class="question-mark" href="javascript:void(0);"><i class="material-icons">help_outline</i></a></h2>
+         <h2 id="pm25"><span class="marked">PM2.5</span> 即時濃度<a class="question-mark" href="javascript:void(0);"><!--googleoff: index--><i class="material-icons">help_outline</i><!--googleon: index--></a></h2>
          <h3 id="location">@{{ display_name }}</h3>
          <h3 id="update">上次更新於 <time id="latest-time" data-livestamp="{{ data.create_time }}"></time></h3>
          <div id="latest-status"></div>
          <br>
-         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><i class="material-icons">add_alert</i>空氣不好時通知我</a>
+         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->空氣不好時通知我</a>
       </div>
       {{> pm25_modal}}
       {{> subscribe_modal}}
