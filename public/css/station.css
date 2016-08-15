@@ -134,6 +134,8 @@ a:hover {
   display: inline-block;
   float: none;
   vertical-align: middle;
+  margin-left: -25px;
+  padding: 4px 0;
 }
 .card ul.collapsible .collapsible-header b {
   vertical-align: middle;
@@ -143,6 +145,8 @@ a:hover {
   box-shadow: none;
   border-left: none;
   border-right: none;
+  margin-top: 40px;
+  padding-bottom: 40px;
 }
 .card ul.collapsible li a {
   display: inline-block;
@@ -152,6 +156,21 @@ a:hover {
 .card ul.collapsible li {
   padding: 0;
   border-bottom: none;
+  color: #4a4a4a;
+}
+
+.requirements li:before {
+	content: "•";
+	/*position: absolute;*/
+	color: #5CC7B9;
+	margin-left: -15px;
+	margin-right: 10px;
+}
+
+
+.card ul.collapsible li .active {
+  border: none;
+  background-color: #eee;
 }
 
 .card ul li:first-child {
@@ -169,6 +188,9 @@ a:hover {
 
 ul.requirements {
   list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 15px; 
+  line-height: 1.6;
 }
 ul.requirements li {
   list-style-type: disc;
@@ -443,6 +465,11 @@ footer {
   min-width: 400px;
 }
 
+.cta {
+	text-align: left;
+	margin-bottom: 20px;
+ }
+
 @media only screen and (max-width: 992px) {
 
   .modal {
@@ -463,6 +490,12 @@ footer {
   .collapsible-body {
     text-align: left;
     padding: 20px;
-    font-size: .8em;
+    font-size: .9em;
+    line-height: 1.6;
+  }
+
+  .cta {
+	text-align: center;
+	margin-bottom: 20px;
   }
 }
