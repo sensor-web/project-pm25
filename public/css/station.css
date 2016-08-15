@@ -62,8 +62,9 @@ a:hover {
 .card {
   display: block;
   box-shadow: 1px 1px 2px 2px rgba(0,0,0,.05);
-  margin: 22px 22px;
+  margin: 22px auto;
   padding: 30px;
+  max-width: 800px;
 }
 
 .card h2 {
@@ -170,6 +171,11 @@ a:hover {
 
 .card ul.collapsible li .active {
   border: none;
+  background-color: #eee;
+}
+
+.card ul.collapsible li .collapsible-header:hover {
+  /*border: none;*/
   background-color: #eee;
 }
 
@@ -466,8 +472,8 @@ footer {
 }
 
 .cta {
-	text-align: left;
-	margin-bottom: 20px;
+	text-align: center;
+	margin-bottom: 10px;
  }
 
 @media only screen and (max-width: 992px) {
@@ -493,9 +499,10 @@ footer {
     font-size: .9em;
     line-height: 1.6;
   }
+}
+@media only screen and (max-width : 844px) {
 
-  .cta {
-	text-align: center;
-	margin-bottom: 20px;
+  .card {
+  	margin: 22px 22px;
   }
 }
