@@ -6,7 +6,7 @@ function loadNearbyStations() {
     console.log(coords);
     $.get('/pm25/stations', coords, function(stations) {
       if (0 == stations.length) {
-        $nearbyStations.html('<li class="nodata">抱歉，附近沒有可參考的監測站。</li>');
+        $nearbyStations.html('<li class="nodata">抱歉，目前沒有可參考的監測站資料在附近。</li>');
         return;
       }
       var items = '';

@@ -49,6 +49,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
       <div class="card">
          <h2 class="medium">臺北市測站 <span class="marked">PM2.5</span> 即時排行</h2>
          <ul id="state-rank">
+            {{#if stateTop.length}}
             {{#each stateTop}}
                <li>
                   <a href="/pm25/station/{{ this.slug }}/">
@@ -60,11 +61,15 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
                   </a>
                </li>
             {{/each}}
+            {{else}}
+              <li class="nodata">抱歉，目前尚無監測站資料。</li>
+            {{/if}}
          </ul>
       </div>
       <div class="card">
          <h2 class="medium">臺灣測站 <span class="marked">PM2.5</span> 即時排行</h2>
          <ul id="country-rank">
+            {{#if countryTop.length}}
             {{#each countryTop}}
                <li>
                   <a class="clearfix" href="/pm25/station/{{ this.slug }}/">
@@ -76,6 +81,9 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
                   </a>
                </li>
             {{/each}}
+            {{else}}
+              <li class="nodata">抱歉，目前尚無監測站資料。</li>
+            {{/if}}
          </ul>
       </div>
       {{> pm25_modal}}
