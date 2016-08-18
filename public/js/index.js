@@ -4,8 +4,11 @@ function loadNearbyStations() {
   $nearbyStations.html('<li class="nodata"><div class="progress"><div class="indeterminate"></div></div></li>');
   getGeolocation().then(function(coords) {
     console.log(coords);
-    $.get('/pm25/search', coords, function(stations) {
-      // console.log(stations);
+    $.get('/pm25/stations', coords, function(stations) {
+      if (0 == stations.length) {
+        $nearbyStations.html('<li class="nodata">抱歉，附近沒有可參考的監測站。</li>');
+        return;
+      }
       var items = '';
       for (var station of stations) {
         var level = getDAQIStatus(Number.parseInt(station.data.pm2_5));
