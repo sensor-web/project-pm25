@@ -21,11 +21,11 @@ for (var stateStation of stateStations) {
 }
 homefeed.average.pm2_5 = Math.round(sum/stateStations.length);
 
-homefeed.countryRank = countryStations.slice(0, 10);
-homefeed.stateRank = stateStations.slice(0, 10);
+homefeed.countryTop = countryStations.slice(0, 10);
+homefeed.stateTop = stateStations.slice(0, 10);
 
-removeAddress(homefeed.stateRank);
-removeAddress(homefeed.countryRank);
+removeAddress(homefeed.stateTop);
+removeAddress(homefeed.countryTop);
 
 fs.writeFile('./homefeed.json', JSON.stringify(homefeed, null, 4), function(err) {
     if(err) {

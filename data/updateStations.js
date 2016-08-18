@@ -38,6 +38,7 @@ var FIELDS_3RD_SEG_ALT = [
     "fast_food",
     "house_number"];
 var FIELDS_3RD_SEG_RD_ALT = ["hamlet", "village", "city_district"];
+var TOPDOWN_ADDR_COUNTRIES = ["tw", "jp", "kr", "cn"];
 
 //TODO: check redirect.json for old stations get back to life
 
@@ -76,9 +77,6 @@ function loadGeocodeRecursive() {
 	if (station) {
 		if ((!station.address || station.coords.changed) && station.coords.latitude != undefined && station.coords.latitude != undefined) {
 			console.log((station.coords.changed ? 'Updating address' : 'Loading new address') + ' for ' + station.id);
-			if (!station.coords.changed) {
-				data[station.id].Create_at = new Date().toISOString();
-			}
 			reverseGeocode(station.id, station.coords.latitude, station.coords.longitude, function(result) {
 				data[station.id].address = result.address;
 				delete data[station.id].coords.changed;
@@ -94,25 +92,28 @@ function loadGeocodeRecursive() {
 		    }
 		    console.log('3rdPartyData.json was saved!');
 			// data = require('./3rdPartyData.json');
-			updateSlug();
+			updateStations();
 		});
 	}
 }
 
-
-function updateSlug() {
+function updateStations() {
 	for (var id in data) {
 		var addr = data[id].address;
 		if (addr) {
 			var seg1 = get1stSegment(addr);
 			var seg2 = get2ndSegment(addr);
 			var seg3 = get3rdSegment(addr);
-			var slug = seg1+seg2;
 			if (seg1 && seg2 && seg3) {
 				if ('' == data[id].display_name) {
 					data[id].display_name = seg3;
 				}
-				slug += data[id].display_name
+				var slug;
+				if (-1 == TOPDOWN_ADDR_COUNTRIES.indexOf(data[id].address.country_code)) {
+					slug = data[id].display_name + ', ' + seg2 + ', '+ seg1;
+				} else {
+					slug = seg1 + seg2 + data[id].display_name;
+				}
 				data[id].slug = slug;
 				stations[slug] = data[id];
 			} else {

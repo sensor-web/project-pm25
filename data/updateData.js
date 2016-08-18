@@ -5,6 +5,7 @@
  */
 var request = require('request');
 var fs = require('fs');
+var geolib = require('geolib');
 var thirdParties = require('./3rdParties.json');
 var data = require('./3rdPartyData.json');
 var stations = require('./stations.json');
@@ -31,12 +32,23 @@ function changeFieldNames(data) {
 	return data;
 }
 
+function coordsValid(coords) {
+	return coords && undefined != coords.latitude && undefined != coords.longitude;
+}
+
 function updateStations() {
 	for (var id in data) {
+		data[id].data = changeFieldNames(data[id].data);
 		for (var slug in stations) {
-			if (stations[slug].id == id) {
-				console.log('update data for '+id);
-				stations[slug].data = changeFieldNames(data[id].data);
+ 			if (stations[slug].id == id) {
+				var distance = 0;
+				if (coordsValid(stations[slug].coords) && coordsValid(data[id].coords)) {
+					distance = geolib.getDistance(stations[slug].coords, data[id].coords);
+				}
+ 				if (distance < 1000) {
+					console.log('update data for '+id);
+					stations[slug].data = data[id].data;
+ 				}
 			} else {
 				stations[slug].data = changeFieldNames(stations[slug].data);
 			}

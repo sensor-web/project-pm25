@@ -1,0 +1,328 @@
+{
+    "average": {
+        "create_time": "2016-08-11T23:55:21Z",
+        "pm2_5": 6
+    },
+    "countryRank": [
+        {
+            "id": "LASS_FT1_385",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 64,
+                "temperature": 29,
+                "humidity": 99.9,
+                "create_time": "2016-08-11T23:53:50Z"
+            },
+            "coords": {
+                "latitude": 24.173686,
+                "longitude": 120.579819
+            },
+            "display_name": "遊園路二段",
+            "slug": "臺中市大肚區遊園路二段"
+        },
+        {
+            "id": "Airbox_28C2DDDD47BC",
+            "party": "Airbox",
+            "data": {
+                "pm2_5": 49,
+                "temperature": 31.37,
+                "humidity": 96,
+                "create_time": "2016-08-11T23:51:58Z"
+            },
+            "coords": {
+                "latitude": 24.177,
+                "longitude": 120.598
+            },
+            "display_name": "教師宿舍",
+            "slug": "臺中市西屯區教師宿舍"
+        },
+        {
+            "id": "LASS_FT1_397",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 49,
+                "temperature": 29.7,
+                "humidity": 99.9,
+                "create_time": "2016-08-11T23:54:17Z"
+            },
+            "coords": {
+                "latitude": 24.136056,
+                "longitude": 120.635484
+            },
+            "display_name": "黎明路一段 1122",
+            "slug": "臺中市南屯區黎明路一段 1122"
+        },
+        {
+            "id": "LASS_FT1_392",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 48,
+                "temperature": 29.4,
+                "humidity": 99.9,
+                "create_time": "2016-08-11T23:52:17Z"
+            },
+            "coords": {
+                "latitude": 24.22674,
+                "longitude": 120.642577
+            },
+            "display_name": "中清路四段91巷",
+            "slug": "臺中市大雅區中清路四段91巷"
+        },
+        {
+            "id": "LASS_FT1_388",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 47,
+                "temperature": 30.1,
+                "humidity": 99.9,
+                "create_time": "2016-08-11T23:32:42Z"
+            },
+            "coords": {
+                "latitude": 24.112216,
+                "longitude": 120.623141
+            },
+            "display_name": "黎明路一段32巷 87",
+            "slug": "臺中市南屯區黎明路一段32巷 87"
+        },
+        {
+            "id": "Indie_83205",
+            "party": "Indie",
+            "data": {
+                "pm2_5": 45,
+                "temperature": 28.8,
+                "humidity": 90,
+                "create_time": "2016-08-11T23:51:20Z"
+            },
+            "coords": {
+                "changed": true
+            },
+            "display_name": "惠誠公園",
+            "slug": "臺中市西屯區惠誠公園"
+        },
+        {
+            "id": "LASS_FT1_395",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 44,
+                "temperature": 29.3,
+                "humidity": 76.7,
+                "create_time": "2016-08-11T23:25:25Z"
+            },
+            "coords": {
+                "latitude": 24.153509,
+                "longitude": 120.629043
+            },
+            "display_name": "干城街 16",
+            "slug": "臺中市南屯區干城街 16"
+        },
+        {
+            "id": "LASS_FT1_966",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 44,
+                "temperature": 30.8,
+                "humidity": 90.8,
+                "create_time": "2016-08-11T23:54:10Z"
+            },
+            "coords": {
+                "latitude": 24.1754333333,
+                "longitude": 120.66876
+            },
+            "display_name": "大連西路 福德祠",
+            "slug": "臺中市北屯區大連西路 福德祠"
+        },
+        {
+            "id": "LASS_FT1_394",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 43,
+                "temperature": 29.8,
+                "humidity": 99.9,
+                "create_time": "2016-08-11T23:45:41Z"
+            },
+            "coords": {
+                "latitude": 24.147783,
+                "longitude": 120.708622
+            },
+            "display_name": "十甲東二街 31",
+            "slug": "臺中市東區十甲東二街 31"
+        },
+        {
+            "id": "LASS_FT1_384",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 43,
+                "temperature": 27.1,
+                "humidity": 99.9,
+                "create_time": "2016-08-11T23:47:18Z"
+            },
+            "coords": {
+                "latitude": 24.30298,
+                "longitude": 120.718304
+            },
+            "display_name": "公安路一段",
+            "slug": "臺中市后里區公安路一段"
+        }
+    ],
+    "stateRank": [
+        {
+            "id": "Airbox_28C2DDDD477E",
+            "party": "Airbox",
+            "data": {
+                "pm2_5": 30,
+                "temperature": 33.5,
+                "humidity": 63,
+                "create_time": "2016-08-11T23:50:08Z"
+            },
+            "coords": {
+                "latitude": 25.037,
+                "longitude": 121.501
+            },
+            "display_name": "龍山",
+            "slug": "臺北市萬華區龍山"
+        },
+        {
+            "id": "Airbox_28C2DDDD4342",
+            "party": "Airbox",
+            "data": {
+                "pm2_5": 24,
+                "temperature": 34,
+                "humidity": 90,
+                "create_time": "2016-08-11T23:53:46Z"
+            },
+            "coords": {
+                "latitude": 25.028,
+                "longitude": 121.556
+            },
+            "display_name": "通化街171巷 台灣中油基隆路站",
+            "slug": "臺北市大安區通化街171巷 台灣中油基隆路站"
+        },
+        {
+            "id": "LASS_FT1_800",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 19,
+                "temperature": 29.4,
+                "humidity": 84.8,
+                "create_time": "2016-08-11T23:54:54Z"
+            },
+            "coords": {
+                "latitude": 25.018175,
+                "longitude": 121.542676667
+            },
+            "display_name": "知武館",
+            "slug": "臺北市大安區知武館"
+        },
+        {
+            "id": "LASS_FT1_800",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 19,
+                "temperature": 29.4,
+                "humidity": 84.8,
+                "create_time": "2016-08-11T23:54:54Z"
+            },
+            "coords": {
+                "latitude": 25.0180033333,
+                "longitude": 121.542733333
+            },
+            "display_name": "農機館",
+            "slug": "臺北市大安區農機館"
+        },
+        {
+            "id": "Airbox_28C2DDDD3FFA",
+            "party": "Airbox",
+            "data": {
+                "pm2_5": 17,
+                "temperature": 31.87,
+                "humidity": 91,
+                "create_time": "2016-08-11T23:52:13Z"
+            },
+            "coords": {
+                "latitude": 25.039,
+                "longitude": 121.621
+            },
+            "display_name": "南深路 南港舊莊福德宮",
+            "slug": "臺北市南港區南深路 南港舊莊福德宮"
+        },
+        {
+            "id": "Airbox_28C2DDDD4112",
+            "party": "Airbox",
+            "data": {
+                "pm2_5": 15,
+                "temperature": 33.5,
+                "humidity": 60,
+                "create_time": "2016-08-11T23:53:54Z"
+            },
+            "coords": {
+                "latitude": 25.025,
+                "longitude": 121.522
+            },
+            "display_name": "晉江街 長慶廟",
+            "Create_at": "2016-08-09T02:08:01.505Z",
+            "slug": "臺北市中正區晉江街 長慶廟"
+        },
+        {
+            "id": "EPA_87274",
+            "party": "EPA",
+            "data": {
+                "pm2_5": 15,
+                "create_time": "2016-08-11T21:00:00Z"
+            },
+            "coords": {
+                "latitude": 25.0632,
+                "longitude": 121.513311
+            },
+            "display_name": "大同監測站",
+            "slug": "臺北市大同區大同監測站"
+        },
+        {
+            "id": "Airbox_28C2DDDD4305",
+            "party": "Airbox",
+            "data": {
+                "pm2_5": 11,
+                "temperature": 34.75,
+                "humidity": 76,
+                "create_time": "2016-08-11T23:52:01Z"
+            },
+            "coords": {
+                "latitude": 25.063,
+                "longitude": 121.541
+            },
+            "display_name": "龍江路 龍江路郵局",
+            "slug": "臺北市中山區龍江路 龍江路郵局"
+        },
+        {
+            "id": "LASS_FT1_001",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 10,
+                "temperature": 31.6,
+                "humidity": 1,
+                "create_time": "2016-08-11T23:54:59Z"
+            },
+            "coords": {
+                "latitude": 25.039825,
+                "longitude": 121.615098333
+            },
+            "display_name": "歐美所圖書館",
+            "slug": "臺北市南港區歐美所圖書館"
+        },
+        {
+            "id": "LASS_FT1_001",
+            "party": "LASS",
+            "data": {
+                "pm2_5": 10,
+                "temperature": 31.6,
+                "humidity": 1,
+                "create_time": "2016-08-11T23:54:59Z"
+            },
+            "coords": {
+                "latitude": 25.0401033333,
+                "longitude": 121.614986667
+            },
+            "display_name": "嶺南美術館/歐美所",
+            "slug": "臺北市南港區嶺南美術館/歐美所"
+        }
+    ]
+}
