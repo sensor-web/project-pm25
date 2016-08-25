@@ -18,10 +18,16 @@
   },
   "homepage": "https://github.com/yshlin/project-pm25#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "fast-csv": "^2.1.0",
     "geolib": "^2.0.21",
     "hbs": "^4.0.0",
+    "moment": "^2.14.1",
+    "nodemailer": "^2.5.0",
+    "nodemailer-sendmail-transport": "^1.0.0",
     "request": "^2.73.0",
+    "rethinkdb": "^2.3.2",
     "sitemap": "^1.8.1"
   }
 }

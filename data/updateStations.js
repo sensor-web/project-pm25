@@ -19,6 +19,7 @@ var FIELDS_3RD_SEG = [
     "address29",
     "ruins",
     "public_building",
+    "cycleway",
     "footway",
     "information"];
 var FIELDS_3RD_SEG_ALT = [
@@ -117,7 +118,7 @@ function updateStations() {
 				data[id].slug = slug;
 				stations[slug] = data[id];
 			} else {
-				console.log(id+' invalid: '+slug);
+				console.log(id+' invalid: '+seg1+seg2+seg3);
 			}
 		}
 	}

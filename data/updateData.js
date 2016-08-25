@@ -9,6 +9,7 @@ var geolib = require('geolib');
 var thirdParties = require('./3rdParties.json');
 var data = require('./3rdPartyData.json');
 var stations = require('./stations.json');
+var legacyDataUrl = 'https://api.sensorweb.io/projects/sensorweb/pm25/sensors';
 
 loadSensorDataRecursive();
 
@@ -82,34 +83,77 @@ function loadSensorDataRecursive() {
 }
 
 function load3rdPartyData(party, callback) {
-	console.log();
-    request('http://g0vairmap.3203.info/Data/'+party+'_last.json', 
-	function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-        	var partyData = JSON.parse(body);
-		    for (var entry of partyData) {
-		    	var did;
-		    	if (entry.RawData.device_id) {
-		    		did = party+'_'+entry.RawData.device_id;
-		    	} else if (entry.Channel_id){
-		    		did = party+'_'+entry.Channel_id
-		    	}
-				if (!data[did]) {
-					console.log('new device id'+did);
-				}
-		        data[did] = loadSensorData(did, party, entry, data[did]);
-		    }
-            fs.writeFile('./'+party+'_last.json', JSON.stringify(partyData, null, 4), function(err) {
-                if(err) {
-                    return console.log(err);
-                }
-            	console.log(party+'_last.json was saved!');
-            	if (callback) {
-            		callback();
-            	}
-        	}); 
-    	}
-    });
+	if ('legacy' == party) {
+	    request(legacyDataUrl, 
+		function(error, response, body) {
+	        if (!error && response.statusCode == 200) {
+	        	var partyData = JSON.parse(body);
+			    for (var entry of partyData) {
+			    	var did = 'legacy_'+entry._id;
+			    	if (entry.pm25Index < 1000) {
+				    	data[did] = loadLegacyData(entry, data[did]);
+			    	}
+			    }
+	            fs.writeFile('./'+party+'_last.json', JSON.stringify(partyData, null, 4), function(err) {
+	                if(err) {
+	                    return console.log(err);
+	                }
+	            	console.log(party+'_last.json was saved!');
+	            	if (callback) {
+	            		callback();
+	            	}
+	        	}); 
+	    	}
+	    });
+	} else {
+	    request('http://g0vairmap.3203.info/Data/'+party+'_last.json', 
+		function(error, response, body) {
+	        if (!error && response.statusCode == 200) {
+	        	var partyData = JSON.parse(body);
+			    for (var entry of partyData) {
+			    	var did;
+			    	if (entry.RawData.device_id) {
+			    		did = party+'_'+entry.RawData.device_id;
+			    	} else if (entry.Channel_id){
+			    		did = party+'_'+entry.Channel_id
+			    	}
+					if (!data[did]) {
+						console.log('new device id'+did);
+					}
+			        data[did] = loadSensorData(did, party, entry, data[did]);
+			    }
+	            fs.writeFile('./'+party+'_last.json', JSON.stringify(partyData, null, 4), function(err) {
+	                if(err) {
+	                    return console.log(err);
+	                }
+	            	console.log(party+'_last.json was saved!');
+	            	if (callback) {
+	            		callback();
+	            	}
+	        	}); 
+	    	}
+	    });
+	}
+}
+
+function loadLegacyData (legacyData, existingEntry) {
+	 var data = {};
+	 data.id = 'legacy_'+legacyData._id;
+	 data.display_name = '';
+	 data.party = 'legacy';
+	 data.create_time = new Date(legacyData.createDate);
+	 data.data = {
+	 	pm2_5: legacyData.pm25Index,
+	 	create_time: new Date(legacyData.latestUpdate)
+	 };
+	 data.coords = {
+	 	latitude: Number.parseFloat(legacyData.coords.lat),
+	 	longitude: Number.parseFloat(legacyData.coords.lng)
+	 }
+	 if (existingEntry && existingEntry.address) {
+	 	data.address = existingEntry.address;
+	 }
+	 return data;
 }
 
 function loadSensorData(id, party, entry, existingEntry) {
