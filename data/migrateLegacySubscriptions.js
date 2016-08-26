@@ -75,6 +75,7 @@ db.connect(config.rethinkdb).then(function (db) {
 						data.station_id = stationList[0].id;
 						if (DRYRUN) {
 							console.log(data);
+							resolve(data);
 						} else {
 							subscriptions.subscribe(data).then(resolve);
 						}
