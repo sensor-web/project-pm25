@@ -43,8 +43,9 @@ function createIndices() {
 
 db.connect(config.rethinkdb).then(function() {
 	createTables().then(createIndices).then(function () {
-			console.log('Schema created.');
-		}).catch(function(error) {
-			console.log(error);
-		});
+		console.log('Schema created.');
+		db.disconnect();
+	}).catch(function(error) {
+		console.log(error);
+	});
 });
