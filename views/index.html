@@ -45,6 +45,12 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
          <h2 class="medium">離我最近的測站</h2>
          <ul id="nearby-stations">
          </ul>
+         {{#if config.debug}}
+            <p>
+            想要得到最在地、最即時的空氣品質資訊嗎？<br>
+            <a id="subscribe" class="waves-effect waves-light btn-large" href="/pm25/request/">我要架設測站</a>
+            </p>
+         {{/if}}
       </div>
       <div class="card">
          <h2 class="medium">臺北市測站 <span class="marked">PM2.5</span> 即時排行</h2>

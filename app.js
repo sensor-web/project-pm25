@@ -17,7 +17,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
+app.locals.config = config;
+
 api.use(bodyParser.urlencoded({ extended: false }))
 api.use(bodyParser.json())
 
@@ -46,8 +47,6 @@ app.get('/pm25/b?', function(req, res) {
   ]).then(function (results) {
     var region = results[0];
     region.survey = req.path == '/pm25/';
-    region.fb_app_id = config.fb_app_id;
-    region.api_url = config.api_url;
     region.page_title = region.display_name + ' PM2.5 即時濃度平均 - Project SensorWeb';
     region.page_url = config.site_url + req.url;
     region.form_title = 'PM2.5 空氣品質通知';
@@ -63,8 +62,6 @@ app.get('/pm25/request', function(req, res) {
     return;
   }
   var data = {};
-  data.api_url = config.api_url;
-  data.fb_app_id = config.fb_app_id;
   data.page_title = '申請架設 PM2.5 測站 - Project SensorWeb';
   data.page_url = config.site_url + req.url;
   data.form_title = '';
@@ -84,8 +81,6 @@ app.get('/pm25/station/:slug/', function(req, res) {
   }
   stations.getBySlug(location).then(function(station) {
     if (station) {
-      station.fb_app_id = config.fb_app_id;
-      station.api_url = config.api_url;
       station.page_title = station.display_name + ' PM2.5 即時濃度 - Project SensorWeb';
       station.page_url = config.site_url + req.url;
       station.form_title = 'PM2.5 空氣品質通知';
