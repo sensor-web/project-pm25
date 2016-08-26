@@ -76,6 +76,7 @@ function reverseGeocode(id, lat, lng, resolve, reject) {
 function loadGeocodeRecursive() {
 	var station = stationQueue.pop();
 	if (station) {
+		delete station.Create_at;
 		if ((!station.address || station.coords.changed) && station.coords.latitude != undefined && station.coords.latitude != undefined) {
 			console.log((station.coords.changed ? 'Updating address' : 'Loading new address') + ' for ' + station.id);
 			reverseGeocode(station.id, station.coords.latitude, station.coords.longitude, function(result) {
