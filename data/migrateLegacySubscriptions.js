@@ -63,6 +63,7 @@ db.connect(config.rethinkdb).then(function (db) {
 					data.region_id = region.id;
 					if (DRYRUN) {
 						console.log(data);
+						resolve(data);
 					} else {
 						subscriptions.subscribe(data).then(resolve);
 					}
