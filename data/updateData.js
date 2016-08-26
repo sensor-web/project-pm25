@@ -49,9 +49,11 @@ function updateStations() {
  				if (distance < 1000) {
 					console.log('update data for '+id);
 					stations[slug].data = data[id].data;
+					delete stations[slug].Create_at;
  				}
 			} else {
 				stations[slug].data = changeFieldNames(stations[slug].data);
+				delete stations[slug].Create_at;
 			}
 		}
 	}
