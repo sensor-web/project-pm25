@@ -2,5 +2,10 @@
     "site_url": "https://sensorweb.io",
     "fb_app_id": "557124531078753",
     "port": 8082,
+    "rethinkdb": {
+        "db": "sensorweb",
+        "host": "localhost",
+        "port": 28015
+    },
     "debug": true
 }

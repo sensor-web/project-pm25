@@ -63,15 +63,15 @@ function loadSensorDataRecursive() {
 		load3rdPartyData(thirdParty, loadSensorDataRecursive);
 	} else {
 		console.log(Object.keys(data).length+' stations loaded.');
-		//TODO: identify outdated data & provide redirections
-		fs.writeFile('./3rdPartyData.json', JSON.stringify(data, null, 4), function(err) {
-		    if(err) {
-		        return console.log(err);
-		    }
-		    console.log('3rdPartyData.json was saved!');
-		});
 		if (stations) {
 			updateStations();
+			//TODO: identify outdated data & provide redirections
+			fs.writeFile('./3rdPartyData.json', JSON.stringify(data, null, 4), function(err) {
+			    if(err) {
+			        return console.log(err);
+			    }
+			    console.log('3rdPartyData.json was saved!');
+			});
 			fs.writeFile('./stations.json', JSON.stringify(stations, null, 4), function(err) {
 			    if(err) {
 			        return console.log(err);
