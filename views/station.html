@@ -26,15 +26,29 @@
          <br>
          <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->空氣不好時通知我</a>
       </div>
+      <div class="card">
+         <h2 class="medium">鄰近的 <span class="marked">PM2.5</span> 監測站</h2>
+         <ul id="country-rank">
+            {{#if nearbyStations.length}}
+              {{#each nearbyStations}}
+               <li>
+                  <a class="clearfix" href="/pm25/station/{{ this.slug }}/">
+                     <span class="concentration">
+                        <span class="concentration-value">{{ this.data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                     </span>
+                     <span class="location">@{{ this.slug }} <span class="distance">(距離 {{ this.distance }} 公里)</span></span>
+                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
+                  </a>
+               </li>
+              {{/each}}
+            {{else}}
+              <li class="nodata">抱歉，目前尚無鄰近監測站資料。</li>
+            {{/if}}
+         </ul>
+      </div>
+
       {{> pm25_modal}}
       {{> subscribe_modal}}
-
-  <script type="text/javascript">
-    var submitted=false;
-  </script>
-  <iframe name="temp_iframe" id="temp_iframe" style="display:none;" onload="if (submitted) {$('#subscribe-modal').closeModal();Materialize.toast('提交成功！我們將在空氣品質變糟時發出電子郵件通知。', 5000);}">
-  </iframe>
-
       {{> footer}}
 
       <script src="/pm25/js/jquery-2.1.1.min.js"></script>

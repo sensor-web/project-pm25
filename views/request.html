@@ -21,35 +21,37 @@
          <li>
           <div class="collapsible-header"><i class="material-icons">credit_card</i><b>購買測站</b></div>
           <div class="collapsible-body">
-          <span>我們計畫推出一款安裝簡單且價格合理的測站產品，請留下你的聯絡信箱，我們將在第一時間通知你。</span>
+          <span>關心居住環境的空氣品質嗎？<br>
+          我們計畫推出一款安裝簡單、價格合理的測站產品。<br>
+          請留下你的聯絡信箱，我們將在第一時間通知你。</span>
           <br><br>
           <ul class="requirements">
             <b>安裝環境需求</b>
-            <li>Wifi 網路環境（不支援 captive portal, WPA enterprise）</li>
-            <li>電源插座</li>
+            <li>一般家用 Wifi 網路環境（不支援 Captive portal, WPA enterprise）</li>
+            <li>家用電源插座</li>
             <li>建議安裝室外防雨處（陽台、窗台）</li>
           </ul>
           <ul class="requirements">
             <b>功能特色</b>
-            <li>體積小（約六立方公分）</li>
             <li>彩色 LED 燈顯示目前空氣狀況</li>
             <li>網頁顯示即時及歷史資料</li>
             <li>可訂閱空汙通知警示</li>
           </ul>
             <div class="cta">
-           <a id="buy" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="訂閱測站購買通知" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->可購買時通知我</a>
+           <a id="buy" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="訂閱測站購買通知" data-form-type="buy_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->可購買時通知我</a>
            </div>
           </div>
          </li>
          <li>
           <div class="collapsible-header"><i class="material-icons">settings</i><b>自造測站</b></div>
           <div class="collapsible-body">
-           <span>有微控制器應用開發經驗嗎？試試用你熟悉的開發板來架設測站，申請使用 API 金鑰即可將資料上傳至 Project SensorWeb。</span>
+           <span>你有開發微控制器應用的經驗嗎？
+           <br>你可用熟悉的開發板來架設測站，再透過 API 金鑰即可上傳資料至 Project SensorWeb。</span>
           <br><br>
            <ul class="requirements">
              <b>安裝環境需求</b>
-             <li>Wifi 網路環境（不支援 captive portal, WPA enterprise）</li>
-             <li>電源插座</li>
+             <li>一般家用 Wifi 網路環境（不支援 Captive portal, WPA enterprise）</li>
+             <li>家用電源插座</li>
              <li>建議安裝室外防雨處（陽台、窗台）</li>
            </ul>
            <ul class="requirements">
@@ -60,38 +62,33 @@
            </ul>
            <ul class="requirements">
              <b>支援開發板</b><br>
-             若你是初學者，我們針對幾款開發板提供組裝說明參考：
+             針對初學者，我們提供以下數款開發板的組裝說明：
              <br><br>
              <li><a href="https://github.com/sensor-web/arduino-station/tree/master/station/particle-photon" target="_blank">Particle Photon 組裝說明</a></li>
              <li><a href="https://github.com/sensor-web/arduino-station/tree/master/station/nodemcu" target="_blank">NodeMCU 組裝說明</a></li>
              <li><a href="https://github.com/sensor-web/pi-station" target="_blank">Raspberry Pi 2 組裝說明</a></li>
            </ul>
            <div class="cta">
-           <a id="get-api-key" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="取得 API 金鑰" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">vpn_key</i><!--googleon: index-->取得 API 金鑰</a>
+           <a id="get-api-key" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="取得 API 金鑰" data-form-type="diy_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">vpn_key</i><!--googleon: index-->按此取得 API 金鑰</a>
            </div>
           </div>
          </li>
          <li>
           <div class="collapsible-header"><i class="material-icons">add_alert</i><b>等候消息</b></div>
           <div class="collapsible-body">
-           <span>覺得架設測站太困難？別擔心， Project SensorWeb 是一個群眾參與的感測網路，留下你的聯絡信箱及關心的地點，我們將在附近有測站資料時通知你。</span>
+           <span>覺得架設測站太困難？<br>
+           別擔心，Project SensorWeb 是開放群眾參與的感測網路。
+           <br>留下聯絡信箱及你所關心的地點資訊，我們將在附近有測站資料時通知你。</span>
            <br>
            <div class="cta">
-           <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="訂閱新設測站通知" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->有測站時通知我</a>
+           <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="訂閱新設測站通知" data-form-type="new_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->有測站時通知我</a>
            </div>
           </div>
          </li>
        </ul>
     </div>
-        {{> pm25_modal}}
+      {{> pm25_modal}}
       {{> subscribe_modal}}
-
-  <script type="text/javascript">
-    var submitted=false;
-  </script>
-  <iframe name="temp_iframe" id="temp_iframe" style="display:none;" onload="if (submitted) {$('#subscribe-modal').closeModal();Materialize.toast('提交成功！我們將在空氣品質變糟時發出電子郵件通知。', 5000);}">
-  </iframe>
-
       {{> footer}}
 
       <script src="/pm25/js/jquery-2.1.1.min.js"></script>

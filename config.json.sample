@@ -2,6 +2,8 @@
     "site_url": "https://sensorweb.io",
     "fb_app_id": "557124531078753",
     "port": 8082,
+    "api_port": 8083,
+    "api_url": "http://localhost:8083",
     "rethinkdb": {
         "db": "sensorweb",
         "host": "localhost",

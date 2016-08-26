@@ -88,14 +88,6 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
       </div>
       {{> pm25_modal}}
       {{> subscribe_modal}}
-
-
-      <script type="text/javascript">
-         var submitted=false;
-      </script>
-      <iframe name="temp_iframe" id="temp_iframe" style="display:none;" onload="if (submitted) {$('#subscribe-modal').closeModal();Materialize.toast('提交成功！我們將在空氣品質變糟時發出電子郵件通知。', 5000);}">
-      </iframe>
-
       {{> footer}}
 
       <script src="/pm25/js/jquery-2.1.1.min.js"></script>

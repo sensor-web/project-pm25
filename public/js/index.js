@@ -3,8 +3,7 @@ loadNearbyStations();
 function loadNearbyStations() {
   $nearbyStations.html('<li class="nodata"><div class="progress"><div class="indeterminate"></div></div></li>');
   getGeolocation().then(function(coords) {
-    console.log(coords);
-    $.get('/pm25/search', coords, function(stations) {
+    $.get(API_URL+'/pm25/stations', coords, function(stations) {
       if (0 == stations.length) {
         $nearbyStations.html('<li class="nodata">抱歉，目前沒有可參考的監測站資料在附近。</li>');
         return;
