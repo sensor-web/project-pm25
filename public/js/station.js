@@ -122,3 +122,18 @@ function getSubscriptionMessage(type) {
   };
   return messageMap[type];
 }
+
+
+function getGeolocation() {
+  return new Promise(function(resolve, reject) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        resolve(position.coords);
+      }, function() {
+        reject('Browser unable to get current location');
+      });
+    } else {
+      reject('Browser doesn\'t support Geolocation');
+    }
+  });
+}

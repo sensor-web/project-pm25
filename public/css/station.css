@@ -284,6 +284,21 @@ ul.requirements li {
   color: #aaa;
 }
 
+#map {
+  width: 100%;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+.location-input-message {
+  display: none;
+}
+
+#gps-progress {
+  display: none;
+}
+
 /* Buttons */
 
 .marked {

@@ -1,7 +1,7 @@
 <div id="subscribe-modal" class="modal">
    <div id="form-header"><span id="modal-header">{{ form_title }}</span><i class="material-icons modal-close" id="close">close</i></div>
    <div id="subscribe" class="modal-content">
-      <form action="{{ api_url }}/pm25/subscriptions" method="POST" id="subscribe-form">
+      <form action="{{ config.api_url }}/pm25/subscriptions" method="POST" id="subscribe-form">
          <input id="sub-type" type="hidden" name="type" value="{{ form_type }}">
          <input id="sub-email" name="email" class="subscribe-input" type="text" placeholder="電子郵件（必填）" required="">
          {{#if region_id}}
@@ -12,7 +12,14 @@
          {{/if}}
 
          {{#if location}}
-         <input type="text" name="location" class="subscribe-input" id="place-input" placeholder="架設地點，例：台北市信義區某建築">
+         <span id="setup-station-message" class="location-input-message">拖曳地圖以約略標示測站將要架設的地點</span>
+         <span id="wait-station-message" class="location-input-message">拖曳地圖以約略標示關注的地點</span>
+         ，或者<a id="gps-position" href="javascript:void(0);">點此進行 GPS 定位</a>。
+         <div id="gps-progress" class="progress"><div class="indeterminate"></div></div>
+         <input type="hidden" name="latitude" class="subscribe-input" id="sub-lat">
+         <input type="hidden" name="longitude" class="subscribe-input" id="sub-lng">
+         <div id="map"></div>
+
          {{/if}}
          {{#if survey}}
          <label>你平常一週中有幾天在此區域活動？</label>

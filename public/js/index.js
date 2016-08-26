@@ -30,17 +30,3 @@ function loadNearbyStations() {
       $nearbyStations.html('<li class="nodata">無法取得 GPS 定位資訊，請檢查 GPS 定位功能是否開啟，並<a href="javascript:loadNearbyStations();">點此再試一次</a>。</li>');
   });
 }
-
-function getGeolocation() {
-  return new Promise(function(resolve, reject) {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        resolve(position.coords);
-      }, function() {
-        reject('Browser unable to get current location');
-      });
-    } else {
-      reject('Browser doesn\'t support Geolocation');
-    }
-  });
-}
