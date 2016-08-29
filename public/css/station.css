@@ -284,6 +284,10 @@ ul.requirements li {
   color: #aaa;
 }
 
+#unsubscribe {
+  padding: 15px;
+}
+
 #map {
   width: 100%;
   height: 300px;

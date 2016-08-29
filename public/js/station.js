@@ -26,7 +26,6 @@ $('#subscribe').click(function(e) {
 });
 $('#subscribe-form').submit(function(e) {
   var $form = $(this);
-  e.preventDefault();
   $.post($form.attr('action'), 
     formDataArrayToJson($form.serializeArray()),
     function(result) {
@@ -36,6 +35,7 @@ $('#subscribe-form').submit(function(e) {
     }, 'json'
   );
   ga('send', 'event', 'data', 'submit-subscription', 'pm25');
+  return false;
 });
 $('#sub-email').on('blur', function() {
   ga('send', 'event', 'sensor-form', 'email-change', 'pm25');

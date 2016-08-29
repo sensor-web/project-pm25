@@ -97,6 +97,19 @@ app.get('/pm25/station/:slug/', function(req, res) {
   }).catch(serverError);
 });
 
+app.get('/pm25/unsubscribe', function(req, res) {
+  if (addTrailingSlash(req, res)) {
+    return;
+  }
+  var data = {};
+  data.page_title = '取消訂閱 - Project SensorWeb';
+  data.page_url = config.site_url + req.url;
+  data.id = req.query.id;
+  data.type = req.query.type;
+  data.location = true;
+  res.render('unsubscribe', data);
+});
+
 app.get('/sitemap.xml', function(req, res) {
     res.sendfile('./data/sitemap.xml');
 });
@@ -143,6 +156,8 @@ api.post('/pm25/subscriptions', function(req, res) {
 api.delete('/pm25/subscriptions', function(req, res) {
   subscriptions.unsubscribe(req.body).then(function(result) {
     res.json({result: 'success', subscription_ids: result.existing_keys});
+  }, function(result) {
+    res.json({result: 'failed', message: result.message});
   }).catch(serverError);
 });
 
