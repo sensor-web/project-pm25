@@ -26,6 +26,8 @@ else
 		echo "Running updateData.sh" >&2
 		node ./updateData.js
 	elif [ $FREQ = "daily" ]; then
+		echo "Running updateData.sh" >&2
+		node ./updateData.js &&
 		echo "Running updateStations.sh" >&2
 		node ./updateStations.js
 	fi &&
