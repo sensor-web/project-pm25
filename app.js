@@ -57,6 +57,17 @@ app.get('/pm25/b?', function(req, res) {
     res.render('index', region);
   }).catch(serverError);
 });
+
+app.get('/pm25/about', function(req, res) {
+  if (addTrailingSlash(req, res)) {
+    return;
+  }
+  var data = {};
+  data.page_title = '關於 Project SensorWeb';
+  data.page_url = config.site_url + req.url;
+  res.render('about', data);
+});
+
 app.get('/pm25/request', function(req, res) {
   if (addTrailingSlash(req, res)) {
     return;

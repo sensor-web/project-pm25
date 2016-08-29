@@ -53,6 +53,68 @@ a:hover {
   color: #00BDAF;
 }
 
+/* Navbar */
+
+nav{
+  /*border-top: 2px #FFF solid;*/
+  z-index: 1000 !important;
+  -webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
+  box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
+  height: 75px !important;
+  /*line-height: 75px !important;*/
+}
+
+nav ul a,
+#nav a:hover,
+nav .button-collapse:hover,
+nav .brand-logo {
+  color: #FFF;
+}
+nav .button-collapse {
+  text-decoration: none;
+}
+nav .button-collapse i {
+  line-height: 75px !important;
+  top:10px;
+  left: 10px;
+}
+
+nav li a{
+  font-size: .95em;
+  padding: 0 16px 0 16px;
+  line-height: 75px;
+}
+
+.dropdown-button a {
+  line-height: auto;
+}
+
+#arrow {
+  margin-top: 4px;
+  margin-left: 5px;
+  font-size: 1.2rem;
+}
+
+.brand-logo {
+  text-indent: 170%;
+  font-size: 1.5em !important;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1.2px;
+  overflow: hidden;
+  width: 220px;
+  margin-top: 18px;
+  background-image: url("../images/Logo-title.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  left: 0;
+}
+
+.teal {
+  background-color: #5cc7b8 !important;
+}
+
 /* Cards */
 
 .no-padding {
@@ -505,6 +567,10 @@ footer {
 
   .modal .modal-content {
     padding: 12px;
+  }
+
+  #intro-video {
+    width: 100%;
   }
 }
 

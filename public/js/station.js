@@ -9,6 +9,7 @@ $('.concentration-value').each(function() {
   $this.addClass(getDAQIStatus(Number.parseInt($this.text())));
 });
 
+$('.button-collapse').sideNav();
 $('select').material_select();
 $('.modal-trigger').leanModal();
 $('.modal-trigger').click(function() {

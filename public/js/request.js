@@ -1,5 +1,6 @@
 (function () {
 	var DEFAULT_CENTER = [25.0375167, 121.5637];
+	var firstMapMove = true;
 	var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	});
@@ -15,7 +16,12 @@
 	}).addTo(map);
 
 	map.on('moveend', function(e){
-	  updateCoords(map.getCenter());
+		if (firstMapMove) {
+			//First map initialization, do nothing here.
+			firstMapMove = false;
+		} else {
+			updateCoords(map.getCenter());
+		}
 	});
 	$('.modal-trigger').click(function() {
 		map.invalidateSize();
