@@ -71,6 +71,7 @@ nav .button-collapse:hover,
 nav .brand-logo {
   color: #FFF;
 }
+nav ul a,
 nav .button-collapse {
   text-decoration: none;
 }
