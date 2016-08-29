@@ -9,7 +9,6 @@
 			data: formDataArrayToJson($form.serializeArray()),
 			dataType: 'json',
 			success: function(result) {
-				$modal.closeModal();
 				var message = 'success' == result.result ? '已成功取消訂閱！' : errorMessage;
 				$content.html('<h2>'+message+'</h2>');
 			}, error: function (error) {
