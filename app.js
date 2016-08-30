@@ -81,6 +81,7 @@ app.get('/pm25/b?', function(req, res) {
     region.stateTop = results[1];
     region.countryTop = results[2];
     region.region_id = region.id;
+    region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
     res.render('index', region);
   }).catch(serverError);
 });

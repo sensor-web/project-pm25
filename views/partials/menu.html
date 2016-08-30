@@ -1,7 +1,7 @@
-		  {{#if show_home }}
+          {{#if show_home }}
           <li><a href="/pm25/">{{{__ 'home'}}}</a></li>
           {{/if}}
-		  {{#if config.debug }}
+          {{#if show_get_sensor }}
           <li><a href="/pm25/request/">{{{__ 'get.sensor'}}}</a></li>
           {{/if}}
           <li><a href="https://connected.mozilla.org/category/project/sensorweb/" target="_blank">{{{__ 'blog'}}}</a></li>

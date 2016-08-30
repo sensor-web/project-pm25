@@ -38,7 +38,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
          <h2 class="medium">{{{__ 'nearby.stations.heading'}}}</h2>
          <ul id="nearby-stations">
          </ul>
-         {{#if config.debug}}
+         {{#if show_get_sensor}}
             <p>
             {{__ 'get.sensor.prompt'}}<br>
             <a id="subscribe" class="waves-effect waves-light btn-large" href="/pm25/request/">{{__ 'get.sensor.button'}}</a>
