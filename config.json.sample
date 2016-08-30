@@ -9,5 +9,18 @@
         "host": "localhost",
         "port": 28015
     },
+    "smtp": {
+        "host": "",
+        "port": 25,
+        "auth": {
+            "user": "",
+            "pass": ""
+        },
+        "requireTLS": true,
+        "pool": true,
+        "rateLimit": 3,
+        "logger": true,
+        "debug": true
+    },
     "debug": true
 }

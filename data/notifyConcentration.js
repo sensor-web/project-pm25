@@ -3,15 +3,17 @@ var db = require('../lib/db');
 var stations = require('../lib/stations');
 var regions = require('../lib/regions');
 var nodemailer = require('nodemailer');
-var sendmailTransport = require('nodemailer-sendmail-transport');
-var transporter = nodemailer.createTransport(sendmailTransport());
+// var sendmailTransport = require('nodemailer-sendmail-transport');
+// var transporter = nodemailer.createTransport(sendmailTransport());
+var transporter = nodemailer.createTransport(config.smtp);
 var notifyQueue = [];
 var notifyTemplate = transporter.templateSender({
 	subject: '{{ source }} PM2.5 濃度警示',
 	text: '{{ source }} PM2.5 濃度到達警戒值，\n詳情請至此頁面查看：\n{{ url }}\n\n\n\n若要取消訂閱此通知請至此：\n{{ unsubscribe_url }}',
 	html: '{{ source }} PM2.5 濃度到達警戒值，<br>詳情請至此頁面查看：<br><a href="{{ url }}">{{ url }}</a><br><br><br><br>若要取消訂閱此通知請<a href="{{ unsubscribe_url }}">按此</a>。'
 }, {from: '"Project SensorWeb" <sensorweb@mozilla.com>'});
-var DRYRUN = '--dry-run' == process.argv[2];
+var DRYRUN = '--dry-run' == process.argv[2] || config.debug;
+var SEND_INTERVAL = 100;
 
 function onSuccess(result) {console.log(result)};
 function onError(error) {console.error(error)};
@@ -64,7 +66,7 @@ function notifyRecursive() {
 	if (notify) {
 		if (DRYRUN) {
 			console.log(notify);
-			setTimeout(notifyRecursive, 400);
+			setTimeout(notifyRecursive, SEND_INTERVAL);
 		} else {
 			notifyTemplate(notify.options, notify.content, 
 				function (err, res) {
@@ -73,7 +75,7 @@ function notifyRecursive() {
 					} else{
 					    console.log(res);
 					}
-					setTimeout(notifyRecursive, 400);
+					setTimeout(notifyRecursive, SEND_INTERVAL);
 				}
 			);
 		}
