@@ -1,29 +1,22 @@
 
 <html>
    <head>
-      <meta http-equiv="refresh" content="600">
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      {{> meta}}
+      {{> meta page_title=(__ 'unsubscribe.title')}}
       <title>{{ page_title }}</title>
-      <link rel="stylesheet" href="/pm25/css/materialize.css">
-      <link rel="stylesheet" href="/pm25/css/station.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-         rel="stylesheet">
-      {{> ga}}
+      {{> styles }}
+      {{> head_scripts}}
    </head>
    <body>
       {{> header}}
       {{> fb}}
       <div class="card">
-         <a id="logo" class="hide-on-large-only" href="/pm25/"></a>
-         <h1 class="heading">取消訂閱通知</h1>
+         <h1 class="heading">{{__ 'unsubscribe.heading'}}</h1>
          <div id="unsubscribe-content">
             <form action="{{ config.api_url }}/pm25/subscriptions" method="POST" id="unsubscribe-form">
                <input type="hidden" name="id" value="{{ id }}">
                <input type="hidden" name="type" value="{{ type }}">
-               <input id="sub-email" name="email" class="subscribe-input" type="text" placeholder="電子郵件（必填）" required="">
-               <input name="submit" value="確認取消訂閱" id="unsubscribe" class="waves-effect waves-light btn-large" type="submit">
+               <input id="sub-email" name="email" class="subscribe-input" type="text" placeholder="{{__ 'input.email.placeholder'}}" required="">
+               <input name="submit" value="{{__ 'unsubscribe.button'}}" id="unsubscribe" class="waves-effect waves-light btn-large" type="submit">
             </form>
          </div>
          <br>
@@ -31,11 +24,7 @@
 
       {{> footer}}
 
-      <script src="/pm25/js/jquery-2.1.1.min.js"></script>
-      <script src="/pm25/js/materialize.js"></script>
-      <script src="/pm25/js/moment-with-locales.min.js" type="text/javascript"></script>
-      <script src="/pm25/js/livestamp.min.js" type="text/javascript"></script>
-      <script src="/pm25/js/station.js"></script>
+      {{> body_scripts}}
       <script src="/pm25/js/unsubscribe.js"></script>
    </body>
 </html>

@@ -1,8 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var app = express();
 var api = express();
 var hbs = require('hbs');
+var i18n = require('i18n');
 var geolib = require('geolib');
 var config = require('./config.json');
 var redirect = require('./data/redirect.json');
@@ -12,24 +14,51 @@ var regions = require('./lib/regions');
 var subscriptions = require('./lib/subscriptions');
 var request = require('request');
 
+i18n.configure({
+  locales: ['zh-TW'],
+  defaultLocale: 'zh-TW',
+  cookie: 'locale',
+  directory: "" + __dirname + "/locales",
+  logDebugFn: function (msg) {
+        console.log('debug', msg);
+  },
+  logWarnFn: function (msg) {
+        console.log('warn', msg);
+  },
+  logErrorFn: function (msg) {
+        console.log('error', msg);
+  },
+});
+
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerHelper('__', function () {
+  return i18n.__.apply(this, arguments);
+});
+hbs.registerHelper('__n', function () {
+  return i18n.__n.apply(this, arguments);
+});
 
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.locals.config = config;
-
+// allow access of request object in templates
+app.use(function(req,res,next){
+    res.locals.req = req;
+    next();
+})
+app.use(i18n.init);
 api.use(bodyParser.urlencoded({ extended: false }))
 api.use(bodyParser.json())
-
-var allowCORS = function(req, res, next) {
+// allow CORS in API
+api.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Max-Age: 1000');
   next();
-}
-api.use(allowCORS);
+});
 
 
 if (config.debug) {
@@ -47,8 +76,6 @@ app.get('/pm25/b?', function(req, res) {
   ]).then(function (results) {
     var region = results[0];
     region.survey = req.path == '/pm25/';
-    region.page_title = region.display_name + ' PM2.5 即時濃度平均 - Project SensorWeb';
-    region.page_url = config.site_url + req.url;
     region.form_title = 'PM2.5 空氣品質通知';
     region.form_type = 'region';
     region.stateTop = results[1];
@@ -63,8 +90,6 @@ app.get('/pm25/about', function(req, res) {
     return;
   }
   var data = {};
-  data.page_title = '關於 Project SensorWeb';
-  data.page_url = config.site_url + req.url;
   res.render('about', data);
 });
 
@@ -73,8 +98,6 @@ app.get('/pm25/request', function(req, res) {
     return;
   }
   var data = {};
-  data.page_title = '申請架設 PM2.5 測站 - Project SensorWeb';
-  data.page_url = config.site_url + req.url;
   data.form_title = '';
   data.form_type = '';
   data.location = true;
@@ -92,8 +115,6 @@ app.get('/pm25/station/:slug/', function(req, res) {
   }
   stations.getBySlug(location).then(function(station) {
     if (station) {
-      station.page_title = station.display_name + ' PM2.5 即時濃度 - Project SensorWeb';
-      station.page_url = config.site_url + req.url;
       station.form_title = 'PM2.5 空氣品質通知';
       station.form_type = 'station';
       station.station_id = station.id;
@@ -113,8 +134,6 @@ app.get('/pm25/unsubscribe', function(req, res) {
     return;
   }
   var data = {};
-  data.page_title = '取消訂閱 - Project SensorWeb';
-  data.page_url = config.site_url + req.url;
   data.id = req.query.id;
   data.type = req.query.type;
   data.location = true;

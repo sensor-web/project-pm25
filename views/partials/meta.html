@@ -1,11 +1,15 @@
+      <meta http-equiv="refresh" content="600">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta property="fb:app_id" content="{{ config.fb_app_id }}" />
-      <meta property="og:url" content="{{ page_url }}" />
+      <meta property="og:url" content="{{ config.site_url }}{{ req.url }}" />
       <meta property="og:title" content="{{ page_title }}" />
-      <meta property="og:description" content="你知道住家附近的空氣汙染狀況嗎？Project SensorWeb 幫助你尋找並訂閱離你最近的 PM2.5 空汙監測站" />
+      <meta property="og:description" content="{{__ 'page.desc'}}" />
       <meta property="og:image" content="https://sensorweb.io/pm25/images/thumbnail.png">
       <meta property="og:image:type" content="image/png">
       <meta property="og:image:width" content="1200">
       <meta property="og:image:height" content="1200">
+      <title>{{ page_title }}</title>
       <link rel="icon" type="image/x-icon" href="/pm25/images/favicon.ico">
       <link rel="apple-touch-icon" href="/pm25/images/favicon-192x192.png"/>
       <link rel="apple-touch-icon-precomposed" href="/pm25/images/favicon-192x192.png"/>

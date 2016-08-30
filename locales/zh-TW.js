@@ -1,0 +1,56 @@
+{
+	"home": "首頁",
+	"get.sensor": "架設測站",
+	"blog": "部落格",
+	"about.sensorweb": "關於 Project SensorWeb",
+	"page.desc": "你知道住家附近的空氣汙染狀況嗎？Project SensorWeb 幫助你尋找並訂閱離你最近的 PM2.5 空汙監測站",
+	"last.update": "上次更新於",
+	"pm25.concentration": "<span class=\"marked\">PM2.5</span> 即時濃度",
+	"pm25.concentration.average": "<span class=\"marked\">PM2.5</span> 即時濃度平均",
+	"distance": "距離",
+	"km": "公里",
+	"sorry.no.station": "抱歉，目前尚無監測站資料。",
+	"sorry.no.nearby.station": "抱歉，目前沒有可參考的監測站資料在附近。",
+	"sorry.no.relevant.station": "抱歉，目前尚無鄰近監測站資料。",
+	"sorry.no.gps": "無法取得 GPS 定位資訊，請檢查 GPS 定位功能是否開啟，並<a href=\"javascript:loadNearbyStations();\">點此再試一次</a>。",
+
+	"input.email.placeholder": "電子郵件（必填）",
+
+	"region.%s.title": "%s PM2.5 即時濃度平均 - Project SensorWeb",
+	"nearby.stations.heading": "離我最近的 <span class=\"marked\">PM2.5</span> 監測站",
+	"region.%s.top.heading": "%s測站 <span class=\"marked\">PM2.5</span> 即時排行",
+	"pm25.subscribe.button": "空氣不好時通知我",
+	"get.sensor.prompt": "想要得到最在地、最即時的空氣品質資訊嗎？",
+	"get.sensor.button": "我要架設測站",
+
+	"station.%s.title": "%s PM2.5 即時濃度 - Project SensorWeb",
+	"relevant.stations.heading": "鄰近的 <span class=\"marked\">PM2.5</span> 監測站",
+
+	"get.sensor.title": "申請架設 PM2.5 測站 - Project SensorWeb",
+	"get.sensor.heading": "申請架設測站",
+	"buy.sensor.heading": "購買測站",
+	"buy.sensor.modal.heading": "訂閱測站購買通知",
+	"buy.sensor.button": "可購買時通知我",
+	"buy.sensor.description": "關心居住環境的空氣品質嗎？<br>我們計畫推出一款安裝簡單、價格合理的測站產品。<br>請留下你的聯絡信箱，我們將在第一時間通知你。",
+	"buy.sensor.requirements": "<b>安裝環境需求</b><li>一般家用 Wifi 網路環境（不支援 Captive portal, WPA enterprise）</li><li>家用電源插座</li><li>建議安裝室外防雨處（陽台、窗台）</li>",
+	"buy.sensor.features": "<b>功能特色</b><li>彩色 LED 燈顯示目前空氣狀況</li><li>網頁顯示即時及歷史資料</li><li>可訂閱空汙通知警示</li>",
+	"diy.sensor.heading": "自造測站",
+	"diy.sensor.modal.heading": "取得 API 金鑰",
+	"diy.sensor.button": "按此取得 API 金鑰",
+	"diy.sensor.description": "你有開發微控制器應用的經驗嗎？<br>你可用熟悉的開發板來架設測站，再透過 API 金鑰即可上傳資料至 Project SensorWeb。",
+	"diy.sensor.requirements": "<b>安裝環境需求</b><li>一般家用 Wifi 網路環境（不支援 Captive portal, WPA enterprise）</li><li>家用電源插座</li><li>建議安裝室外防雨處（陽台、窗台）</li>",
+	"diy.sensor.skills": "<b>技術需求</b><li>基本電路概念及使用麵包板經驗</li><li>壓製杜邦線頭</li><li>基本程式設計概念</li>",
+	"diy.sensor.boards": "<b>支援開發板</b><br>針對初學者，我們提供以下數款開發板的組裝說明：<br><br><li><a href=\"https:\/\/github.com/sensor-web/arduino-station/tree/master/station/particle-photon\" target=\"_blank\">Particle Photon 組裝說明</a></li><li><a href=\"https:\/\/github.com/sensor-web/arduino-station/tree/master/station/nodemcu\" target=\"_blank\">NodeMCU 組裝說明</a></li><li><a href=\"https:\/\/github.com/sensor-web/pi-station\" target=\"_blank\">Raspberry Pi 2 組裝說明</a></li>",
+	"wait.sensor.heading": "等候通知",
+	"wait.sensor.modal.heading": "訂閱新設測站通知",
+	"wait.sensor.button": "有測站時通知我",
+	"wait.sensor.description": "覺得架設測站太困難？<br>別擔心，Project SensorWeb 是開放群眾參與的感測網路。<br>留下聯絡信箱及你所關心的地點資訊，我們將在附近有測站資料時通知你。",
+
+	"about.description": "Project SensorWeb 是開放群眾參與的感測資料網路。我們相信開放資料能讓生活環境的資訊更加透明，進而改善人們的生活。",
+
+	"unsubscribe.title": "取消訂閱 - Project SensorWeb",
+	"unsubscribe.heading": "取消訂閱通知",
+	"unsubscribe.button": "確認取消訂閱",
+
+	"privacy.notice": "隱私權政策"
+}

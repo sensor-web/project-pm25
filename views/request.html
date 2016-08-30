@@ -1,89 +1,60 @@
 
 <html>
    <head>
-      <meta http-equiv="refresh" content="600">
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      {{> meta}}
+      {{> meta page_title=(__ 'get.sensor.title')}}
       <title>{{ page_title }}</title>
-      <link rel="stylesheet" href="/pm25/css/materialize.css">
-      <link rel="stylesheet" href="/pm25/css/station.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-         rel="stylesheet">
+      {{> styles }}
       <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
-      {{> ga}}
+      {{> head_scripts}}
    </head>
    <body>
       {{> header}}
       {{> fb}}
       <div class="card no-padding">
-         <a id="logo" class="hide-on-large-only" href="/pm25/"></a>
-         <h1 class="heading">申請架設測站</h1>
+         <h1 class="heading">{{__ 'get.sensor.heading'}}</h1>
        <ul class="collapsible" data-collapsible="accordion">
          <li>
-          <div class="collapsible-header"><i class="material-icons">credit_card</i><b>購買測站</b></div>
+          <div class="collapsible-header"><i class="material-icons">credit_card</i><b>{{__ 'buy.sensor.heading'}}</b></div>
           <div class="collapsible-body">
-          <span>關心居住環境的空氣品質嗎？<br>
-          我們計畫推出一款安裝簡單、價格合理的測站產品。<br>
-          請留下你的聯絡信箱，我們將在第一時間通知你。</span>
+          <span>{{{__ 'buy.sensor.description'}}}</span>
           <br><br>
           <ul class="requirements">
-            <b>安裝環境需求</b>
-            <li>一般家用 Wifi 網路環境（不支援 Captive portal, WPA enterprise）</li>
-            <li>家用電源插座</li>
-            <li>建議安裝室外防雨處（陽台、窗台）</li>
+            {{{__ 'buy.sensor.requirements'}}}
           </ul>
           <ul class="requirements">
-            <b>功能特色</b>
-            <li>彩色 LED 燈顯示目前空氣狀況</li>
-            <li>網頁顯示即時及歷史資料</li>
-            <li>可訂閱空汙通知警示</li>
+            {{{__ 'buy.sensor.features'}}}
           </ul>
             <div class="cta">
-           <a id="buy" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="訂閱測站購買通知" data-form-type="buy_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->可購買時通知我</a>
+           <a id="buy" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="{{__ 'buy.sensor.modal.heading'}}" data-form-type="buy_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'buy.sensor.button'}}</a>
            </div>
           </div>
          </li>
          <li>
-          <div class="collapsible-header"><i class="material-icons">settings</i><b>自造測站</b></div>
+          <div class="collapsible-header"><i class="material-icons">settings</i><b>{{__ 'diy.sensor.heading'}}</b></div>
           <div class="collapsible-body">
-           <span>你有開發微控制器應用的經驗嗎？
-           <br>你可用熟悉的開發板來架設測站，再透過 API 金鑰即可上傳資料至 Project SensorWeb。</span>
+           <span>{{{__ 'diy.sensor.description'}}}</span>
           <br><br>
            <ul class="requirements">
-             <b>安裝環境需求</b>
-             <li>一般家用 Wifi 網路環境（不支援 Captive portal, WPA enterprise）</li>
-             <li>家用電源插座</li>
-             <li>建議安裝室外防雨處（陽台、窗台）</li>
+             {{{__ 'diy.sensor.requirements'}}}</li>
            </ul>
            <ul class="requirements">
-             <b>技術需求</b>
-             <li>基本電路概念及使用麵包板經驗</li>
-             <li>壓製杜邦線頭</li>
-             <li>基本程式設計概念</li>
+             {{{__ 'diy.sensor.skills'}}}
            </ul>
            <ul class="requirements">
-             <b>支援開發板</b><br>
-             針對初學者，我們提供以下數款開發板的組裝說明：
-             <br><br>
-             <li><a href="https://github.com/sensor-web/arduino-station/tree/master/station/particle-photon" target="_blank">Particle Photon 組裝說明</a></li>
-             <li><a href="https://github.com/sensor-web/arduino-station/tree/master/station/nodemcu" target="_blank">NodeMCU 組裝說明</a></li>
-             <li><a href="https://github.com/sensor-web/pi-station" target="_blank">Raspberry Pi 2 組裝說明</a></li>
+             {{{__ 'diy.sensor.boards'}}}
            </ul>
            <div class="cta">
-           <a id="get-api-key" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="取得 API 金鑰" data-form-type="diy_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">vpn_key</i><!--googleon: index-->按此取得 API 金鑰</a>
+           <a id="get-api-key" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="{{__ 'diy.sensor.modal.heading'}}" data-form-type="diy_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">vpn_key</i><!--googleon: index-->{{__ 'diy.sensor.button'}}</a>
            </div>
           </div>
          </li>
          <li>
-          <div class="collapsible-header"><i class="material-icons">add_alert</i><b>等候消息</b></div>
+          <div class="collapsible-header"><i class="material-icons">add_alert</i><b>{{__ 'wait.sensor.heading'}}</b></div>
           <div class="collapsible-body">
-           <span>覺得架設測站太困難？<br>
-           別擔心，Project SensorWeb 是開放群眾參與的感測網路。
-           <br>留下聯絡信箱及你所關心的地點資訊，我們將在附近有測站資料時通知你。</span>
+           <span>{{{__ 'wait.sensor.description'}}}</span>
            <br>
            <div class="cta">
-           <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="訂閱新設測站通知" data-form-type="new_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->有測站時通知我</a>
+           <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="{{__ 'wait.sensor.modal.heading'}}" data-form-type="new_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'wait.sensor.button'}}</a>
            </div>
           </div>
          </li>
@@ -93,12 +64,8 @@
       {{> subscribe_modal}}
       {{> footer}}
 
-      <script src="/pm25/js/jquery-2.1.1.min.js"></script>
-      <script src="/pm25/js/materialize.js"></script>
-      <script src="/pm25/js/moment-with-locales.min.js" type="text/javascript"></script>
-      <script src="/pm25/js/livestamp.min.js" type="text/javascript"></script>
+      {{> body_scripts}}
       <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
-      <script src="/pm25/js/station.js"></script>
       <script src="/pm25/js/request.js"></script>
       <!-- Go to www.addthis.com/dashboard to customize your tools -->
       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>

@@ -1,34 +1,27 @@
 
 <html>
    <head>
-      <meta http-equiv="refresh" content="600">
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      {{> meta}}
+      {{> meta page_title=(__ 'station.%s.title' display_name)}}
       <title>{{ page_title }}</title>
-      <link rel="stylesheet" href="/pm25/css/materialize.css">
-      <link rel="stylesheet" href="/pm25/css/station.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-         rel="stylesheet">
-      {{> ga}}
+      {{> styles }}
+      {{> head_scripts}}
    </head>
    <body>
       {{> header}}
       {{> fb}}
       <div class="card">
-         <a id="logo" class="hide-on-large-only" href="/pm25/"></a>
          <!-- Go to www.addthis.com/dashboard to customize your tools -->
          <div class="addthis_sharing_toolbox"></div>
          <h1><span id="latest-pm25">{{ data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
-         <h2 id="pm25"><span class="marked">PM2.5</span> 即時濃度<a class="question-mark" href="javascript:void(0);"><!--googleoff: index--><i class="material-icons">help_outline</i><!--googleon: index--></a></h2>
+         <h2 id="pm25">{{{__ 'pm25.concentration'}}}<a class="question-mark" href="javascript:void(0);"><!--googleoff: index--><i class="material-icons">help_outline</i><!--googleon: index--></a></h2>
          <h3 id="location">@{{ display_name }}</h3>
-         <h3 id="update">上次更新於 <time id="latest-time" data-livestamp="{{ data.create_time }}"></time></h3>
+         <h3 id="update">{{__ 'last.update'}}<time id="latest-time" data-livestamp="{{ data.create_time }}"></time></h3>
          <div id="latest-status"></div>
          <br>
-         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->空氣不好時通知我</a>
+         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
       </div>
       <div class="card">
-         <h2 class="medium">鄰近的 <span class="marked">PM2.5</span> 監測站</h2>
+         <h2 class="medium">{{{__ 'relevant.stations.heading'}}}</h2>
          <ul id="country-rank">
             {{#if nearbyStations.length}}
               {{#each nearbyStations}}
@@ -37,13 +30,13 @@
                      <span class="concentration">
                         <span class="concentration-value">{{ this.data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
                      </span>
-                     <span class="location">@{{ this.slug }} <span class="distance">(距離 {{ this.distance }} 公里)</span></span>
+                     <span class="location">@{{ this.slug }} <span class="distance">({{__ 'distance'}} {{ this.distance }} {{__ 'km'}})</span></span>
                      <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
                   </a>
                </li>
               {{/each}}
             {{else}}
-              <li class="nodata">抱歉，目前尚無鄰近監測站資料。</li>
+              <li class="nodata">{{__ "sorry.no.nearby.station"}}</li>
             {{/if}}
          </ul>
       </div>
@@ -52,11 +45,7 @@
       {{> subscribe_modal}}
       {{> footer}}
 
-      <script src="/pm25/js/jquery-2.1.1.min.js"></script>
-      <script src="/pm25/js/materialize.js"></script>
-      <script src="/pm25/js/moment-with-locales.min.js" type="text/javascript"></script>
-      <script src="/pm25/js/livestamp.min.js" type="text/javascript"></script>
-      <script src="/pm25/js/station.js"></script>
+      {{> body_scripts}}
       <!-- Go to www.addthis.com/dashboard to customize your tools -->
       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
    </body>

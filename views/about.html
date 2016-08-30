@@ -1,29 +1,21 @@
 
 <html>
    <head>
-      <meta http-equiv="refresh" content="600">
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      {{> meta}}
-      <title>{{ page_title }}</title>
-      <link rel="stylesheet" href="/pm25/css/materialize.css">
-      <link rel="stylesheet" href="/pm25/css/station.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-         rel="stylesheet">
-      {{> ga}}
+      {{> meta page_title=(__ 'about.sensorweb')}}
+      {{> styles }}
+      {{> head_scripts}}
    </head>
    <body>
       {{> header}}
       {{> fb}}
       <div class="card">
-         <a id="logo" class="hide-on-large-only" href="/pm25/"></a>
            <div class="container" id="what">
              <div class="section">
                <div class="row">
                  <div>
-                   <h1 class="heading">關於 Project SensorWeb</h3>
+                   <h1 class="heading">{{__ 'about.sensorweb'}}</h3>
                    <p>
-                     Project SensorWeb 是開放群眾參與的感測資料網路。我們相信開放資料能讓生活環境的資訊更加透明，進而改善人們的生活。
+                     {{__ 'about.description'}}
                    </p>
                  </div>
                  <iframe id="intro-video" width="560" height="315" src="https://www.youtube.com/embed/m1B4uPNykio" frameborder="0" allowfullscreen></iframe>
@@ -34,11 +26,7 @@
 
       {{> footer}}
 
-      <script src="/pm25/js/jquery-2.1.1.min.js"></script>
-      <script src="/pm25/js/materialize.js"></script>
-      <script src="/pm25/js/moment-with-locales.min.js" type="text/javascript"></script>
-      <script src="/pm25/js/livestamp.min.js" type="text/javascript"></script>
-      <script src="/pm25/js/station.js"></script>
+      {{> body_scripts}}
    </body>
 </html>
 
