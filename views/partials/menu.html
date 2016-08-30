@@ -1,4 +1,7 @@
-		  {{#if config.debug }}
+          {{#if show_home }}
+          <li><a href="/pm25/">首頁</a></li>
+          {{/if}}
+          {{#if show_get_sensor }}
           <li><a href="/pm25/request/">架設測站</a></li>
           {{/if}}
           <li><a href="https://connected.mozilla.org/category/project/sensorweb/" target="_blank">部落格</a></li>
