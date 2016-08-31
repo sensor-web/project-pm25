@@ -30,6 +30,7 @@
 	"subscribe.buy_station.success": "訂閱成功！我們將在可購買時發出電子郵件通知。",
 	"subscribe.diy_station.success": "提交成功！若申請通過我們將透過電子郵件寄送 API 金鑰。",
 	"subscribe.new_station.success": "訂閱成功！我們將在附近有測站資料時發出電子郵件通知。",
+	"unsubscribe.success": "已成功取消訂閱！",
 
 	"input.email.placeholder": "電子郵件（必填）",
 	"input.setup.station.message": "拖曳地圖以約略標示測站將要架設的地點",
@@ -90,6 +91,9 @@
 	"sorry.no.nearby.station": "抱歉，目前沒有可參考的監測站資料在附近。",
 	"sorry.no.relevant.station": "抱歉，目前尚無鄰近監測站資料。",
 	"sorry.no.gps": "無法取得 GPS 定位資訊，請檢查 GPS 定位功能是否開啟，並<a href=\"javascript:loadNearbyStations();\">點此再試一次</a>。",
+	"not.found.title": "此內容不存在 - Project SensorWeb",
 	"not.found": "此內容不存在。",
-	"server.error": "網站發生錯誤，請稍候再試。"
+	"server.error.title": "網站發生錯誤 - Project SensorWeb",
+	"server.error": "網站發生錯誤，請稍候再試。",
+	"back.home": "請<a href=\"/pm25/\">按此回到首頁</a>。"
 }

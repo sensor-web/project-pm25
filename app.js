@@ -134,6 +134,10 @@ app.get('/sitemap.xml', function(req, res) {
     res.sendfile('./data/sitemap.xml');
 });
 
+app.get('/pm25/*', function(req, res) {
+  notFound(res)();
+});
+
 /*
  * API
  */
@@ -175,11 +179,14 @@ api.post('/pm25/subscriptions', function(req, res) {
 
 api.delete('/pm25/subscriptions', function(req, res) {
   subscriptions.unsubscribe(req.body).then(function(result) {
-    res.json({result: 'success', subscription_ids: result.existing_keys});
-  }, function(result) {
-    res.json({result: 'failed', message: result.message});
+    res.json({result: 'success', message: res.__('unsubscribe.success'), subscription_ids: result.existing_keys});
   }).catch(serverErrorJson(res));
 });
+
+api.get('/pm25/*', function(req, res) {
+  notFoundJson(res)();
+});
+
 
 db.connect(config.rethinkdb).then(function (db) {
   stations.setDatabase(db);
@@ -197,14 +204,14 @@ db.connect(config.rethinkdb).then(function (db) {
 function notFound(res) {
   return function(result) {
     res.status(404);
-    res.type('txt').send(res.__('not.found'));
+    res.render('404');
   };
 }
 
 function serverError(res) {
   return function(result) {
     res.status(500);
-    res.type('txt').send(res.__('server.rror'));
+    res.render('500');
   };
 }
 

@@ -1,0 +1,19 @@
+<html>
+   <head>
+      {{> meta page_title=(__ 'server.error.title')}}
+      {{> styles }}
+      {{> head_scripts}}
+   </head>
+   <body>
+      {{> header}}
+      {{> fb}}
+      <div class="card">
+         <h1 class="heading">{{__ 'server.error'}}</h1>
+         {{{__ 'back.home'}}}
+      </div>
+
+      {{> footer}}
+
+      {{> body_scripts}}
+   </body>
+</html>
