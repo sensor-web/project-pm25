@@ -313,7 +313,7 @@ ul.requirements li {
   text-align: center;
 }
 
-.subscribe-sensor {
+.subscribe-sensor input {
   padding-top: 15px;
 }
 
@@ -360,6 +360,11 @@ ul.requirements li {
   height: 300px;
   margin: 0;
   padding: 0;
+}
+
+.coords-error {
+  color: red;
+  display: none;
 }
 
 .gps-progress {

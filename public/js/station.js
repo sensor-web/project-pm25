@@ -17,6 +17,9 @@ $('.subscribe').click(function(e) {
 });
 $('.subscribe-form').submit(function(e) {
   var $form = $(this);
+  if (!validateCoords($form)) {
+    return false;
+  }
   $.post($form.attr('action'), 
     formDataArrayToJson($form.serializeArray()),
     function(result) {
@@ -60,6 +63,18 @@ $('.question-mark').click(function() {
   ga('send', 'event', 'pm25-tip', 'click', 'question mark');
   $('#pm25-modal').openModal();
 });
+
+function validateCoords($form) {
+  var $lat = $form.find('.sub-lat');
+  var $lng = $form.find('.sub-lng');
+  var $error = $form.find('.coords-error');
+  if (1 == $lat.length && 1 == $lng.length && '' == $lat.val() && '' == $lng.val()) {
+    $error.show();
+    return false;
+  }
+  $error.show();
+  return true;
+}
 
 function formDataArrayToJson(array) {
   var json = {}

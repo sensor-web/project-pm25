@@ -51,6 +51,7 @@
 	"input.reason.join.placeholder": "為何想要參與 Project SensorWeb？",
 	"input.submit": "提交",
 	"input.privacy.note": "點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href=\"https://www.mozilla.org/en-US/privacy/\" target=\"_blank\">隱私權政策</a>所述，處理我的個人資料。",
+	"input.error.no.coords": "請在地圖上選擇地點",
 
 	"region.%s.title": "%s PM2.5 即時濃度平均 - Project SensorWeb",
 	"nearby.stations.heading": "離我最近的 <span class=\"marked\">PM2.5</span> 監測站",
@@ -89,6 +90,6 @@
 	"sorry.no.nearby.station": "抱歉，目前沒有可參考的監測站資料在附近。",
 	"sorry.no.relevant.station": "抱歉，目前尚無鄰近監測站資料。",
 	"sorry.no.gps": "無法取得 GPS 定位資訊，請檢查 GPS 定位功能是否開啟，並<a href=\"javascript:loadNearbyStations();\">點此再試一次</a>。",
-	"not.found": "此頁面不存在。",
+	"not.found": "此內容不存在。",
 	"server.error": "網站發生錯誤，請稍候再試。"
 }

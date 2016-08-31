@@ -20,9 +20,10 @@
          {{/if}}
          {{{__ 'input.request.gps'}}}
          <div class="gps-progress progress"><div class="indeterminate"></div></div>
-         <input type="hidden" name="latitude" class="sub-lat" required="">
-         <input type="hidden" name="longitude" class="sub-lng" required="">
+         <input type="hidden" name="latitude" class="sub-lat">
+         <input type="hidden" name="longitude" class="sub-lng">
          <div class="map"></div>
+         <span class="coords-error">{{__ 'input.error.no.coords'}}</span>
 
          {{/if}}
          {{#if survey}}
