@@ -292,7 +292,7 @@ ul.requirements li {
   top: 57px !important;
 }
 
-#subscribe label {
+.subscribe label {
   text-align: left !important;
   font-size: .9em;
   float: left;
@@ -301,23 +301,27 @@ ul.requirements li {
   color: #5CC7B9;
 }
 
-#subscribe-form {
+.sub-reason-join {
+  margin-top: 40px !important;
+}
+
+.subscribe-form {
   text-align: left;
 }
 
-#submit-area {
+.submit-area {
   text-align: center;
 }
 
-#subscribe-sensor {
+.subscribe-sensor {
   padding-top: 15px;
 }
 
-#subscribe-form .mute {
+.subscribe-form .mute {
   margin-bottom: 300px;
 }
 
-#form-header {
+.form-header {
   display: block;
   width: 100%;
   height: 60px;
@@ -327,7 +331,7 @@ ul.requirements li {
   padding: 1rem;
 }
 
-#form-header i {
+.form-header i {
   position: absolute;
   top: 18px;
   right: 18px;
@@ -351,18 +355,14 @@ ul.requirements li {
   padding: 15px;
 }
 
-#map {
+.map {
   width: 100%;
   height: 300px;
   margin: 0;
   padding: 0;
 }
 
-.location-input-message {
-  display: none;
-}
-
-#gps-progress {
+.gps-progress {
   display: none;
 }
 

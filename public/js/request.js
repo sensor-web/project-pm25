@@ -1,52 +1,51 @@
 (function () {
 	var DEFAULT_CENTER = [25.0375167, 121.5637];
-	var firstMapMove = true;
-	var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	});
 
-	var map = new L.Map('map', {
-	  'center': DEFAULT_CENTER,
-	  'zoom': 12,
-	  'layers': [tileLayer]
-	});
-
-	var marker = L.marker(DEFAULT_CENTER,{
-	  draggable: false
-	}).addTo(map);
-
-	map.on('moveend', function(e){
-		if (firstMapMove) {
-			//First map initialization, do nothing here.
-			firstMapMove = false;
-		} else {
-			updateCoords(map.getCenter());
-		}
-	});
-	$('.modal-trigger').click(function() {
-		map.invalidateSize();
-		$('.location-input-message').hide();
-		var $type = $(this).attr('data-form-type');
-		if ('new_station' == $type) {
-			$('#wait-station-message').show();
-		} else {
-			$('#setup-station-message').show();
-		}
-	});
-	var $gpsProgress = $('#gps-progress');
-	$('#gps-position').click(function () {
-		$gpsProgress.show();
-		getGeolocation().then(function(coords) {
-			$gpsProgress.hide();
-			var center = {lat: coords.latitude, lng: coords.longitude};
-			updateCoords(center);
-			map.setView(center);
+	$('.subscribe-modal').each(function () {
+		var firstMapMove = true;
+		var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 		});
-	});
+		var mapElem = $(this).find('.map').get(0);
+		var $lat = $(this).find('.sub-lat');
+		var $lng = $(this).find('.sub-lng');
+		var map = new L.Map(mapElem, {
+		  'center': DEFAULT_CENTER,
+		  'zoom': 12,
+		  'layers': [tileLayer]
+		});
 
-	function updateCoords(coords) {
-		marker.setLatLng(coords);
-		$('#sub-lat').val(coords.lat);
-		$('#sub-lng').val(coords.lng);
-	}
+		var marker = L.marker(DEFAULT_CENTER,{
+		  draggable: false
+		}).addTo(map);
+
+		map.on('moveend', function(e){
+			if (firstMapMove) {
+				//First map initialization, do nothing here.
+				firstMapMove = false;
+			} else {
+				updateCoords(map.getCenter());
+			}
+		});
+		$('.modal-trigger').click(function() {
+			map.invalidateSize();
+		});
+		var $gpsProgress = $(this).find('.gps-progress');
+		$(this).find('.gps-position').click(function () {
+			$gpsProgress.show();
+			getGeolocation().then(function(coords) {
+				$gpsProgress.hide();
+				var center = {lat: coords.latitude, lng: coords.longitude};
+				updateCoords(center);
+				map.setView(center);
+			});
+		});
+
+		function updateCoords(coords) {
+			marker.setLatLng(coords);
+			$lat.val(coords.lat);
+			$lng.val(coords.lng);
+	        ga('send', 'event', 'sensor-form', 'location-change', 'pm25');
+		}
+	});
 })();

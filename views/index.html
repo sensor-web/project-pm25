@@ -1,21 +1,6 @@
 
 <html>
    <head>
-<!-- Google Analytics Content Experiment code -->
-<script>function utmx_section(){}function utmx(){}(function(){var
-k='118429221-0',d=document,l=d.location,c=d.cookie;
-if(l.search.indexOf('utm_expid='+k)>0)return;
-function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-</script><script>utmx('url','A/B');</script>
-<!-- End of Google Analytics Content Experiment code -->
-
       {{> meta page_title=(__ 'region.%s.title' display_name)}}
       {{> styles }}
       {{> head_scripts}}
@@ -32,7 +17,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
          <h3 id="update">{{__ 'last.update'}} <time id="latest-time" data-livestamp="{{ average.create_time }}"></time></h3>
          <div id="latest-status"></div>
          <br>
-         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
+         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
       </div>
       <div class="card">
          <h2 class="medium">{{{__ 'nearby.stations.heading'}}}</h2>
@@ -85,8 +70,8 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
             {{/if}}
          </ul>
       </div>
-      {{> pm25_modal}}
-      {{> subscribe_modal}}
+      {{> pm25_modal }}
+      {{> subscribe_modal form_id='subscribe-form' form_type='region' form_title=(__ 'subscribe.modal.heading.pm25') region_id=id survey=true}}
       {{> footer}}
       <script type="text/javascript">
          /* templates for javascript */

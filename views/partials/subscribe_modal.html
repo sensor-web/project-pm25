@@ -1,50 +1,57 @@
-<div id="subscribe-modal" class="modal">
-   <div id="form-header"><span id="modal-header">{{ form_title }}</span><i class="material-icons modal-close" id="close">close</i></div>
-   <div id="subscribe" class="modal-content">
-      <form action="{{ config.api_url }}/pm25/subscriptions" method="POST" id="subscribe-form">
-         <input id="sub-type" type="hidden" name="type" value="{{ form_type }}">
-         <input id="sub-email" name="email" class="subscribe-input" type="text" placeholder="電子郵件（必填）" required="">
+{{! params: String form_id, String form_title, String form_type, String region_id, String station_id, Boolean location, Boolean setup, Boolean survey }}
+<div id="{{ form_id }}" class="subscribe-modal modal">
+   <div class="form-header"><span class="modal-header">{{ form_title }}</span><i class="material-icons modal-close">close</i></div>
+   <div class="subscribe modal-content">
+      <form action="{{ config.api_url }}/pm25/subscriptions" method="POST" class="subscribe-form">
+         <input class="sub-type" type="hidden" name="type" value="{{ form_type }}">
+         <input name="email" class="sub-email subscribe-input" type="text" placeholder="{{__ 'input.email.placeholder'}}" required="">
          {{#if region_id}}
-         <input type="hidden" name="region_id" class="subscribe-input" id="sub-region-id" value="{{region_id}}">
+         <input type="hidden" name="region_id" class="sub-region-id" value="{{region_id}}">
          {{/if}}
          {{#if station_id}}
-         <input type="hidden" name="station_id" class="subscribe-input" id="sub-station-id" value="{{station_id}}">
+         <input type="hidden" name="station_id" class="sub-station-id" value="{{station_id}}">
          {{/if}}
 
          {{#if location}}
-         <span id="setup-station-message" class="location-input-message">拖曳地圖以約略標示測站將要架設的地點</span>
-         <span id="wait-station-message" class="location-input-message">拖曳地圖以約略標示關注的地點</span>
-         ，或者<a id="gps-position" href="javascript:void(0);">點此進行 GPS 定位</a>。
-         <div id="gps-progress" class="progress"><div class="indeterminate"></div></div>
-         <input type="hidden" name="latitude" class="subscribe-input" id="sub-lat">
-         <input type="hidden" name="longitude" class="subscribe-input" id="sub-lng">
-         <div id="map"></div>
+         {{#if setup}}
+         <span class="location-input-message">{{__ 'input.setup.station.message'}}</span>
+         {{else}}
+         <span class="location-input-message">{{__ 'input.wait.station.message'}}</span>
+         {{/if}}
+         {{{__ 'input.request.gps'}}}
+         <div class="gps-progress progress"><div class="indeterminate"></div></div>
+         <input type="hidden" name="latitude" class="sub-lat" required="">
+         <input type="hidden" name="longitude" class="sub-lng" required="">
+         <div class="map"></div>
 
          {{/if}}
          {{#if survey}}
-         <label>你平常一週中有幾天在此區域活動？</label>
-         <select id="sub-freq" name="frequency" type="text">
-            <option disabled="" selected="" value="">請選擇最接近的一項</option>
-            <option value="everyday">幾乎每天</option>
-            <option value="5days_per_week">一週五天</option>
-            <option value="2days_per_week">一週兩天</option>
-            <option value="seldom">很少</option>
+         <label>{{__ 'input.frequency.prompt'}}</label>
+         <select class="sub-freq" name="frequency" type="text">
+            <option disabled="" selected="" value="">{{__ 'input.frequency.placeholder'}}</option>
+            <option value="everyday">{{__ 'input.frequency.everyday'}}</option>
+            <option value="5days_per_week">{{__ 'input.frequency.5days.per.week'}}</option>
+            <option value="2days_per_week">{{__ 'input.frequency.2days.per.week'}}</option>
+            <option value="seldom">{{__ 'input.frequency.seldom'}}</option>
          </select>
          <span></span>
-         <label>你為何關心PM2.5數值?</label>
-         <select id="sub-reason" name="reason" type="text">
-            <option disabled="" selected="" value="">請選擇最符合的一項</option>
-            <option value="my_disease">我有心血管／呼吸系統疾病</option>
-            <option value="family_disease">我的家人有心血管／呼吸系統疾病</option>
-            <option value="my_health">我在意自己的健康</option>
-            <option value="family_health">我在意孩子和長輩的健康</option>
-            <option value="better_world">我想協助改善社區／城市居住環境</option>
+         <label>{{__ 'input.reason.prompt'}}</label>
+         <select class="sub-reason" name="reason" type="text">
+            <option disabled="" selected="" value="">{{__ 'input.reason.placeholder'}}</option>
+            <option value="my_disease">{{__ 'input.reason.my.disease'}}</option>
+            <option value="family_disease">{{__ 'input.reason.family.disease'}}</option>
+            <option value="my_health">{{__ 'input.reason.my.health'}}</option>
+            <option value="family_health">{{__ 'input.reason.family.health'}}</option>
+            <option value="better_world">{{__ 'input.reason.better.world'}}</option>
          </select>
          {{/if}}
-         <div id="submit-area">
-           <input name="submit" value="提交" id="subscribe-sensor" class="waves-effect waves-light btn-large" type="submit">
+         {{#if setup}}
+         <input name="reason_join" class="sub-reason-join subscribe-input" type="text" placeholder="{{__ 'input.reason.join.placeholder'}}">
+         {{/if}}
+         <div class="submit-area">
+           <input name="submit" value="{{__ 'input.submit'}}" class="subscribe-sensor waves-effect waves-light btn-large" type="submit">
          </div>
-         <p class="mute">點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href="https://www.mozilla.org/en-US/privacy/" target="_blank">隱私權政策</a>所述，處理我的個人資料。</p>
+         <p class="mute">{{{__ 'input.privacy.note'}}}</p>
       </form>
    </div>
 </div>

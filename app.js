@@ -49,6 +49,7 @@ app.use(function(req,res,next){
     next();
 })
 app.use(i18n.init);
+api.use(i18n.init);
 api.use(bodyParser.urlencoded({ extended: false }))
 api.use(bodyParser.json())
 // allow CORS in API
@@ -65,7 +66,7 @@ if (config.debug) {
   app.use('/pm25', express.static('public'));
 }
 
-app.get('/pm25/b?', function(req, res) {
+app.get('/pm25', function(req, res) {
   if (addTrailingSlash(req, res)) {
     return;
   }
@@ -75,34 +76,25 @@ app.get('/pm25/b?', function(req, res) {
     stations.listByRegionTop("country", "臺灣", "pm2_5")
   ]).then(function (results) {
     var region = results[0];
-    region.survey = req.path == '/pm25/';
-    region.form_title = 'PM2.5 空氣品質通知';
-    region.form_type = 'region';
     region.stateTop = results[1];
     region.countryTop = results[2];
-    region.region_id = region.id;
     region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
     res.render('index', region);
-  }).catch(serverError);
+  }).catch(serverError(res));
 });
 
 app.get('/pm25/about', function(req, res) {
   if (addTrailingSlash(req, res)) {
     return;
   }
-  var data = {};
-  res.render('about', data);
+  res.render('about');
 });
 
 app.get('/pm25/request', function(req, res) {
   if (addTrailingSlash(req, res)) {
     return;
   }
-  var data = {};
-  data.form_title = '';
-  data.form_type = '';
-  data.location = true;
-  res.render('request', data);
+  res.render('request');
 });
 
 app.get('/pm25/station/:slug/', function(req, res) {
@@ -116,18 +108,15 @@ app.get('/pm25/station/:slug/', function(req, res) {
   }
   stations.getBySlug(location).then(function(station) {
     if (station) {
-      station.form_title = 'PM2.5 空氣品質通知';
-      station.form_type = 'station';
-      station.station_id = station.id;
       stations.listByNearestCoords(station.coords, station.id)
       .then(function (nearbyStations) {
         station.nearbyStations = nearbyStations;
         res.render('station', station);
-      }).catch(serverError);
+      }).catch(serverError(res));
     } else {
-      notFound();
+      notFound(res)();
     }
-  }).catch(serverError);
+  }).catch(serverError(res));
 });
 
 app.get('/pm25/unsubscribe', function(req, res) {
@@ -155,12 +144,12 @@ api.get('/pm25/stations', function(req, res) {
     stations.listByIds(req.query.ids)
     .then(function (stations) {
       res.json(stations);
-    }).catch(serverError);
+    }).catch(serverError(res));
   } else if (req.query.latitude != undefined && req.query.longitude != undefined) {
     stations.listByNearestCoords({latitude: req.query.latitude, longitude: req.query.longitude})
     .then(function (stations) {
       res.json(stations);
-    }).catch(serverError);
+    }).catch(serverErrorJson(res));
   }
 });
 
@@ -170,7 +159,7 @@ api.get('/pm25/regions', function(req, res) {
     regions.getById(req.query.id)
     .then(function (region) {
       res.json(region);
-    }).catch(serverError);
+    }).catch(serverErrorJson(res));
   }
 });
 
@@ -180,8 +169,8 @@ api.post('/pm25/subscriptions', function(req, res) {
     if (sub_id && sub_id.length) {
       sub_id = sub_id[0];
     }
-    res.json({result: 'success', subscription_id: sub_id});
-  }).catch(serverError);
+    res.json({result: 'success', message: res.__('subscribe.'+req.body.type+'.success'), subscription_id: sub_id});
+  }).catch(serverErrorJson(res));
 });
 
 api.delete('/pm25/subscriptions', function(req, res) {
@@ -189,7 +178,7 @@ api.delete('/pm25/subscriptions', function(req, res) {
     res.json({result: 'success', subscription_ids: result.existing_keys});
   }, function(result) {
     res.json({result: 'failed', message: result.message});
-  }).catch(serverError);
+  }).catch(serverErrorJson(res));
 });
 
 db.connect(config.rethinkdb).then(function (db) {
@@ -205,14 +194,32 @@ db.connect(config.rethinkdb).then(function (db) {
   });  
 });
 
-function notFound() {
+function notFound(res) {
+  return function(result) {
     res.status(404);
-    res.type('txt').send('Not Found');
+    res.type('txt').send(res.__('not.found'));
+  };
 }
 
-function serverError() {
+function serverError(res) {
+  return function(result) {
     res.status(500);
-    res.type('txt').send('Internal Server Error');
+    res.type('txt').send(res.__('server.rror'));
+  };
+}
+
+function notFoundJson(res) {
+  return function(result) {
+    res.status(404);
+    res.json({result: 'failed', message: res.__('not.found')});
+  };
+}
+
+function serverErrorJson(res) {
+  return function(result) {
+    res.status(500);
+    res.json({result: 'failed', message: res.__('server.error')});
+  };
 }
 
 function addTrailingSlash(req, res) {

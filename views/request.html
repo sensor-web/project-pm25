@@ -25,7 +25,7 @@
             {{{__ 'buy.sensor.features'}}}
           </ul>
             <div class="cta">
-           <a id="buy" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="{{__ 'buy.sensor.modal.heading'}}" data-form-type="buy_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'buy.sensor.button'}}</a>
+           <a id="buy" class="waves-effect waves-light btn-large modal-trigger" href="#buy-station-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'buy.sensor.button'}}</a>
            </div>
           </div>
          </li>
@@ -44,7 +44,7 @@
              {{{__ 'diy.sensor.boards'}}}
            </ul>
            <div class="cta">
-           <a id="get-api-key" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="{{__ 'diy.sensor.modal.heading'}}" data-form-type="diy_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">vpn_key</i><!--googleon: index-->{{__ 'diy.sensor.button'}}</a>
+           <a id="get-api-key" class="waves-effect waves-light btn-large modal-trigger" href="#diy-station-form"><!--googleoff: index--><i class="material-icons">vpn_key</i><!--googleon: index-->{{__ 'diy.sensor.button'}}</a>
            </div>
           </div>
          </li>
@@ -54,14 +54,16 @@
            <span>{{{__ 'wait.sensor.description'}}}</span>
            <br>
            <div class="cta">
-           <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" data-modal-header="{{__ 'wait.sensor.modal.heading'}}" data-form-type="new_station" href="#subscribe-modal"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'wait.sensor.button'}}</a>
+           <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#new-station-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'wait.sensor.button'}}</a>
            </div>
           </div>
          </li>
        </ul>
     </div>
       {{> pm25_modal}}
-      {{> subscribe_modal}}
+      {{> subscribe_modal form_id='buy-station-form' form_type='buy_station' form_title=(__ 'subscribe.modal.heading.buy.sensor') location=true setup=true}}
+      {{> subscribe_modal form_id='diy-station-form' form_type='diy_station' form_title=(__ 'subscribe.modal.heading.diy.sensor') location=true setup=true}}
+      {{> subscribe_modal form_id='new-station-form' form_type='new_station' form_title=(__ 'subscribe.modal.heading.new.sensor') location=true}}
       {{> footer}}
 
       {{> body_scripts}}
