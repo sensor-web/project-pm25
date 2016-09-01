@@ -5,6 +5,7 @@
 	"about.sensorweb": "關於 Project SensorWeb",
 	"page.desc": "你知道住家附近的空氣汙染狀況嗎？Project SensorWeb 幫助你尋找並訂閱離你最近的 PM2.5 空汙監測站",
 	"privacy.notice": "隱私權政策",
+	"contact.email": "sensorweb-tw@mozilla.com",
 
 	"last.update": "上次更新於",
 	"pm25.concentration": "<span class=\"marked\">PM2.5</span> 即時濃度",
