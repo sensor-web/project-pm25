@@ -11,7 +11,7 @@ var notifyTemplate = transporter.templateSender({
 	subject: '{{ source }} PM2.5 濃度警示',
 	text: '{{ source }} PM2.5 濃度到達警戒值，\n詳情請至此頁面查看：\n{{ url }}\n\n\n\n若要取消訂閱此通知請至此：\n{{ unsubscribe_url }}',
 	html: '{{ source }} PM2.5 濃度到達警戒值，<br>詳情請至此頁面查看：<br><a href="{{ url }}">{{ url }}</a><br><br><br><br>若要取消訂閱此通知請<a href="{{ unsubscribe_url }}">按此</a>。'
-}, {from: '"Project SensorWeb" <sensorweb@mozilla.com>'});
+}, {from: '"Project SensorWeb" <sensorweb-tw@mozilla.com>'});
 var DRYRUN = '--dry-run' == process.argv[2] || config.debug;
 var SEND_INTERVAL = 100;
 
