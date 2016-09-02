@@ -15,8 +15,8 @@ var subscriptions = require('./lib/subscriptions');
 var request = require('request');
 
 i18n.configure({
-    locales: ['zh-TW'],
-    defaultLocale: 'zh-TW',
+    locales: ['zh-TW', 'en'],
+    // defaultLocale: 'zh-TW',
     cookie: 'locale',
     directory: "" + __dirname + "/locales",
     logDebugFn: function (msg) {
