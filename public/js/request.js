@@ -21,7 +21,6 @@
 		var marker = L.marker(DEFAULT_CENTER,{
 			draggable: false
 		}).addTo(map);
-
 		map.on('move', function(e){
 			if (firstMapMove) {
 				//First map initialization, do nothing here.

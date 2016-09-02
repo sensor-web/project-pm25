@@ -22,7 +22,7 @@
 	"daqi.status.high": "<span class=\"marked\">空氣品質指標<strong>危險</strong></span>，任何人如果有不適，如眼痛，咳嗽或喉嚨痛等，應該考慮減少戶外活動。",
 	"daqi.status.extreme": "<span class=\"marked\">空氣品質指標<strong>高危險</strong></span>，任何人如果有不適，如眼痛，咳嗽或喉嚨痛等，應減少體力消耗，特別是減少戶外活動。",
 
-	"subscribe.modal.heading.pm25": "PM2.5 空氣品質通知",
+	"subscribe.modal.heading.pm25": "訂閱 PM2.5 空氣品質通知",
 	"subscribe.modal.heading.buy.sensor": "訂閱測站購買通知",
 	"subscribe.modal.heading.diy.sensor": "取得 API 金鑰",
 	"subscribe.modal.heading.new.sensor": "訂閱新設測站通知",
@@ -34,9 +34,9 @@
 	"unsubscribe.success": "已成功取消訂閱！",
 
 	"input.email.placeholder": "電子郵件（必填）",
-	"input.setup.station.message": "拖曳地圖以約略標示測站將要架設的地點",
-	"input.wait.station.message": "拖曳地圖以約略標示關注的地點",
-	"input.request.gps": "，或者<a class=\"gps-position\" href=\"javascript:void(0);\">點此進行 GPS 定位</a>。",
+	"input.setup.station.message": "測站要架設的地點",
+	"input.wait.station.message": "關注的地點",
+	"input.request.gps": "GPS 定位",
 	"input.frequency.prompt": "你平常一週中有幾天在此區域活動？",
 	"input.frequency.placeholder": "請選擇最接近的一項",
 	"input.frequency.everyday": "幾乎每天",
@@ -52,7 +52,7 @@
 	"input.reason.better.world": "我想協助改善社區／城市居住環境",
 	"input.reason.join.placeholder": "為何想要參與 Project SensorWeb？",
 	"input.submit": "提交",
-	"input.privacy.note": "點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href=\"https://www.mozilla.org/en-US/privacy/\" target=\"_blank\">隱私權政策</a>所述，處理我的個人資料。",
+	"input.privacy.note": "點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href=\"https://www.mozilla.org/en-US/privacy/websites/\" target=\"_blank\">隱私權政策</a>所述，處理我的個人資料。",
 	"input.error.no.coords": "請在地圖上選擇地點",
 
 	"region.%s.title": "%s PM2.5 即時濃度平均 - Project SensorWeb",

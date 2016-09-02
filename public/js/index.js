@@ -52,6 +52,12 @@
         });
     }
 
+    function enlargeMarker(marker) {
+        var icon = marker.options.icon;
+        icon.options.iconSize = [30, 50];
+        marker.setIcon(icon);
+    }
+
     function loadNearbyStations() {
         $nearbyStations.html(getProgressListItem());
         getGeolocation().then(function(coords) {
