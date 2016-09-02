@@ -12,13 +12,14 @@
 		var $lat = $(this).find('.sub-lat');
 		var $lng = $(this).find('.sub-lng');
 		var map = new L.Map(mapElem, {
-		  'center': DEFAULT_CENTER,
-		  'zoom': 12,
-		  'layers': [tileLayer]
+			center: DEFAULT_CENTER,
+			scrollWheelZoom: false,
+			zoom: 12,
+			layers: [tileLayer]
 		});
 
 		var marker = L.marker(DEFAULT_CENTER,{
-		  draggable: false
+			draggable: false
 		}).addTo(map);
 
 		map.on('move', function(e){

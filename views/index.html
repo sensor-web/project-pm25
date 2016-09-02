@@ -4,6 +4,7 @@
       {{> meta page_title=(__ 'region.%s.title' display_name)}}
       {{> styles }}
       {{> head_scripts}}
+      <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
    </head>
    <body>
       {{> header}}
@@ -17,6 +18,7 @@
           </div>
           <ul id="search-dropdown" class="dropdown-content ac-dropdown"></ul>
       </nav>
+      <div id="map" width="800" height="300"></div>
       {{/if}}
       <div class="card">
          <!-- Go to www.addthis.com/dashboard to customize your tools -->

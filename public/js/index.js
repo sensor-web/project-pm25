@@ -39,6 +39,19 @@
             }, throttling: true
         });
 
+    if (1 == $('#map').size()) {
+        var DEFAULT_CENTER = [25.0375167, 121.5637];
+        var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        });
+        var map = new L.Map('map', {
+          center: DEFAULT_CENTER,
+          scrollWheelZoom: false,
+          zoom: 12,
+          layers: [tileLayer]
+        });
+    }
+
     function loadNearbyStations() {
         $nearbyStations.html(getProgressListItem());
         getGeolocation().then(function(coords) {
