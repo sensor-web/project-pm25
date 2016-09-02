@@ -8,6 +8,16 @@
    <body>
       {{> header}}
       {{> fb}}
+      {{#if show_map_search}}
+      <nav class="row">
+          <div class="input-field autocomplete">
+            <input id="search-input" type="search" data-activates="search-dropdown" data-beloworigin="true" autocomplete="off" required>
+            <label for="search-input"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+          <ul id="search-dropdown" class="dropdown-content ac-dropdown"></ul>
+      </nav>
+      {{/if}}
       <div class="card">
          <!-- Go to www.addthis.com/dashboard to customize your tools -->
          <div class="addthis_sharing_toolbox"></div>
@@ -96,6 +106,8 @@
          };
       </script>
       {{> body_scripts}}
+      <script src="/pm25/js/jquery.materialize-autocomplete.min.js" type="text/javascript"></script>
+      <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
       <script src="/pm25/js/station.js" type="text/javascript"></script>
       <script src="/pm25/js/index.js"></script>
       <!-- Go to www.addthis.com/dashboard to customize your tools -->

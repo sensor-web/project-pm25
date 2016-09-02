@@ -21,7 +21,7 @@
 		  draggable: false
 		}).addTo(map);
 
-		map.on('moveend', function(e){
+		map.on('move', function(e){
 			if (firstMapMove) {
 				//First map initialization, do nothing here.
 				firstMapMove = false;

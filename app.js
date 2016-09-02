@@ -80,6 +80,7 @@ app.get('/pm25', function(req, res) {
         region.stateTop = results[1];
         region.countryTop = results[2];
         region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
+        region.show_map_search = config.debug || req.query.map_search == 'true';
         res.render('index', region);
     }).catch(serverError(res));
 });

@@ -4,6 +4,41 @@
     var $nearbyStations = $('#nearby-stations');
     loadNearbyStations();
 
+    $('#search-input').materialize_autocomplete({
+        multiple: {
+            enable: false
+        },
+        dropdown: {
+            el: '#search-dropdown'
+        },
+        getData: function (value, callback) {
+            var options = [];
+            $.when(
+                $.get(API_URL+'/pm25/stations', {q: value}, function (stations) {
+                    for (var station of stations) {
+                        station.text = station.slug;
+                        options.push(station);
+                    }
+                }),
+                $.get(API_URL+'/pm25/regions', {q: value}, function (regions) {
+                    for (var region of regions) {
+                        region.text = region.slug;
+                        options.push(region);
+                    }
+                }),
+                $.get('http://nominatim.openstreetmap.org/search', {format: 'json', 'accept-language':'zh-TW', q: value}, function (places) {
+                    for (var place of places) {
+                        place.id = place.place_id;
+                        place.text = place.display_name;
+                        options.push(place);
+                    }
+                })
+                ).then(function () {
+                    callback(value, options);
+                });
+            }, throttling: true
+        });
+
     function loadNearbyStations() {
         $nearbyStations.html(getProgressListItem());
         getGeolocation().then(function(coords) {

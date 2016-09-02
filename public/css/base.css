@@ -266,6 +266,10 @@ ul.requirements li {
   margin-left: 20px;
 }
 
+.input-field input[type=search]:focus ~ label i {
+  color: #444;
+}
+
 /* Form */
 
 .subscribe-input,
@@ -353,6 +357,13 @@ ul.requirements li {
 
 #unsubscribe {
   padding: 15px;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+  margin: 0;
+  padding: 0;
 }
 
 .map {
