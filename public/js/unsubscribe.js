@@ -1,7 +1,10 @@
+'use strict';
+
 (function () {
 	var $form = $('#unsubscribe-form');
 	var $content = $('#unsubscribe-content');
 	$form.submit(function (e) {
+		console.log('yay');
 		$.ajax({
 			url: $form.attr('action'), 
 			type: 'DELETE',

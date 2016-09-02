@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
 	var DEFAULT_CENTER = [25.0375167, 121.5637];
 
