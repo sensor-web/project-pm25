@@ -22,10 +22,10 @@
 	"daqi.status.high": "<span class=\"marked\">Air quality is Harmful.</span> Anyone with a soar throat, soar eyes, and coughing symptoms should seriously consider to stay indoors.",
 	"daqi.status.extreme": "<span class=\"marked\">Air quality is Extremely Dangerous.</span> Anyone with any ill conditions should seriously consider to stay indoors.",
 
-	"subscribe.modal.heading.pm25": "Subscribe for PM2.5 notification ",
-	"subscribe.modal.heading.buy.sensor": "Subscribe for sensors instock notification",
+	"subscribe.modal.heading.pm25": "Subscribe for PM2.5 Notification ",
+	"subscribe.modal.heading.buy.sensor": "Subscribe for Sensors Instock Notification",
 	"subscribe.modal.heading.diy.sensor": "Get an API Key",
-	"subscribe.modal.heading.new.sensor": "Subscribe for newly set up sensors",
+	"subscribe.modal.heading.new.sensor": "Subscribe for Newly Set up Sensors",
 	"subscribe.region.success": "Thanks! We will send an Email notification when air quality get worse.",
 	"subscribe.station.success": "Thanks! We will send an Email notification when air quality get worse.",
 	"subscribe.buy_station.success": "Thanks! We will send an Email notification when there are sensors in stock.",
@@ -63,9 +63,9 @@
 	"get.sensor.button": "Get a Sensor",
 
 	"station.%s.title": "%s PM2.5 Concentration - Project SensorWeb",
-	"relevant.stations.heading": "Nearby <span class=\"marked\">PM2.5</span> sensors",
+	"relevant.stations.heading": "Nearby <span class=\"marked\">PM2.5</span> Sensors",
 
-	"get.sensor.title": "Request a PM2.5 sensor - Project SensorWeb",
+	"get.sensor.title": "Request a PM2.5 Sensor - Project SensorWeb",
 	"get.sensor.heading": "Setup a Sensor",
 	"buy.sensor.heading": "Buy a sensor",
 	"buy.sensor.button": "Notify me when in stock",
