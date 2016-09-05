@@ -2,10 +2,14 @@
 
 (function () {
     var markers = {};
+    var ac_coords = {};
+    var currentId;
+    var currentMarker;
     var $nearbyStations = $('#nearby-stations');
     loadNearbyStations();
 
-    $('#search-input').materialize_autocomplete({
+    var $search = $('#search-input');
+    var $ac = $search.materialize_autocomplete({
         multiple: {
             enable: false
         },
@@ -18,12 +22,14 @@
                 $.get(API_URL+'/pm25/stations', {q: value}, function (stations) {
                     for (var station of stations) {
                         station.text = station.slug;
+                        ac_coords[station.id] = station.coords;
                         options.push(station);
                     }
                 }),
                 $.get(API_URL+'/pm25/regions', {q: value}, function (regions) {
                     for (var region of regions) {
                         region.text = region.slug;
+                        ac_coords[region.id] = region.coords;
                         options.push(region);
                     }
                 }),
@@ -31,6 +37,7 @@
                     for (var place of places) {
                         place.id = place.place_id;
                         place.text = place.display_name;
+                        ac_coords[place.id] = {latitude: place.lat, longitude: place.lng};
                         options.push(place);
                     }
                 })
@@ -39,7 +46,6 @@
                 });
             }, throttling: true
         });
-
     if (1 == $('#map').size()) {
         var DEFAULT_CENTER = [25.0375167, 121.5637];
         var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -57,6 +63,19 @@
         });
         loadMarkers();
     }
+    $ac.$dropdown.click(function (e) {
+        currentId = $ac.$hidden.val();
+        var coords = ac_coords[currentId];
+        map.setView({lat: coords.latitude, lng:coords.longitude});
+    });
+
+    function selectMarker(marker) {
+        if (currentMarker) {
+            currentMarker.setOpacity(0.6);
+        }
+        currentMarker = marker;
+        currentMarker.setOpacity(1.0);
+    }
 
     function loadMarkers() {
         var bounds = map.getBounds();
@@ -67,16 +86,20 @@
                     var marker = L.marker([station.coords.latitude, station.coords.longitude], {
                         clickable: true,
                         draggable: false,
+                        opacity: 0.5,
                         title: station.display_name,
                         alt: station.display_name
                     });
                     marker.station = station;
                     marker.on('click', function(e) {
-                        console.log(this.station.slug);
+                        selectMarker(this);
                     });
                     markers[station.id] = marker;
                     marker.addTo(map);
                 }
+            }
+            if (undefined != markers[currentId]) {
+                selectMarker(markers[currentId]);
             }
         });
     }
