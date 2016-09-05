@@ -35,9 +35,9 @@
 	"unsubscribe.success": "You are unsubscribed！",
 
 	"input.email.placeholder": "Email address (Required)",
-	"input.setup.station.message": "Location to set up the sensor",
-	"input.wait.station.message": "Location you care about",
-	"input.request.gps": ", <a class=\"gps-position\" href=\"javascript:void(0);\">GPS positioning</a>。",
+	"input.setup.station.message": "Location to set up the sensor:",
+	"input.wait.station.message": "Location you care about:",
+	"input.request.gps": "My GPS",
 	"input.frequency.prompt": "Do you come here often?",
 	"input.frequency.placeholder": "Please pick one",
 	"input.frequency.everyday": "Almost every day",

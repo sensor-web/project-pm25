@@ -392,6 +392,11 @@ ul.requirements li {
   display: none;
 }
 
+.gps-position {
+  pointer-events: all;
+  margin-right: 20px;
+}
+
 .gps-progress {
   display: none;
 }

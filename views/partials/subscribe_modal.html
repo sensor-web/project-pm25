@@ -14,16 +14,20 @@
 
          {{#if location}}
          {{#if setup}}
-         <span class="location-input-message">{{__ 'input.setup.station.message'}}</span>
+         <label class="location-input-message">{{__ 'input.setup.station.message'}}</label>
          {{else}}
-         <span class="location-input-message">{{__ 'input.wait.station.message'}}</span>
+         <label class="location-input-message">{{__ 'input.wait.station.message'}}</label>
          {{/if}}
          
          <div class="gps-progress progress"><div class="indeterminate"></div></div>
          <input type="hidden" name="latitude" class="sub-lat">
          <input type="hidden" name="longitude" class="sub-lng">
-         {{! TODO: add GPS button }}
-         <div class="map"></div>
+
+         <div class="map">
+            <div class="leaflet-top leaflet-right">
+               <a class="gps-position waves-effect waves-light btn-large" href="javascript:void(0);"><!--googleoff: index--><i class="material-icons">my_location</i><!--googleon: index-->{{__ 'input.request.gps'}}</a>
+            </div>  
+         </div>
          <span class="coords-error">{{__ 'input.error.no.coords'}}</span>
 
          {{/if}}

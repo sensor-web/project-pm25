@@ -35,8 +35,8 @@
 	"unsubscribe.success": "已成功取消訂閱！",
 
 	"input.email.placeholder": "電子郵件（必填）",
-	"input.setup.station.message": "測站要架設的地點",
-	"input.wait.station.message": "關注的地點",
+	"input.setup.station.message": "測站架設地點：",
+	"input.wait.station.message": "關注的地點：",
 	"input.request.gps": "GPS 定位",
 	"input.frequency.prompt": "你平常一週中有幾天在此區域活動？",
 	"input.frequency.placeholder": "請選擇最接近的一項",
