@@ -33,7 +33,7 @@
                         options.push(region);
                     }
                 }),
-                $.get('http://nominatim.openstreetmap.org/search', {format: 'json', 'accept-language':'zh-TW', q: value}, function (places) {
+                $.get('https://nominatim.openstreetmap.org/search', {format: 'json', 'accept-language':'zh-TW', q: value}, function (places) {
                     for (var place of places) {
                         place.id = place.place_id;
                         place.text = place.display_name;
