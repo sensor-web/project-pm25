@@ -1,6 +1,6 @@
 {
 	"home": "Home",
-	"get.sensor": "Setup a Sensor",
+	"get.sensor": "Get a Sensor",
 	"blog": "Blog",
 	"about.sensorweb": "About",
 	"page.desc": "Do you know the air quality around you? With Project SensorWeb, you can find a nearby PM2.5 air pollution sensor and subcribe for notification.",
@@ -67,7 +67,7 @@
 	"relevant.stations.heading": "Nearby <span class=\"marked\">PM2.5</span> Sensors",
 
 	"get.sensor.title": "Get a PM2.5 Sensor - Project SensorWeb",
-	"get.sensor.heading": "Setup a Sensor",
+	"get.sensor.heading": "Get a Sensor",
 	"buy.sensor.heading": "Buy a sensor",
 	"buy.sensor.button": "Notify me when in stock",
 	"buy.sensor.description": "Do you care about air quality around you?<br>We are planning a easy-to-use and affordable sensor product.<br>Leave your Email address to get first hand notification.",
