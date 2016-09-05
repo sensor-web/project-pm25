@@ -66,7 +66,7 @@
 	"station.%s.title": "%s PM2.5 Concentration - Project SensorWeb",
 	"relevant.stations.heading": "Nearby <span class=\"marked\">PM2.5</span> Sensors",
 
-	"get.sensor.title": "Request a PM2.5 Sensor - Project SensorWeb",
+	"get.sensor.title": "Get a PM2.5 Sensor - Project SensorWeb",
 	"get.sensor.heading": "Setup a Sensor",
 	"buy.sensor.heading": "Buy a sensor",
 	"buy.sensor.button": "Notify me when in stock",
