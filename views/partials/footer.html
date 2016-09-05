@@ -1,5 +1,14 @@
-      <footer>
-         <a id="email" href="mailto:{{__ 'contact.email'}}"><i class="material-icons">email</i>{{__ 'contact.email'}}</a>
-         <br>
-         <a href="https://www.mozilla.org/en-US/privacy/websites/" target="_blank">{{{__ "privacy.notice"}}}</a>
-      </footer>
+    <footer>
+        <div class="lang">
+            <select name="language" id="lang-select">
+                <option disabled="" selected="" value="">{{__ 'choose.language'}}</option>
+                <option value="en">English</option>
+                <option value="zh-TW">中文</option>
+            </select>
+        </div>
+        <br>
+        <a id="email" href="mailto:{{__ 'contact.email'}}"><i class="material-icons">email</i>{{__ 'contact.email'}}</a>
+        <br>
+        <a href="https://www.mozilla.org/en-US/privacy/websites/" target="_blank">{{{__ "privacy.notice"}}}</a>
+        <br>
+    </footer>

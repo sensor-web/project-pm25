@@ -4,6 +4,7 @@
 	"blog": "Blog",
 	"about.sensorweb": "About",
 	"page.desc": "Do you know the air quality around you? With Project SensorWeb, you can find a nearby PM2.5 air pollution sensor and subcribe for notification.",
+	"choose.language": "Choose Language",
 	"privacy.notice": "Privacy Policy",
 	"contact.email": "sensorweb@mozilla.com",
 

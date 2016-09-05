@@ -61,6 +61,10 @@ function formDataArrayToJson(array) {
 }
 
 (function () {
+    $('#lang-select').change(function (e) {
+        Cookies.set("locale", this.value);
+        window.location.reload();
+    });
     moment.locale(LOCALE);
     $('.button-collapse').sideNav();
 })();

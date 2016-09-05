@@ -288,12 +288,26 @@ ul.requirements li {
 .subscribe-input,
 .select-dropdown {
   padding-left: 1rem !important;
+  padding-right: 1rem !important;
   margin-left: -0.5rem !important;
+}
+
+.lang {
+  display: inline-block;
+  width: 200px;
+}
+.lang .select-dropdown {
+  background-color: #FFF !important;
+}
+.lang .caret {
+  top: 17px !important;
 }
 
 .caret {
   color: #5CC7B9 !important;
   top: 57px !important;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .subscribe label {
