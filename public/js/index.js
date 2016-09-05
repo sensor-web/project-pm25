@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+    var markers = {};
     var $nearbyStations = $('#nearby-stations');
     loadNearbyStations();
 
@@ -42,6 +43,7 @@
     if (1 == $('#map').size()) {
         var DEFAULT_CENTER = [25.0375167, 121.5637];
         var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            noWrap: true,
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         });
         var map = new L.Map('map', {
@@ -49,6 +51,33 @@
           scrollWheelZoom: false,
           zoom: 12,
           layers: [tileLayer]
+        });
+        map.on('moveend', function () {
+            loadMarkers();
+        });
+        loadMarkers();
+    }
+
+    function loadMarkers() {
+        var bounds = map.getBounds();
+        var query = points2Query([bounds.getNorthEast(), bounds.getNorthWest(), bounds.getSouthWest(), bounds.getSouthEast()]);
+        $.get(API_URL+'/pm25/stations', query, function (stations) {
+            for (var station of stations) {
+                if (undefined == markers[station.id]) {
+                    var marker = L.marker([station.coords.latitude, station.coords.longitude], {
+                        clickable: true,
+                        draggable: false,
+                        title: station.display_name,
+                        alt: station.display_name
+                    });
+                    marker.station = station;
+                    marker.on('click', function(e) {
+                        console.log(this.station.slug);
+                    });
+                    markers[station.id] = marker;
+                    marker.addTo(map);
+                }
+            }
         });
     }
 

@@ -32,6 +32,16 @@ function getGeolocation() {
     });
 }
 
+function points2Query(points) {
+    var result = '';
+    var conj = '';
+    for (var point of points) {
+        result += conj + 'points='+point.lat.toString()+','+point.lng.toString();
+        conj = '&';
+    }
+    return result;
+}
+
 function validateCoords($form) {
     var $lat = $form.find('.sub-lat');
     var $lng = $form.find('.sub-lng');

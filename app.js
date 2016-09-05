@@ -160,6 +160,11 @@ api.get('/pm25/stations', function(req, res) {
         .then(function (stations) {
             res.json(stations);
         }).catch(serverError(res));
+    } else if (req.query.points) {
+        stations.listByIntersections(params2JsonPoints(req.query.points))
+        .then(function (stations) {
+            res.json(stations);
+        }).catch(serverErrorJson(res));
     }
 });
 
@@ -249,4 +254,13 @@ function addTrailingSlash(req, res) {
         return true;
     }
     return false;
+}
+
+function params2JsonPoints(params) {
+    var points = [];
+    for (var param of params) {
+        var point = param.split(',');
+        points.push({latitude: Number.parseFloat(point[0]), longitude: Number.parseFloat(point[1])});
+    }
+    return points;
 }
