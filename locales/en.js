@@ -68,7 +68,7 @@
 
 	"get.sensor.title": "Get a PM2.5 Sensor - Project SensorWeb",
 	"get.sensor.heading": "Get a Sensor",
-	"buy.sensor.heading": "Buy a sensor",
+	"buy.sensor.heading": "Buy a Sensor",
 	"buy.sensor.button": "Notify me when in stock",
 	"buy.sensor.description": "Do you care about air quality around you?<br>We are planning a easy-to-use and affordable sensor product.<br>Leave your Email address to get first hand notification.",
 	"buy.sensor.requirements": "<b>Requirements</b><li>WiFi Network (Captive and WPA enterprise not supported)</li><li>Power Supply</li><li>Outdoor and Rain-Proof Place (Balcony or window sill)</li>",
