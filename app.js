@@ -12,6 +12,7 @@ var db = require('./lib/db');
 var stations = require('./lib/stations');
 var regions = require('./lib/regions');
 var subscriptions = require('./lib/subscriptions');
+var data = require('./lib/data');
 var request = require('request');
 
 i18n.configure({
@@ -168,6 +169,25 @@ api.get('/pm25/stations', function(req, res) {
     }
 });
 
+api.post('/pm25/stations/:id', function(req, res) {
+    var id = req.params.id;
+    var entry = req.body;
+    var apiKey = entry.api_key;
+    delete entry.api_key;
+    subscriptions.checkApiKey(apiKey, id).then(function (valid) {
+        if (valid) {
+            stations.updateData(id, entry).then(function () {
+                entry.station_id = id;
+                return data.save(entry);
+            }).then(function() {
+                res.json({result: 'success'});
+            }).catch(serverErrorJson(res));
+        } else {
+            res.json({result: 'failed', message: res.__('invalid.api.key')})
+        }
+    }).catch(serverErrorJson(res));
+});
+
 api.get('/pm25/regions', function(req, res) {
     if (req.query.id) {
         regions.getById(req.query.id)
@@ -179,6 +199,11 @@ api.get('/pm25/regions', function(req, res) {
         .then(function (regions) {
             res.json(regions);
         }).catch(serverError(res));
+    } else if (req.query.points) {
+        regions.listByIntersections(params2JsonPoints(req.query.points))
+        .then(function (regions) {
+            res.json(regions);
+        }).catch(serverErrorJson(res));
     }
 });
 
@@ -207,6 +232,7 @@ db.connect(config.rethinkdb).then(function (db) {
     stations.setDatabase(db);
     regions.setDatabase(db);
     subscriptions.setDatabase(db);
+    data.setDatabase(db);
 
     app.listen(config.port, function () {
         console.log('Server listening on port ' + config.port);
@@ -226,7 +252,7 @@ function notFound(res) {
 function serverError(res) {
     return function(result) {
         res.status(500);
-        res.render('500');
+        res.render('500', {cause: result.stack});
     };
 }
 
@@ -240,7 +266,7 @@ function notFoundJson(res) {
 function serverErrorJson(res) {
     return function(result) {
         res.status(500);
-        res.json({result: 'failed', message: res.__('server.error')});
+        res.json({result: 'failed', message: res.__('server.error'), cause: result.stack});
     };
 }
 

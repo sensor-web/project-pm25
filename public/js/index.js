@@ -80,34 +80,54 @@
     function loadMarkers() {
         var bounds = map.getBounds();
         var query = points2Query([bounds.getNorthEast(), bounds.getNorthWest(), bounds.getSouthWest(), bounds.getSouthEast()]);
-        $.get(API_URL+'/pm25/stations', query, function (stations) {
-            for (var station of stations) {
-                if (undefined == markers[station.id]) {
-                    var marker = L.marker([station.coords.latitude, station.coords.longitude], {
-                        clickable: true,
-                        draggable: false,
-                        opacity: 0.5,
-                        title: station.display_name,
-                        alt: station.display_name
-                    });
-                    marker.station = station;
-                    marker.on('click', function(e) {
-                        selectMarker(this);
-                    });
-                    markers[station.id] = marker;
-                    marker.addTo(map);
-                }
-            }
-            if (undefined != markers[currentId]) {
-                selectMarker(markers[currentId]);
-            }
+        $.get(API_URL+'/pm25/stations', query, function (places) {
+            updateMarkers('station', places);
+        });
+        $.get(API_URL+'/pm25/regions', query, function (places) {
+            updateMarkers('region', places);
         });
     }
 
+    function updateMarkers(type, places) {
+        for (var place of places) {
+            place.type = type;
+            if (undefined == markers[place.id]) {
+                var marker = L.marker([place.coords.latitude, place.coords.longitude], {
+                    clickable: true,
+                    draggable: false,
+                    opacity: 0.5,
+                    riseOnHover: true,
+                    title: place.display_name,
+                    alt: place.display_name
+                });
+                if (type == 'region') {
+                    enlargeMarker(marker);
+                } else {
+                    normalMarker(marker);
+                }
+                marker.place = place;
+                marker.on('click', function(e) {
+                    selectMarker(this);
+                });
+                markers[place.id] = marker;
+                marker.addTo(map);
+            }
+        }
+        if (undefined != markers[currentId]) {
+            selectMarker(markers[currentId]);
+        }
+    }
+
+    function normalMarker(marker) {
+        var icon = marker.options.icon;
+        icon.options.iconSize = [25, 41];
+        marker.setIcon(icon);
+    }
     function enlargeMarker(marker) {
         var icon = marker.options.icon;
-        icon.options.iconSize = [30, 50];
+        icon.options.iconSize = [45, 75];
         marker.setIcon(icon);
+        marker.setZIndexOffset(1000);
     }
 
     function loadNearbyStations() {

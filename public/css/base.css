@@ -53,6 +53,10 @@ a:hover {
   color: #00BDAF;
 }
 
+.error-message {
+  text-align: left;
+}
+
 /* Navbar */
 
 nav{

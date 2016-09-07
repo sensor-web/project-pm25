@@ -26,6 +26,7 @@ function createIndices() {
 	.then(db.createIndexIfNotExist('regions', 'subscription_count'))
 	.then(db.createIndexIfNotExist('regions', 'region_type'))
 	.then(db.createIndexIfNotExist('regions', 'country_code'))
+	.then(db.createIndexIfNotExist('regions', 'coords', {geo: true}))
 	.then(db.createIndexIfNotExist('regions', 'average_create_time', function(d) {return d('average')('create_time')}))
 	.then(db.createIndexIfNotExist('regions', 'average_pm2_5', function(d) {return d('average')('pm2_5')}))
 	.then(db.createIndexIfNotExist('summary', 'region_id'))

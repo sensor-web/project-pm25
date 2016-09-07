@@ -93,6 +93,8 @@
 	"sorry.no.nearby.station": "Oops... There is no sensor nearby.",
 	"sorry.no.relevant.station": "Oops... There is no sensor nearby.",
 	"sorry.no.gps": "Unable to obtain GPS information. Please make sure the GPS is ON and <a href=\"javascript:loadNearbyStations();\">click here to try again</a>.",
+	"invalid.api.key": "Invalid API Key",
+	"error.message": "Error message: ",
 	"not.found.title": "Content Not Found - Project SensorWeb",
 	"not.found": "Content Not Found.",
 	"server.error.title": "Server Error - Project SensorWeb",

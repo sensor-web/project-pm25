@@ -93,6 +93,8 @@
 	"sorry.no.nearby.station": "抱歉，目前沒有可參考的監測站資料在附近。",
 	"sorry.no.relevant.station": "抱歉，目前尚無鄰近監測站資料。",
 	"sorry.no.gps": "無法取得 GPS 定位資訊，請檢查 GPS 定位功能是否開啟，並<a href=\"javascript:loadNearbyStations();\">點此再試一次</a>。",
+	"invalid.api.key": "無效的 API 金鑰",
+	"error.message": "錯誤訊息：",
 	"not.found.title": "此內容不存在 - Project SensorWeb",
 	"not.found": "此內容不存在。",
 	"server.error.title": "網站發生錯誤 - Project SensorWeb",
