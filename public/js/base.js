@@ -71,6 +71,7 @@ function formDataArrayToJson(array) {
 }
 
 (function () {
+    $('select').material_select();
     $('#lang-select').change(function (e) {
         Cookies.set("locale", this.value);
         window.location.reload();

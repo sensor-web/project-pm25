@@ -11,7 +11,6 @@
         $this.addClass(getDAQIStatus(Number.parseInt($this.text())));
     });
 
-    $('select').material_select();
     $('.modal-trigger').leanModal();
     $('.subscribe').click(function(e) {
         ga('send', 'event', 'data', 'subscribe', 'pm25');
