@@ -83,7 +83,7 @@
 	"wait.sensor.button": "有測站時通知我",
 	"wait.sensor.description": "覺得架設測站太困難？<br>別擔心，Project SensorWeb 是開放群眾參與的感測網路。<br>留下聯絡信箱及你所關心的地點資訊，我們將在附近有測站資料時通知你。",
 
-	"about.description": "Project SensorWeb 是開放群眾參與的感測資料網路。我們相信開放資料能讓生活環境的資訊更加透明，進而改善人們的生活。",
+	"about.description": "<p>Project SensorWeb 是開放群眾參與的感測資料網路。我們相信開放資料能讓生活環境的資訊更加透明，進而改善人們的生活。<p>此網站目前仍在測試階段，若有任何問題或建議歡迎<a href=\"mailto:sensorweb-tw@mozilla.com\">來信詢問</a>。",
 
 	"unsubscribe.title": "取消訂閱 - Project SensorWeb",
 	"unsubscribe.heading": "取消訂閱通知",
