@@ -12,6 +12,7 @@ var db = require('./lib/db');
 var stations = require('./lib/stations');
 var regions = require('./lib/regions');
 var subscriptions = require('./lib/subscriptions');
+var summary = require('./lib/summary');
 var data = require('./lib/data');
 var request = require('request');
 
@@ -82,7 +83,16 @@ app.get('/pm25', function(req, res) {
         region.countryTop = results[2];
         region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
         region.show_map_search = config.debug || req.query.map_search == 'true';
-        res.render('index', region);
+        Promise.all([
+            summary.getWeekAvgMax(region.id, 'pm2_5'),
+            summary.getWeekAvgMin(region.id, 'pm2_5')
+        ]).then(function (history) {
+            region.week = {
+                max: history[0],
+                min: history[1]
+            };
+            res.render('index', region);
+        }).catch(serverError(res));
     }).catch(serverError(res));
 });
 
@@ -111,9 +121,17 @@ app.get('/pm25/station/:slug/', function(req, res) {
     }
     stations.getBySlug(location).then(function(station) {
         if (station) {
-            stations.listByNearestCoords(station.coords, station.id)
-            .then(function (nearbyStations) {
-                station.nearbyStations = nearbyStations;
+            Promise.all([
+                stations.listByNearestCoords(station.coords, station.id),
+                data.getWeekMax(station.id, 'pm2_5'),
+                data.getWeekMin(station.id, 'pm2_5')
+            ]).then(function (results) {
+                station.nearbyStations = results[0];
+
+                station.week = {
+                    max: results[1],
+                    min: results[2]
+                };
                 res.render('station', station);
             }).catch(serverError(res));
         } else {
@@ -232,6 +250,7 @@ db.connect(config.rethinkdb).then(function (db) {
     stations.setDatabase(db);
     regions.setDatabase(db);
     subscriptions.setDatabase(db);
+    summary.setDatabase(db);
     data.setDatabase(db);
 
     app.listen(config.port, function () {

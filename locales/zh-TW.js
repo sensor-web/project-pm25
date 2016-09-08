@@ -8,6 +8,7 @@
 	"privacy.notice": "隱私權政策",
 	"contact.email": "sensorweb-tw@mozilla.com",
 
+	"week.range": "近一週變化：",
 	"last.update": "上次更新於",
 	"pm25.concentration": "<span class=\"marked\">PM2.5</span> 即時濃度",
 	"pm25.concentration.average": "<span class=\"marked\">PM2.5</span> 即時濃度平均",
@@ -53,6 +54,7 @@
 	"input.reason.better.world": "我想協助改善社區／城市居住環境",
 	"input.reason.join.placeholder": "為何想要參與 Project SensorWeb？",
 	"input.submit": "提交",
+	"input.will.participate": "我願意收到更新消息以及參與使用經驗訪談。",
 	"input.privacy.note": "點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href=\"https://www.mozilla.org/en-US/privacy/websites/\" target=\"_blank\">隱私權政策</a>所述，處理我的個人資料。",
 	"input.error.no.coords": "請在地圖上選擇地點",
 
