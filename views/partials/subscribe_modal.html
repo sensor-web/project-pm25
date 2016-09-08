@@ -54,12 +54,12 @@
          {{#if setup}}
          <input name="reason_join" class="sub-reason-join subscribe-input" type="text" placeholder="{{__ 'input.reason.join.placeholder'}}">
          {{/if}}
-         <div>
+         <div class="input-wrapper">
             <input id="{{ form_id }}-will-participate" name="will_participate" class="sub-will-participate subscribe-input valign" type="checkbox">
             <label for="{{ form_id }}-will-participate" class="align-top">{{__ 'input.will.participate'}}</label>
          </div>
          <div class="submit-area">
-           <input name="submit" value="{{__ 'input.submit'}}" class="subscribe-sensor waves-effect waves-light btn-large" type="submit">
+           <button class="subscribe-sensor waves-effect waves-light btn-large">{{__ 'input.submit'}}</button>
          </div>
          <p class="mute">{{{__ 'input.privacy.note'}}}</p>
       </form>

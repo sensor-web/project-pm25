@@ -409,6 +409,10 @@ ul.requirements li {
   display: none;
 }
 
+.input-wrapper {
+  position: absolute;
+}
+
 /* Buttons */
 
 .marked {
@@ -464,7 +468,7 @@ ul.requirements li {
   box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
   color: #FFF !important;
   margin-top: 30px;
-  padding: 0 1.2rem;
+  padding: 0 1.6rem;
 }
 
 .btn-large i {
