@@ -43,7 +43,7 @@ node ./createSchema.js
 ./cronjob.sh --freq=daily
 ```
 
-## Set up cron jobs
+## Set up Cron Jobs
 
 Set up hourly job to update data from external source
 ```

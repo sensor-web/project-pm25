@@ -22,5 +22,6 @@
         "logger": true,
         "debug": true
     },
+    "parties": ["legacy", "ProbeCube", "EPA", "LASS", "Indie", "Airbox", "Webduino"],
     "debug": true
 }
