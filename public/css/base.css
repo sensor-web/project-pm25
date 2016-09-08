@@ -323,6 +323,10 @@ ul.requirements li {
   color: #5CC7B9;
 }
 
+.subscribe label.align-top {
+  padding-top: 0;
+}
+
 .sub-reason-join {
   margin-top: 40px !important;
 }
