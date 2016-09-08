@@ -54,7 +54,7 @@
 	"input.reason.better.world": "I want to make the environment better.",
 	"input.reason.join.placeholder": "Why do you want to join Project SensorWeb?",
 	"input.submit": "Submit",
-	"input.will.participate": "I'm willing to get notified on updates, and participate in further surveys or interviews.",
+	"input.will.participate": "I’m willing to receive updates and test activities from Project SensorWeb.",
 	"input.privacy.note": "By clicking \"Submit,\" I agree Mozilla to deal with my personal information follows the <a href=\"https://www.mozilla.org/en-US/privacy/websites/\" target=\"_blank\">Privacy Policy</a>.",
 	"input.error.no.coords": "Please pick a location on the map.",
 
