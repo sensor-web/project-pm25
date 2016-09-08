@@ -85,7 +85,7 @@
 	"wait.sensor.button": "Subscribe",
 	"wait.sensor.description": "Is sensor setup too diffcult to you?<br>No worry. Project SensorWeb is a crowdsourcing sensor network.<br>Leave your Email address and the location you care about. We will notify you once there are sensors around.",
 
-	"about.description": "<p>Project SensorWeb is a crowdsourcing sensor network. <br>We believe that open data can help revealing significant resdential information and making lives better.<p>This website is still in early beta, <br><a href=\"mailto:sensorweb@mozilla.com\">let us know</a> if any questions and comments.",
+	"about.description": "<p>Project SensorWeb is a crowdsourcing sensor network. <br>We believe that open data can help revealing significant residential information and making lives better.<p>This website is still in early beta, <br><a href=\"mailto:sensorweb@mozilla.com\">let us know</a> if any questions and comments.",
 
 	"unsubscribe.title": "Unsubscribe - Project SensorWeb",
 	"unsubscribe.heading": "Unsubscribe Notifications",
