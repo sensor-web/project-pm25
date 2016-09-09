@@ -15,6 +15,7 @@ var subscriptions = require('./lib/subscriptions');
 var summary = require('./lib/summary');
 var data = require('./lib/data');
 var request = require('request');
+var aqi = require('./lib/aqi');
 
 i18n.configure({
     locales: ['zh-TW', 'en'],
@@ -40,23 +41,26 @@ hbs.registerHelper('__n', function () {
     return i18n.__n.apply(this, arguments);
 });
 
+app.use(i18n.init);
 app.set('trust proxy', true);
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.locals.config = config;
-// allow access of request object in templates
 app.use(function(req,res,next){
+    createContext(req);
+    // allow access of request object in templates
     res.locals.req = req;
     next();
-})
-app.use(i18n.init);
+});
+
 api.use(i18n.init);
 api.use(bodyParser.urlencoded({ extended: false }))
 api.use(bodyParser.json())
 // allow CORS in API
 api.use(function(req, res, next) {
+    createContext(req);
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -74,9 +78,9 @@ app.get('/pm25', function(req, res) {
         return;
     }
     Promise.all([
-        regions.getBySlug("臺灣臺北市"),
-        stations.listByRegionTop("state", "臺北市", "pm2_5"),
-        stations.listByRegionTop("country", "臺灣", "pm2_5")
+        regions.getBySlug(req.ctx, "臺灣臺北市"),
+        stations.listByRegionTop(req.ctx, "state", "臺北市", "pm2_5"),
+        stations.listByRegionTop(req.ctx, "country", "臺灣", "pm2_5")
     ]).then(function (results) {
         var region = results[0];
         region.stateTop = results[1];
@@ -84,12 +88,14 @@ app.get('/pm25', function(req, res) {
         region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
         region.show_map_search = config.debug || req.query.map_search == 'true';
         Promise.all([
-            summary.getWeekAvgMax(region.id, 'pm2_5'),
-            summary.getWeekAvgMin(region.id, 'pm2_5')
+            summary.getWeekAvgMax(req.ctx, region.id, 'pm2_5'),
+            summary.getWeekAvgMin(req.ctx, region.id, 'pm2_5')
         ]).then(function (history) {
             region.week = {
                 max: history[0],
-                min: history[1]
+                maxStatus: aqi.getAQIStatus(req.ctx, history[0], region.country_code),
+                min: history[1],
+                minStatus: aqi.getAQIStatus(req.ctx, history[1], region.country_code)
             };
             res.render('index', region);
         }).catch(serverError(res));
@@ -119,18 +125,20 @@ app.get('/pm25/station/:slug/', function(req, res) {
         res.redirect('/pm25/station/'+redirect[location]+'/');
         return;
     }
-    stations.getBySlug(location).then(function(station) {
+    stations.getBySlug(req.ctx, location).then(function(station) {
         if (station) {
             Promise.all([
-                stations.listByNearestCoords(station.coords, station.id),
-                data.getWeekMax(station.id, 'pm2_5'),
-                data.getWeekMin(station.id, 'pm2_5')
+                stations.listByNearestCoords(req.ctx, station.coords, station.id),
+                data.getWeekMax(req.ctx, station.id, 'pm2_5'),
+                data.getWeekMin(req.ctx, station.id, 'pm2_5')
             ]).then(function (results) {
                 station.nearbyStations = results[0];
 
                 station.week = {
                     max: results[1],
-                    min: results[2]
+                    maxStatus: aqi.getAQIStatus(req.ctx, results[1], station.address.country_code),
+                    min: results[2],
+                    minStatus: aqi.getAQIStatus(req.ctx, results[2], station.address.country_code)
                 };
                 res.render('station', station);
             }).catch(serverError(res));
@@ -160,27 +168,27 @@ app.get('/pm25/*', function(req, res) {
 });
 
 /*
-* API
-*/
+ * API
+ */
 
 api.get('/pm25/stations', function(req, res) {
     if (req.query.ids) {
-        stations.listByIds(req.query.ids)
+        stations.listByIds(req.ctx, req.query.ids)
         .then(function (stations) {
             res.json(stations);
         }).catch(serverError(res));
     } else if (req.query.latitude != undefined && req.query.longitude != undefined) {
-        stations.listByNearestCoords({latitude: req.query.latitude, longitude: req.query.longitude})
+        stations.listByNearestCoords(req.ctx, {latitude: req.query.latitude, longitude: req.query.longitude})
         .then(function (stations) {
             res.json(stations);
         }).catch(serverErrorJson(res));
     } else if (req.query.q) {
-        stations.searchBySlug(req.query.q)
+        stations.searchBySlug(req.ctx, req.query.q)
         .then(function (stations) {
             res.json(stations);
         }).catch(serverError(res));
     } else if (req.query.points) {
-        stations.listByIntersections(params2JsonPoints(req.query.points))
+        stations.listByIntersections(req.ctx, params2JsonPoints(req.query.points))
         .then(function (stations) {
             res.json(stations);
         }).catch(serverErrorJson(res));
@@ -192,9 +200,9 @@ api.post('/pm25/stations/:id', function(req, res) {
     var entry = req.body;
     var apiKey = entry.api_key;
     delete entry.api_key;
-    subscriptions.checkApiKey(apiKey, id).then(function (valid) {
+    subscriptions.checkApiKey(req.ctx, apiKey, id).then(function (valid) {
         if (valid) {
-            stations.updateData(id, entry).then(function () {
+            stations.updateData(req.ctx, id, entry).then(function () {
                 entry.station_id = id;
                 return data.save(entry);
             }).then(function() {
@@ -208,17 +216,17 @@ api.post('/pm25/stations/:id', function(req, res) {
 
 api.get('/pm25/regions', function(req, res) {
     if (req.query.id) {
-        regions.getById(req.query.id)
+        regions.getById(req.ctx, req.query.id)
         .then(function (region) {
             res.json(region);
         }).catch(serverErrorJson(res));
     } else if (req.query.q) {
-        regions.searchBySlug(req.query.q)
+        regions.searchBySlug(req.ctx, req.query.q)
         .then(function (regions) {
             res.json(regions);
         }).catch(serverError(res));
     } else if (req.query.points) {
-        regions.listByIntersections(params2JsonPoints(req.query.points))
+        regions.listByIntersections(req.ctx, params2JsonPoints(req.query.points))
         .then(function (regions) {
             res.json(regions);
         }).catch(serverErrorJson(res));
@@ -226,7 +234,7 @@ api.get('/pm25/regions', function(req, res) {
 });
 
 api.post('/pm25/subscriptions', function(req, res) {
-    subscriptions.subscribe(req.body).then(function(result) {
+    subscriptions.subscribe(req.ctx, req.body).then(function(result) {
         var sub_id = result.generated_keys || result.existing_keys;
         if (sub_id && sub_id.length) {
             sub_id = sub_id[0];
@@ -236,7 +244,7 @@ api.post('/pm25/subscriptions', function(req, res) {
 });
 
 api.delete('/pm25/subscriptions', function(req, res) {
-    subscriptions.unsubscribe(req.body).then(function(result) {
+    subscriptions.unsubscribe(req.ctx, req.body).then(function(result) {
         res.json({result: 'success', message: res.__('unsubscribe.success'), subscription_ids: result.existing_keys});
     }).catch(serverErrorJson(res));
 });
@@ -260,6 +268,13 @@ db.connect(config.rethinkdb).then(function (db) {
         console.log('API listening on port ' + config.api_port);
     });  
 });
+
+function createContext(req) {
+    req.ctx = {
+        locale: req.locale,
+        country_code: req.country_code
+    }
+}
 
 function notFound(res) {
     return function(result) {

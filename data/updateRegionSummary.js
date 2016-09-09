@@ -8,6 +8,7 @@ var summary = require('../lib/summary');
 var TOPDOWN_ADDR_COUNTRIES = ["tw", "jp", "kr", "cn"];
 var THRESHOLD = 25;
 var OSM_API = "http://nominatim.openstreetmap.org/search?format=json&countrycodes=%s&%s=%s";
+var ctx = null;
 
 function onError(error) {
 	console.error(error);
@@ -18,7 +19,7 @@ function loadRegionsByStations(regionType) {
 	var regnQueue = [];
 	var resolveLocation;
 
-	return stations.countByRegionType(regionType).then(function(cnts) {
+	return stations.countByRegionType(ctx, regionType).then(function(cnts) {
 		for (var cnt of cnts) {
 			if (null != cnt.group[1] && null != cnt.group[2] && cnt.reduction > THRESHOLD) {
 				var regn = {};
@@ -37,7 +38,7 @@ function loadRegionsByStations(regionType) {
 			loadLocationsRecursive();
 		});
 	}).then(function () {
-		return stations.averageByRegionType(regionType, 'pm2_5')
+		return stations.averageByRegionType(ctx, regionType, 'pm2_5')
 	}).then(function (avgs) {
 		for (var avg of avgs) {
 			var regn = regns[buildSlug(avg.group)];
@@ -51,14 +52,14 @@ function loadRegionsByStations(regionType) {
 		var promises = [];
 		for (var slug in regns) {
 			console.log('Save data for region: '+slug);
-			var promise = regions.saveOrUpdate(regns[slug]).then(function(result) {
+			var promise = regions.saveOrUpdate(ctx, regns[slug]).then(function(result) {
 			  var entry = {average: regns[slug].average};
 		      if (undefined != result.existing_keys && undefined != result.existing_keys[0]) {
 		        entry.region_id = result.existing_keys[0];
 		      } else if (undefined != result.generated_keys && undefined != result.generated_keys[0]) {
 		        entry.region_id = result.generated_keys[0];
 		      }
-		      return summary.save(entry);
+		      return summary.save(ctx, entry);
 			}).catch(onError);
 			promises.push(promise);
 		}

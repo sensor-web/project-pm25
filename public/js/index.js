@@ -140,8 +140,7 @@
                 }
                 var items = '';
                 for (var station of stations) {
-                    var level = getDAQIStatus(Number.parseInt(station.data.pm2_5));
-                    items += getStationListItem(station, level);
+                    items += getStationListItem(station);
                 }
                 $nearbyStations.html(items);
                 $nearbyStations.find('li a').click(function () {

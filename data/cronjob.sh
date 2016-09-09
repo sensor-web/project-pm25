@@ -23,28 +23,28 @@ if [ -z $FREQ ]; then
 	echo "--freq=[hourly|daily] parameter required"
 else
 	if [ $FREQ = "hourly" ]; then
-		echo "Running updateData.sh" >&2
+		echo "*** Running updateData ***" >&2
 		node ./updateData.js
 	elif [ $FREQ = "daily" ]; then
-		echo "Running updateData.sh" >&2
+		echo "*** Running updateData ***" >&2
 		node ./updateData.js &&
-		echo "Running updateStations.sh" >&2
+		echo "*** Running updateStations ***" >&2
 		node ./updateStations.js
 	fi &&
 
-	echo "Running updateStationsToDb.sh" >&2
+	echo "*** Running updateStationsToDb ***" >&2
 	node ./updateStationsToDb.js &&
-	echo "Running updateRegionSummary.sh" >&2
+	echo "*** Running updateRegionSummary ***" >&2
 	node ./updateRegionSummary.js &&
 
-	echo "Running notifyConcentration.sh" >&2
+	echo "*** Running notifyConcentration ***" >&2
 	if [ $DRYRUN ]; then
 		node ./notifyConcentration.js --dry-run
 	else
 		node ./notifyConcentration.js
 	fi &&
 
-	echo "Running genSitemap.sh" >&2
+	echo "*** Running genSitemap ***" >&2
 	if [ $FREQ = "daily" ]; then
 		node ./genSitemap.js
 	fi

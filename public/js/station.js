@@ -3,13 +3,6 @@
 (function () {
     var $pm25 = $('#latest-pm25');
     var $modal = $('.subscribe-modal');
-    $pm25.attr('class', getDAQIStatus(Number.parseInt($pm25.text())));
-    $('#latest-status').html(getDAQIStatusText(Number.parseInt($pm25.text())));
-
-    $('.concentration-value').each(function() {
-        var $this = $(this);
-        $this.addClass(getDAQIStatus(Number.parseInt($this.text())));
-    });
 
     $('.modal-trigger').leanModal();
     $('.subscribe').click(function(e) {

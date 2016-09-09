@@ -39,6 +39,9 @@ Create schema and load data into database for the first time.
 cd data
 echo "{}" > 3rdPartyData.json
 echo "{}" > stations.json
+echo "{}" > redirect.json
+cp regionTable.json.sample regionTable.json
+cp aqiTable.json.sample aqiTable.json
 node ./createSchema.js
 ./cronjob.sh --freq=daily
 ```

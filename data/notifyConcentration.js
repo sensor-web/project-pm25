@@ -14,6 +14,7 @@ var notifyTemplate = transporter.templateSender({
 }, {from: '"Project SensorWeb" <sensorweb-tw@mozilla.com>'});
 var DRYRUN = '--dry-run' == process.argv[2] || config.debug;
 var SEND_INTERVAL = 100;
+var ctx = null;
 
 function onSuccess(result) {console.log(result)};
 function onError(error) {console.error(error)};
@@ -23,7 +24,7 @@ db.connect(config.rethinkdb).then(function (db) {
 	stations.setDatabase(db);
 	regions.setDatabase(db);
 
-	stations.notifyConcentrationChanges(function (subscription) {
+	stations.notifyConcentrationChanges(ctx, function (subscription) {
 		var unsubscribeUrl = config.site_url+'/pm25/unsubscribe/?id='+subscription.left.id+'&type='+subscription.left.type;
 		var notify = {
 			options: {
@@ -39,7 +40,7 @@ db.connect(config.rethinkdb).then(function (db) {
 		notifyQueue.push(notify);
 	}).then(function () {
 		console.log('finished notify stations');
-		return regions.notifyConcentrationChanges(function (subscription) {
+		return regions.notifyConcentrationChanges(ctx, function (subscription) {
 			var unsubscribeUrl = config.site_url+'/pm25/unsubscribe/?id='+subscription.left.id+'&type='+subscription.left.type;
 			var notify = {
 				options: {

@@ -1,23 +1,5 @@
 'use strict';
 
-function isNumeric(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
-function getDAQIStatus(index) {
-    if (!isNumeric(index) || index < 0) {
-        return 'invalid';
-    } else if (index <= 35) {
-        return 'low';
-    } else if (index <= 53) {
-        return 'moderate';
-    } else if (index <= 70) {
-        return 'high';
-    } else {
-        return 'extreme';
-    }
-}
-
 function getGeolocation() {
     return new Promise(function(resolve, reject) {
         if (navigator.geolocation) {
