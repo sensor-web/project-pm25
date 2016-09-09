@@ -72,11 +72,15 @@ function loadRegionsByStations(regionType) {
 			getRegionLocation(region.slug, region.country_code, region.region_type, region.region_name, function (result) {
 				console.log(result);
 
-				regns[result.slug].coords = {
-					latitude: result.lat,
-					longitude: result.lon
-				};
-				console.log(regns[result.slug]);
+				if (undefined != result) {
+					regns[result.slug].coords = {
+						latitude: result.lat,
+						longitude: result.lon
+					};
+					console.log(regns[result.slug]);
+				} else {
+					console.log('Unable to load '+region.slug);
+				}
 				setTimeout(loadLocationsRecursive, 1500);
 			});
 		} else {
@@ -98,7 +102,9 @@ function loadRegionsByStations(regionType) {
 		        if (!error && response.statusCode == 200) {
 					console.log('Loaded data for region: ' + slug);
 	        		var result = JSON.parse(body);
-	        		result[0].slug = slug;
+	        		if (undefined != result[0]) {
+		        		result[0].slug = slug;
+	        		}
 	        		callback(result[0]);
 		        } else {
 					console.log('Error loading data for region: ' + slug, error);
