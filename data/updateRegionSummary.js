@@ -77,7 +77,6 @@ function loadRegionsByStations(regionType) {
 						latitude: result.lat,
 						longitude: result.lon
 					};
-					console.log(regns[result.slug]);
 				} else {
 					console.log('Unable to load '+region.slug);
 				}
@@ -104,8 +103,24 @@ function loadRegionsByStations(regionType) {
 	        		var result = JSON.parse(body);
 	        		if (undefined != result[0]) {
 		        		result[0].slug = slug;
+		        		callback(result[0]);
+	        		} else {
+	        			//Sometimes region type is different when querying
+	        			var regnTypes = ['state', 'county', 'city'];
+	        			var idx = regnTypes.indexOf(regionType);
+	        			if (-1 != idx) {
+	        				regnTypes.splice(idx, 1);
+	        			}
+	        			setTimeout(getRegionLocation(slug, countryCode, regnTypes.pop(), regionName, function (result) {
+	        				if (undefined != result) {
+				        		callback(result);
+	        				} else {
+			        			setTimeout(getRegionLocation(slug, countryCode, regnTypes.pop(), regionName, function (result) {
+					        		callback(result);
+			        			}), 1500);
+	        				}
+	        			}), 1500);
 	        		}
-	        		callback(result[0]);
 		        } else {
 					console.log('Error loading data for region: ' + slug, error);
 		        }
