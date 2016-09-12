@@ -21,6 +21,7 @@ function loadRegionsByStations(regionType) {
 
 	return stations.countByRegionType(ctx, regionType).then(function(cnts) {
 		for (var cnt of cnts) {
+			console.log(cnt);
 			if (null != cnt.group[1] && null != cnt.group[2] && cnt.reduction > THRESHOLD) {
 				var regn = {};
 				regn.country = cnt.group[1];
@@ -72,8 +73,6 @@ function loadRegionsByStations(regionType) {
 		var region = regnQueue.pop();
 		if (undefined != region) {
 			getRegionLocation(region.slug, region.country_code, region.region_type, region.region_name, function (result) {
-				console.log(result);
-
 				if (undefined != result) {
 					regns[result.slug].coords = {
 						latitude: result.lat,
