@@ -147,6 +147,7 @@
                     ga('send', 'event', 'nearby-stations', 'click', $(this).find('.location').text());
                 });
             });
+            //TODO: check if region matches, reload nearby regions and top stations if necessary
         }).catch(function() {
             $nearbyStations.html(getErrorListItem());
         });

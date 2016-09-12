@@ -265,6 +265,11 @@ api.get('/pm25/regions', function(req, res) {
         .then(function (regions) {
             res.json(regions);
         }).catch(serverError(res));
+    } else if (req.query.latitude != undefined && req.query.longitude != undefined && req.query.country_code != undefined) {
+        regions.listByNearestCoords(req.ctx, {latitude: req.query.latitude, longitude: req.query.longitude}, req.query.country_code)
+        .then(function (regions) {
+            res.json(regions);
+        }).catch(serverErrorJson(res));
     } else if (req.query.points) {
         regions.listByIntersections(req.ctx, params2JsonPoints(req.query.points))
         .then(function (regions) {
