@@ -53,8 +53,8 @@
         });
         var mapOptions = {
           scrollWheelZoom: false,
-          center, DEFAULT_CENTER,
-          zoom, DEFAULT_ZOOM,
+          center: DEFAULT_CENTER,
+          zoom: DEFAULT_ZOOM,
           minZoom: 3,
           maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)),
           layers: [tileLayer]
