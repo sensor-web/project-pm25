@@ -110,11 +110,13 @@ app.get('/pm25/region/:slug', function(req, res) {
     regions.getBySlug(req.ctx, location).then(function (region) {
         if (undefined != region && undefined != region.slug) {
             Promise.all([
+                regions.listByNearestCoords(req.ctx, {latitude: region.coords.latitude, longitude: region.coords.longitude}, region.country_code, region.id),
                 stations.listByRegionTop(req.ctx, region.region_type, region.region_name, "pm2_5"),
                 stations.listByRegionTop(req.ctx, "country_code", region.country_code, "pm2_5")
             ]).then(function (results) {
-                region.stateTop = results[0];
-                region.countryTop = results[1];
+                region.nearbyRegions = results[0];
+                region.stateTop = results[1];
+                region.countryTop = results[2];
                 region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
                 region.show_map_search = config.debug || req.query.map_search == 'true';
                 Promise.all([

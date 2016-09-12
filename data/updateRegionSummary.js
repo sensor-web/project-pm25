@@ -97,27 +97,29 @@ function loadRegionsByStations(regionType) {
 		        'user-agent': 'Mozilla/5.0 (X11; Linux i586; rv:31.0) Gecko/20100101 Firefox/31.0'
 		    }
 		};
+		console.log(options.url);
 
 		request(options, 
 		    function(error, response, body) {
 		        if (!error && response.statusCode == 200) {
 					console.log('Loaded data for region: ' + slug);
 	        		var result = JSON.parse(body);
+					console.log(result);
 	        		if (undefined != result[0]) {
 		        		result[0].slug = slug;
 		        		callback(result[0]);
 	        		} else {
 	        			//Sometimes region type is different when querying
-	        			var regnTypes = ['state', 'county', 'city'];
+	        			var regnTypes = ['city', 'state', 'county'];
 	        			var idx = regnTypes.indexOf(regionType);
 	        			if (-1 != idx) {
 	        				regnTypes.splice(idx, 1);
 	        			}
-	        			setTimeout(getRegionLocation(slug, countryCode, regnTypes.pop(), regionName, function (result) {
+	        			setTimeout(getRegionLocation(slug, countryCode, regnTypes.shift(), regionName, function (result) {
 	        				if (undefined != result) {
 				        		callback(result);
 	        				} else {
-			        			setTimeout(getRegionLocation(slug, countryCode, regnTypes.pop(), regionName, function (result) {
+			        			setTimeout(getRegionLocation(slug, countryCode, regnTypes.shift(), regionName, function (result) {
 					        		callback(result);
 			        			}), 1500);
 	        				}

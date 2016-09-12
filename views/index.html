@@ -32,6 +32,28 @@
          <br>
          <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
       </div>
+
+      <div class="card">
+         <h2 class="medium">{{{__ 'relevant.regions.heading'}}}</h2>
+         <ul id="state-rank">
+            {{#if nearbyRegions.length}}
+            {{#each nearbyRegions}}
+               <li>
+                  <a href="/pm25/region/{{ this.slug }}/">
+                     <span class="concentration">
+                        <span class="concentration-value {{ this.average.status }}">{{ this.average.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                     </span>
+                     <span class="location">@{{ this.display_name }}</span>
+                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
+                  </a>
+               </li>
+            {{/each}}
+            {{else}}
+              <li class="nodata">{{__ 'sorry.no.region'}}</li>
+            {{/if}}
+         </ul>
+      </div>
+
       <div class="card">
          <h2 class="medium">{{{__ 'nearby.stations.heading'}}}</h2>
          <ul id="nearby-stations">
@@ -43,6 +65,7 @@
             </p>
          {{/if}}
       </div>
+
       <div class="card">
          <h2 class="medium">{{{__ 'region.%s.top.heading' region_name}}}</h2>
          <ul id="state-rank">

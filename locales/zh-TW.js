@@ -67,6 +67,7 @@
 
 	"station.%s.title": "%s PM2.5 即時濃度 - Project SensorWeb",
 	"relevant.stations.heading": "鄰近的 <span class=\"marked\">PM2.5</span> 監測站",
+	"relevant.regions.heading": "鄰近地區 <span class=\"marked\">PM2.5</span> 平均濃度",
 
 	"get.sensor.title": "申請架設 PM2.5 測站 - Project SensorWeb",
 	"get.sensor.heading": "申請架設測站",
@@ -91,6 +92,7 @@
 	"unsubscribe.heading": "取消訂閱通知",
 	"unsubscribe.button": "確認取消訂閱",
 
+	"sorry.no.region": "抱歉，目前尚無足夠的監測站資料。",
 	"sorry.no.station": "抱歉，目前尚無監測站資料。",
 	"sorry.no.nearby.station": "抱歉，目前沒有可參考的監測站資料在附近。",
 	"sorry.no.relevant.station": "抱歉，目前尚無鄰近監測站資料。",

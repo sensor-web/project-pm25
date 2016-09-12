@@ -7,6 +7,7 @@
 	"choose.language": "Choose Language",
 	"privacy.notice": "Privacy Policy",
 	"contact.email": "sensorweb@mozilla.com",
+
 	"week.range": "1 week range: ",
 	"last.update": "Last updated:",
 	"pm25.concentration": "<span class=\"marked\">PM2.5</span> Concentration",
@@ -22,6 +23,7 @@
 	"aqi.status.moderate": "<span class=\"marked\">Air quality is Normal.</span> Children and adults with cardiac, respiratory, and cardiovascular diseases should consider to stay indoors.",
 	"aqi.status.high": "<span class=\"marked\">Air quality is Harmful.</span> Anyone with a soar throat, soar eyes, and coughing symptoms should seriously consider to stay indoors.",
 	"aqi.status.extreme": "<span class=\"marked\">Air quality is Extremely Dangerous.</span> Anyone with any ill conditions should seriously consider to stay indoors.",
+
 	"subscribe.modal.heading.pm25": "Subscribe for PM2.5 Notification ",
 	"subscribe.modal.heading.buy.sensor": "Subscribe for Sensors Instock Notification",
 	"subscribe.modal.heading.diy.sensor": "Get an API Key",
@@ -32,6 +34,7 @@
 	"subscribe.diy_station.success": "Thanks! We will send an API Key via Email after the application is approved.",
 	"subscribe.new_station.success": "Thanks! We will send an Email notification when data from a nearby sensor is available.",
 	"unsubscribe.success": "You are unsubscribed！",
+
 	"input.email.placeholder": "Email address (Required)",
 	"input.setup.station.message": "Location to set up the sensor:",
 	"input.wait.station.message": "Location you care about:",
@@ -54,14 +57,18 @@
 	"input.will.participate": "I’m willing to receive updates and test activities from Project SensorWeb.",
 	"input.privacy.note": "By clicking \"Submit,\" I agree Mozilla to deal with my personal information follows the <a href=\"https://www.mozilla.org/en-US/privacy/websites/\" target=\"_blank\">Privacy Policy</a>.",
 	"input.error.no.coords": "Please pick a location on the map.",
+
 	"region.%s.title": "%s PM2.5 Average Concentration - Project SensorWeb",
 	"nearby.stations.heading": "Nearby <span class=\"marked\">PM2.5</span> Sensors",
-	"region.%s.top.heading": "Top 10 <span class=\"marked\">PM2.5</span> Sensors in %s",
+	"region.%s.top.heading": "Top 10 <span class=\"marked\">PM2.5</span> Sensors  in %s",
 	"pm25.subscribe.button": "Get Notified",
 	"get.sensor.prompt": "Do you need the most relevant air quality information?",
 	"get.sensor.button": "Get a Sensor",
+
 	"station.%s.title": "%s PM2.5 Concentration - Project SensorWeb",
 	"relevant.stations.heading": "Nearby <span class=\"marked\">PM2.5</span> Sensors",
+	"relevant.regions.heading": "Nearby <span class=\"marked\">PM2.5</span> Average Concentration",
+
 	"get.sensor.title": "Get a PM2.5 Sensor - Project SensorWeb",
 	"get.sensor.heading": "Get a Sensor",
 	"buy.sensor.heading": "Buy a Sensor",
@@ -78,10 +85,14 @@
 	"wait.sensor.heading": "Get Notified",
 	"wait.sensor.button": "Subscribe",
 	"wait.sensor.description": "Is sensor setup too diffcult to you?<br>No worry. Project SensorWeb is a crowdsourcing sensor network.<br>Leave your Email address and the location you care about. We will notify you once there are sensors around.",
+
 	"about.description": "<p>Project SensorWeb is a crowdsourcing sensor network. <br>We believe that open data can help revealing significant residential information and making lives better.<p>This website is still in early beta, <br><a href=\"mailto:sensorweb@mozilla.com\">let us know</a> if any questions and comments.",
+
 	"unsubscribe.title": "Unsubscribe - Project SensorWeb",
 	"unsubscribe.heading": "Unsubscribe Notifications",
 	"unsubscribe.button": "Confirm",
+
+	"sorry.no.region": "抱歉，目前尚無足夠的監測站資料。",
 	"sorry.no.station": "Oops... There is no sensor data available.",
 	"sorry.no.nearby.station": "Oops... There is no sensor nearby.",
 	"sorry.no.relevant.station": "Oops... There is no sensor nearby.",
