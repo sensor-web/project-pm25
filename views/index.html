@@ -17,14 +17,14 @@
       {{> header}}
       {{> fb}}
       {{#if show_map_search}}
-      <nav class="row">
+      <div id="searchbar" class="row">
           <div class="input-field autocomplete">
             <input id="search-input" type="search" data-activates="search-dropdown" data-beloworigin="true" autocomplete="off" required>
             <label for="search-input"><i class="material-icons">search</i></label>
             <i class="material-icons">close</i>
           </div>
           <ul id="search-dropdown" class="dropdown-content ac-dropdown"></ul>
-      </nav>
+      </div>
       <div id="map" width="800" height="300"></div>
       {{/if}}
       {{#if slug}}
