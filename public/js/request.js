@@ -1,8 +1,6 @@
 'use strict';
 
 (function () {
-	var DEFAULT_CENTER = [25.0375167, 121.5637];
-
 	$('.subscribe-modal').each(function () {
 		var firstMapMove = true;
 		var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -14,9 +12,10 @@
 		var map = new L.Map(mapElem, {
 			center: DEFAULT_CENTER,
 			scrollWheelZoom: false,
-			zoom: 12,
+			zoom: DEFAULT_ZOOM,
 			layers: [tileLayer]
 		});
+        map.zoomControl.setPosition('bottomleft');
 
 		var marker = L.marker(DEFAULT_CENTER,{
 			draggable: false

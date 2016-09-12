@@ -47,17 +47,20 @@
             }, throttling: true
         });
     if (1 == $('#map').size()) {
-        var DEFAULT_CENTER = [25.0375167, 121.5637];
         var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             noWrap: true,
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         });
-        var map = new L.Map('map', {
-          center: DEFAULT_CENTER,
+        var mapOptions = {
           scrollWheelZoom: false,
-          zoom: 12,
+          center, DEFAULT_CENTER,
+          zoom, DEFAULT_ZOOM,
+          minZoom: 3,
+          maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)),
           layers: [tileLayer]
-        });
+        };
+        var map = new L.Map('map', mapOptions);
+        map.zoomControl.setPosition('bottomleft');
         map.on('moveend', function () {
             loadMarkers();
         });

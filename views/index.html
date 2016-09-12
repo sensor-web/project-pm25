@@ -1,9 +1,16 @@
 
 <html>
    <head>
+      {{#if slug}}
       {{> meta page_title=(__ 'region.%s.title' display_name)}}
+      {{else if coords}}
+      {{> meta page_title=(__ 'region.%s.title' region_name)}}
+      {{else}}
+      {{> meta page_title=(__ 'region.%s.title' '')}}
+      {{/if}}
       {{> styles }}
       {{> head_scripts}}
+      {{> map_config}}
       <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
    </head>
    <body>
@@ -20,6 +27,7 @@
       </nav>
       <div id="map" width="800" height="300"></div>
       {{/if}}
+      {{#if slug}}
       <div class="card">
          <!-- Go to www.addthis.com/dashboard to customize your tools -->
          <div class="addthis_sharing_toolbox"></div>
@@ -106,6 +114,17 @@
             {{/if}}
          </ul>
       </div>
+      {{else}}
+      <div class="card">
+         <h2 class="medium">{{{__ 'sorry.no.region'}}}</h2>
+         {{#if show_get_sensor}}
+            <p>
+            {{__ 'get.sensor.prompt'}}<br>
+            <a id="subscribe" class="waves-effect waves-light btn-large" href="/pm25/request/">{{__ 'get.sensor.button'}}</a>
+            </p>
+         {{/if}}
+      </div>
+      {{/if}}
       {{> pm25_modal }}
       {{> subscribe_modal form_id='subscribe-form' form_type='region' form_title=(__ 'subscribe.modal.heading.pm25') region_id=id survey=true}}
       {{> footer}}

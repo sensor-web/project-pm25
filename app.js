@@ -64,8 +64,8 @@ app.get('/pm25', function(req, res) {
         return;
     }
     regions.listNearest(req.ctx).then(function (regions) {
-        var region = regions.shift();
-        if (undefined != region && undefined != region.slug) {
+        if (undefined != regions && regions.length > 0 && undefined != regions[0].slug) {
+            var region = regions.shift();
             Promise.all([
                 stations.listByRegionTop(req.ctx, region.region_type, region.region_name, "pm2_5"),
                 stations.listByRegionTop(req.ctx, "country_code", region.country_code, "pm2_5")
@@ -89,10 +89,10 @@ app.get('/pm25', function(req, res) {
                 }).catch(serverError(res));
             }).catch(serverError(res));
         } else {
-            if (undefined == region) {
-                region = {};
-            }
-            //TODO: show message to inform lack of data.
+            var region = (undefined == regions || regions.length == 0) ? {} : regions.shift();
+            region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
+            region.show_map_search = config.debug || req.query.map_search == 'true';
+            // show messages to inform lack of data.
             res.render('index', region);
         }
     }).catch(serverError(res));
@@ -185,7 +185,9 @@ app.get('/pm25/request', function(req, res) {
     if (addTrailingSlash(req, res)) {
         return;
     }
-    res.render('request');
+    regions.getCoords(req.ctx).then(function (location) {
+        res.render('request', location);
+    }).catch();
 });
 
 app.get('/pm25/unsubscribe', function(req, res) {

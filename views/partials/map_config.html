@@ -1,0 +1,8 @@
+      <script>
+        var DEFAULT_CENTER = [30, 60];
+        var DEFAULT_ZOOM = 3;
+        {{#if coords}}
+        DEFAULT_CENTER = [{{coords.latitude}}, {{coords.longitude}}];
+        DEFAULT_ZOOM = {{#if slug}}12{{else if city}}12{{else}}5{{/if}};
+        {{/if}}
+      </script>
