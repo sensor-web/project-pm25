@@ -1,0 +1,56 @@
+'use strict';
+
+var i18n = require('i18n');
+var geoip = require('geoip');
+var City = geoip.City;
+var city = new City(__dirname + '/data/GeoLiteCity.dat');
+var aqi = require(__dirname + '/lib/aqi');
+
+i18n.configure({
+    locales: ['zh-TW', 'en'],
+    cookie: 'locale',
+    directory: "" + __dirname + "/locales",
+    logDebugFn: function (msg) {
+        console.log('debug', msg);
+    },
+    logWarnFn: function (msg) {
+        console.log('warn', msg);
+    },
+    logErrorFn: function (msg) {
+        console.log('error', msg);
+    }
+});
+
+aqi.setI18n(i18n);
+
+module.exports = {
+    "site_url": "https://sensorweb.io",
+    "fb_app_id": "557124531078753",
+    "port": 8082,
+    "api_port": 8083,
+    "api_url": "http://localhost:8083",
+    "rethinkdb": {
+        "db": "sensorweb",
+        "host": "localhost",
+        "port": 28015
+    },
+    "smtp": {
+        "host": "",
+        "port": 25,
+        "auth": {
+            "user": "",
+            "pass": ""
+        },
+        "requireTLS": true,
+        "pool": true,
+        "rateLimit": 3,
+        "logger": true,
+        "debug": true
+    },
+    "parties": ["legacy", "ProbeCube", "EPA", "LASS", "Indie", "Airbox", "Webduino"],
+    "test_ip": "118.163.10.190",
+    "i18n": i18n,
+    "geoip": city,
+    "aqi": aqi,
+    "debug": true
+};

@@ -26,7 +26,7 @@ cd project-pm25
 
 Make a copy of he config file and change your settings
 ```
-cp config.json.sample config.json
+cp config.js.sample config.js
 ```
 
 Install node.js dependencies

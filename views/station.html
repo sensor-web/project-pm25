@@ -24,19 +24,19 @@
          <h2 class="medium">{{{__ 'relevant.stations.heading'}}}</h2>
          <ul id="country-rank">
             {{#if nearbyStations.length}}
-              {{#each nearbyStations}}
+            {{#each nearbyStations}}
                <li>
                   <a class="clearfix" href="/pm25/station/{{ this.slug }}/">
                      <span class="concentration">
                         <span class="concentration-value {{ this.data.status }}">{{ this.data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
                      </span>
-                     <span class="location">@{{ this.slug }} <span class="distance">({{__ 'distance'}} {{ this.distance }} {{__ 'km'}})</span></span>
+                     <span class="location">@{{ this.slug }} <span class="distance">({{__l 'distance' ../req.locale}} {{ this.distance }} {{__l 'km' ../req.locale}})</span></span>
                      <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
                   </a>
                </li>
-              {{/each}}
+            {{/each}}
             {{else}}
-              <li class="nodata">{{__ "sorry.no.nearby.station"}}</li>
+               <li class="nodata">{{__ 'sorry.no.nearby.station'}}</li>
             {{/if}}
          </ul>
       </div>

@@ -4,22 +4,10 @@
       {{> meta page_title=(__ 'region.%s.title' display_name)}}
       {{> styles }}
       {{> head_scripts}}
-      <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
    </head>
    <body>
       {{> header}}
       {{> fb}}
-      {{#if show_map_search}}
-      <nav class="row">
-          <div class="input-field autocomplete">
-            <input id="search-input" type="search" data-activates="search-dropdown" data-beloworigin="true" autocomplete="off" required>
-            <label for="search-input"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-          </div>
-          <ul id="search-dropdown" class="dropdown-content ac-dropdown"></ul>
-      </nav>
-      <div id="map" width="800" height="300"></div>
-      {{/if}}
       <div class="card">
          <!-- Go to www.addthis.com/dashboard to customize your tools -->
          <div class="addthis_sharing_toolbox"></div>
@@ -31,17 +19,6 @@
          <div id="latest-status">{{{ average.statusText }}}</div>
          <br>
          <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
-      </div>
-      <div class="card">
-         <h2 class="medium">{{{__ 'nearby.stations.heading'}}}</h2>
-         <ul id="nearby-stations">
-         </ul>
-         {{#if show_get_sensor}}
-            <p>
-            {{__ 'get.sensor.prompt'}}<br>
-            <a id="subscribe" class="waves-effect waves-light btn-large" href="/pm25/request/">{{__ 'get.sensor.button'}}</a>
-            </p>
-         {{/if}}
       </div>
       <div class="card">
          <h2 class="medium">{{{__ 'region.%s.top.heading' region_name}}}</h2>
@@ -86,33 +63,8 @@
       {{> pm25_modal }}
       {{> subscribe_modal form_id='subscribe-form' form_type='region' form_title=(__ 'subscribe.modal.heading.pm25') region_id=id survey=true}}
       {{> footer}}
-      <script type="text/javascript">
-         /* templates for javascript */
-         const getStationListItem = function (station) {
-             return `
-                  <li>
-                      <a href="/pm25/station/${station.slug}/">
-                         <span class="concentration"><span class="concentration-value ${station.data.status}">${ station.data.pm2_5 }</span><span id="unit">&micro;g/m&sup3;</span></span>
-                         <span class="location">@${ station.display_name } <span class="distance">({{__ 'distance'}} ${station.distance/1000} {{__ 'km'}})</span></span>
-                         <time class="update-time" data-livestamp="${ station.data.create_time }"></time>
-                      </a>
-                   </li>`;
-         };
-         const getProgressListItem = function () {
-             return '<li class="nodata"><div class="progress"><div class="indeterminate"></div></div></li>';
-         };
-         const getNoDataListItem = function () {
-             return '<li class="nodata">{{__ "sorry.no.nearby.station"}}</li>';
-         };
-         const getErrorListItem = function () {
-             return '<li class="nodata">{{{__ "sorry.no.gps"}}}</li>';
-         };
-      </script>
       {{> body_scripts}}
-      <script src="/pm25/js/jquery.materialize-autocomplete.js" type="text/javascript"></script>
-      <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
       <script src="/pm25/js/station.js" type="text/javascript"></script>
-      <script src="/pm25/js/index.js"></script>
       <!-- Go to www.addthis.com/dashboard to customize your tools -->
       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
    </body>

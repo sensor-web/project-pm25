@@ -1,6 +1,6 @@
 var request = require('request');
 var util = require('util');
-var config = require('../config.json');
+var config = require('../config');
 var db = require('../lib/db');
 var stations = require('../lib/stations');
 var regions = require('../lib/regions');
@@ -23,6 +23,7 @@ function loadRegionsByStations(regionType) {
 		for (var cnt of cnts) {
 			if (null != cnt.group[1] && null != cnt.group[2] && cnt.reduction > THRESHOLD) {
 				var regn = {};
+				regn.country = cnt.group[1];
 				regn.country_code = cnt.group[0];
 				regn.display_name = cnt.group[2];
 				regn.region_name = cnt.group[2];
@@ -78,6 +79,7 @@ function loadRegionsByStations(regionType) {
 						latitude: result.lat,
 						longitude: result.lon
 					};
+
 				} else {
 					console.log('Unable to load '+region.slug);
 				}
@@ -140,6 +142,7 @@ function buildSlug(group) {
 
 db.connect(config.rethinkdb).then(function (db) {
 	stations.setDatabase(db);
+    stations.setAqi(config.aqi);
 	regions.setDatabase(db);
 	summary.setDatabase(db);
 	Promise.all([

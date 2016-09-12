@@ -1,4 +1,4 @@
-var config = require('../config.json');
+var config = require('../config');
 var db = require('../lib/db');
 var subscriptions = require('../lib/subscriptions');
 var stations = require('../lib/stations');

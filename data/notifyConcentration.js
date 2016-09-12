@@ -1,4 +1,4 @@
-var config = require('../config.json');
+var config = require('../config');
 var db = require('../lib/db');
 var stations = require('../lib/stations');
 var regions = require('../lib/regions');
@@ -23,6 +23,8 @@ function onError(error) {console.error(error)};
 db.connect(config.rethinkdb).then(function (db) {
 	stations.setDatabase(db);
 	regions.setDatabase(db);
+    stations.setAqi(config.aqi);
+    regions.setAqi(config.aqi);
 
 	stations.notifyConcentrationChanges(ctx, function (subscription) {
 		var unsubscribeUrl = config.site_url+'/pm25/unsubscribe/?id='+subscription.left.id+'&type='+subscription.left.type;

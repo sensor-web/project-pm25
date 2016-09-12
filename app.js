@@ -4,9 +4,8 @@ var cookieParser = require('cookie-parser');
 var app = express();
 var api = express();
 var hbs = require('hbs');
-var i18n = require('i18n');
-var geolib = require('geolib');
-var config = require('./config.json');
+var config = require('./config');
+var i18n = config.i18n;
 var redirect = require('./data/redirect.json');
 var db = require('./lib/db');
 var stations = require('./lib/stations');
@@ -17,22 +16,6 @@ var data = require('./lib/data');
 var request = require('request');
 var aqi = require('./lib/aqi');
 
-i18n.configure({
-    locales: ['zh-TW', 'en'],
-    // defaultLocale: 'zh-TW',
-    cookie: 'locale',
-    directory: "" + __dirname + "/locales",
-    logDebugFn: function (msg) {
-        console.log('debug', msg);
-    },
-    logWarnFn: function (msg) {
-        console.log('warn', msg);
-    },
-    logErrorFn: function (msg) {
-        console.log('error', msg);
-    },
-});
-
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('__', function () {
     return i18n.__.apply(this, arguments);
@@ -40,13 +23,16 @@ hbs.registerHelper('__', function () {
 hbs.registerHelper('__n', function () {
     return i18n.__n.apply(this, arguments);
 });
+hbs.registerHelper('__l', function (phrase, locale) {
+    return i18n.__({phrase: phrase, locale: locale});
+});
 
-app.use(i18n.init);
 app.set('trust proxy', true);
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(i18n.init);
 app.locals.config = config;
 app.use(function(req,res,next){
     createContext(req);
@@ -55,14 +41,14 @@ app.use(function(req,res,next){
     next();
 });
 
-api.use(i18n.init);
 api.use(bodyParser.urlencoded({ extended: false }))
 api.use(bodyParser.json())
+api.use(i18n.init);
 // allow CORS in API
 api.use(function(req, res, next) {
     createContext(req);
     res.header('Access-Control-Allow-Origin', '*');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Max-Age: 1000');
     next();
@@ -77,43 +63,81 @@ app.get('/pm25', function(req, res) {
     if (addTrailingSlash(req, res)) {
         return;
     }
-    Promise.all([
-        regions.getBySlug(req.ctx, "臺灣臺北市"),
-        stations.listByRegionTop(req.ctx, "state", "臺北市", "pm2_5"),
-        stations.listByRegionTop(req.ctx, "country", "臺灣", "pm2_5")
-    ]).then(function (results) {
-        var region = results[0];
-        region.stateTop = results[1];
-        region.countryTop = results[2];
-        region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
-        region.show_map_search = config.debug || req.query.map_search == 'true';
-        Promise.all([
-            summary.getWeekAvgMax(req.ctx, region.id, 'pm2_5'),
-            summary.getWeekAvgMin(req.ctx, region.id, 'pm2_5')
-        ]).then(function (history) {
-            region.week = {
-                max: history[0],
-                maxStatus: aqi.getAQIStatus(req.ctx, history[0], region.country_code),
-                min: history[1],
-                minStatus: aqi.getAQIStatus(req.ctx, history[1], region.country_code)
-            };
+    regions.listNearest(req.ctx).then(function (regions) {
+        var region = regions.shift();
+        if (undefined != region && undefined != region.slug) {
+            Promise.all([
+                stations.listByRegionTop(req.ctx, region.region_type, region.region_name, "pm2_5"),
+                stations.listByRegionTop(req.ctx, "country_code", region.country_code, "pm2_5")
+            ]).then(function (results) {
+                region.nearbyRegions = regions;
+                region.stateTop = results[0];
+                region.countryTop = results[1];
+                region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
+                region.show_map_search = config.debug || req.query.map_search == 'true';
+                Promise.all([
+                    summary.getWeekAvgMax(req.ctx, region.id, 'pm2_5'),
+                    summary.getWeekAvgMin(req.ctx, region.id, 'pm2_5')
+                ]).then(function (history) {
+                    region.week = {
+                        max: history[0],
+                        maxStatus: aqi.getAQIStatus(req.ctx, history[0], region.country_code),
+                        min: history[1],
+                        minStatus: aqi.getAQIStatus(req.ctx, history[1], region.country_code)
+                    };
+                    res.render('index', region);
+                }).catch(serverError(res));
+            }).catch(serverError(res));
+        } else {
+            if (undefined == region) {
+                region = {};
+            }
+            //TODO: show message to inform lack of data.
             res.render('index', region);
-        }).catch(serverError(res));
+        }
     }).catch(serverError(res));
 });
 
-app.get('/pm25/about', function(req, res) {
+app.get('/pm25/region/:slug', function(req, res) {
     if (addTrailingSlash(req, res)) {
         return;
     }
-    res.render('about');
-});
-
-app.get('/pm25/request', function(req, res) {
-    if (addTrailingSlash(req, res)) {
+    var location = req.params.slug;
+    if (redirect[location]) {
+        res.redirect('/pm25/region/'+redirect[location]+'/');
         return;
     }
-    res.render('request');
+    regions.getBySlug(req.ctx, location).then(function (region) {
+        if (undefined != region && undefined != region.slug) {
+            Promise.all([
+                stations.listByRegionTop(req.ctx, region.region_type, region.region_name, "pm2_5"),
+                stations.listByRegionTop(req.ctx, "country_code", region.country_code, "pm2_5")
+            ]).then(function (results) {
+                region.stateTop = results[0];
+                region.countryTop = results[1];
+                region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
+                region.show_map_search = config.debug || req.query.map_search == 'true';
+                Promise.all([
+                    summary.getWeekAvgMax(req.ctx, region.id, 'pm2_5'),
+                    summary.getWeekAvgMin(req.ctx, region.id, 'pm2_5')
+                ]).then(function (history) {
+                    region.week = {
+                        max: history[0],
+                        maxStatus: aqi.getAQIStatus(req.ctx, history[0], region.country_code),
+                        min: history[1],
+                        minStatus: aqi.getAQIStatus(req.ctx, history[1], region.country_code)
+                    };
+                    res.render('region', region);
+                }).catch(serverError(res));
+            }).catch(serverError(res));
+        } else {
+            if (undefined == region) {
+                region = {};
+            }
+            //TODO: show message to inform lack of data.
+            res.render('index', region);
+        }
+    }).catch(serverError(res));
 });
 
 app.get('/pm25/station/:slug/', function(req, res) {
@@ -146,6 +170,20 @@ app.get('/pm25/station/:slug/', function(req, res) {
             notFound(res)();
         }
     }).catch(serverError(res));
+});
+
+app.get('/pm25/about', function(req, res) {
+    if (addTrailingSlash(req, res)) {
+        return;
+    }
+    res.render('about');
+});
+
+app.get('/pm25/request', function(req, res) {
+    if (addTrailingSlash(req, res)) {
+        return;
+    }
+    res.render('request');
 });
 
 app.get('/pm25/unsubscribe', function(req, res) {
@@ -256,7 +294,10 @@ api.get('/pm25/*', function(req, res) {
 
 db.connect(config.rethinkdb).then(function (db) {
     stations.setDatabase(db);
+    stations.setAqi(config.aqi);
     regions.setDatabase(db);
+    regions.setAqi(config.aqi);
+    regions.setGeoip(config.geoip);
     subscriptions.setDatabase(db);
     summary.setDatabase(db);
     data.setDatabase(db);
@@ -271,9 +312,11 @@ db.connect(config.rethinkdb).then(function (db) {
 
 function createContext(req) {
     req.ctx = {
+        debug: config.debug,
+        ip: config.debug ? config.test_ip : req.ip,
         locale: req.locale,
         country_code: req.country_code
-    }
+    };
 }
 
 function notFound(res) {
