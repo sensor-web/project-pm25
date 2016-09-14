@@ -41,6 +41,7 @@ echo "{}" > 3rdPartyData.json
 echo "{}" > stations.json
 echo "{}" > redirect.json
 cp aqiTable.json.sample aqiTable.json
+./updateGeoIp.sh
 node ./createSchema.js
 ./cronjob.sh --freq=daily
 ```
@@ -55,6 +56,11 @@ Set up hourly job to update data from external source
 Set up daily job to update new sensor locations and data from external source
 ```
 00      4      *       *       *       cd ~/project-pm25/data/ && ./cronjob.sh --freq=daily
+```
+
+Update GeoIP database every month (and don't forget to reload database into memory).
+```
+30      03      7       *       *       cd ~/project-pm25/data/ && ./updateGeoIp.sh
 ```
 
 [node]: http://nodejs.org/
