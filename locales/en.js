@@ -55,7 +55,7 @@
 	"input.reason.join.placeholder": "Why do you want to join Project SensorWeb?",
 	"input.submit": "Submit",
 	"input.will.participate": "I’m willing to receive news and updates from Project SensorWeb.",
-	"input.privacy.note": "By clicking \"Submit,\" I agree Mozilla to deal with my personal information follows the <a href=\"https://www.mozilla.org/en-US/privacy/websites/\" target=\"_blank\">Privacy Policy</a>.",
+	"input.privacy.note": "By clicking \"Submit,\" I agree Mozilla to deal with my personal information follows the <a href=\"https://www.mozilla.org/privacy/\" target=\"_blank\">Privacy Policy</a>.",
 	"input.error.no.coords": "Please pick a location on the map.",
 
 	"region.%s.title": "%s PM2.5 Average Concentration - Project SensorWeb",

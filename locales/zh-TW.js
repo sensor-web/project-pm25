@@ -55,7 +55,7 @@
 	"input.reason.join.placeholder": "為何想要參與 Project SensorWeb？",
 	"input.submit": "提交",
 	"input.will.participate": "我願意收到 Project SensorWeb 後續的測試活動、相關訊息及更新",
-	"input.privacy.note": "點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href=\"https://www.mozilla.org/en-US/privacy/websites/\" target=\"_blank\">隱私權政策</a>所述，處理我的個人資料。",
+	"input.privacy.note": "點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href=\"https://www.mozilla.org/privacy/\" target=\"_blank\">隱私權政策</a>所述，處理我的個人資料。",
 	"input.error.no.coords": "請在地圖上選擇地點",
 
 	"region.%s.title": "%s PM2.5 即時濃度平均 - Project SensorWeb",
