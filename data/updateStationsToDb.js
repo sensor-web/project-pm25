@@ -5,39 +5,34 @@ var db = require('../lib/db');
 var stations = require('../lib/stations');
 var data = require('../lib/data');
 var stationsData = require('./stations.json');
-var stationsQueue = [];
-var ctx = null;
+var stationsQ = [];
+var dataQ = [];
+var ctx = {batchSize: config.db_batch_size};
 
 for (var slug in stationsData) {
-    stationsQueue.push(stationsData[slug]);
+    stationsQ.push(stationsData[slug]);
+    dataQ.push(JSON.parse(JSON.stringify(stationsData[slug].data)));
 }
 function onError(error) {
     console.error(error);
-}
-function migrateStationsRecursive() {
-    var stationData = stationsQueue.pop();
-    if (stationData) {
-        var entry = JSON.parse(JSON.stringify(stationData.data));
-        stations.saveOrUpdate(ctx, stationData)
-        .then(function(result) {
-            if (undefined != result.existing_keys && undefined != result.existing_keys[0]) {
-                entry.station_id = result.existing_keys[0];
-            } else if (undefined != result.generated_keys && undefined != result.generated_keys[0]) {
-                entry.station_id = result.generated_keys[0];
-            }
-            return data.save(ctx, entry);
-        }, onError)
-        .then(migrateStationsRecursive, onError).catch(onError);
-    } else {
-        db.disconnect();
-        console.log('Data migrated to DB.');
-    }
 }
 
 db.connect(config.rethinkdb).then(function (db) {
     stations.setDatabase(db);
     stations.setAqi(config.aqi);
     data.setDatabase(db);
-    migrateStationsRecursive();
+    stations.batchSaveOrUpdate(ctx, stationsQ).then(function (result) {
+        console.log(result);
+        for (var i in dataQ) {
+            var key = result[i].existing_keys || result[i].generated_keys;
+            if (undefined != key) {
+                dataQ[i].station_id = key[0];
+            }
+        }
+        return data.batchSave(ctx, dataQ);
+    }, onError).then(function (result) {
+        console.log(result);
+        db.disconnect();
+    }, onError);
 });
 
