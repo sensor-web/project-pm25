@@ -36,9 +36,9 @@
 	"unsubscribe.success": "已成功取消訂閱！",
 
 	"input.email.placeholder": "電子郵件（必填）",
-	"input.setup.station.message": "測站架設地點：",
-	"input.wait.station.message": "關注的地點：",
-	"input.request.gps": "GPS 定位",
+	"input.setup.station.message": "我想架設測站的地點：",
+	"input.wait.station.message": "我關注的地點：",
+	"input.request.gps": "定位",
 	"input.frequency.prompt": "你平常一週中有幾天在此區域活動？",
 	"input.frequency.placeholder": "請選擇最接近的一項",
 	"input.frequency.everyday": "幾乎每天",
@@ -54,7 +54,7 @@
 	"input.reason.better.world": "我想協助改善社區／城市居住環境",
 	"input.reason.join.placeholder": "為何想要參與 Project SensorWeb？",
 	"input.submit": "提交",
-	"input.will.participate": "我願意收到 Project SensorWeb 後續的測試活動、相關訊息",
+	"input.will.participate": "我願意收到 Project SensorWeb 後續的測試活動、相關訊息及更新",
 	"input.privacy.note": "點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href=\"https://www.mozilla.org/en-US/privacy/websites/\" target=\"_blank\">隱私權政策</a>所述，處理我的個人資料。",
 	"input.error.no.coords": "請在地圖上選擇地點",
 
@@ -86,7 +86,7 @@
 	"diy.sensor.help": "留下聯絡信箱以取得 API 金鑰並且開始貢獻資料。",
 	"wait.sensor.heading": "等候通知",
 	"wait.sensor.button": "有測站時通知我",
-	"wait.sensor.description": "覺得架設測站太困難？<br>別擔心，Project SensorWeb 是開放群眾參與的感測網路。",
+	"wait.sensor.description": "等不及想早點瞭解住家附近的空氣品質？<br>別擔心，Project SensorWeb 是開放群眾參與的感測網路，你所在的區域也許很快就有監測資料了。",
 	"wait.sensor.help": "留下聯絡信箱及你所關心的地點資訊，我們將在附近有新測站時通知你。",
 
 	"about.description": "<p>Project SensorWeb 是開放群眾參與的感測資料網路。我們相信開放資料能讓生活環境的資訊更加透明，進而改善人們的生活。<p>此網站目前仍在測試階段，若有任何問題或建議歡迎<a href=\"mailto:sensorweb-tw@mozilla.com\">來信詢問</a>。",

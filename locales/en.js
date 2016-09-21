@@ -36,9 +36,9 @@
 	"unsubscribe.success": "You are unsubscribed！",
 
 	"input.email.placeholder": "Email address (Required)",
-	"input.setup.station.message": "Location to set up the sensor:",
+	"input.setup.station.message": "Location I'd like to set up the sensor:",
 	"input.wait.station.message": "Location you care about:",
-	"input.request.gps": "My GPS",
+	"input.request.gps": "Reset Location",
 	"input.frequency.prompt": "Do you come here often?",
 	"input.frequency.placeholder": "Please pick one",
 	"input.frequency.everyday": "Almost every day",
@@ -54,7 +54,7 @@
 	"input.reason.better.world": "I want to make the environment better.",
 	"input.reason.join.placeholder": "Why do you want to join Project SensorWeb?",
 	"input.submit": "Submit",
-	"input.will.participate": "I’m willing to receive updates and test activities from Project SensorWeb.",
+	"input.will.participate": "I’m willing to receive news and updates from Project SensorWeb.",
 	"input.privacy.note": "By clicking \"Submit,\" I agree Mozilla to deal with my personal information follows the <a href=\"https://www.mozilla.org/en-US/privacy/websites/\" target=\"_blank\">Privacy Policy</a>.",
 	"input.error.no.coords": "Please pick a location on the map.",
 
@@ -86,8 +86,8 @@
 	"diy.sensor.help": "Sign up to receive an API key to contribute to the network.",
 	"wait.sensor.heading": "Get Notified",
 	"wait.sensor.button": "Subscribe",
-	"wait.sensor.description": "Is sensor setup too diffcult to you?<br>No worry. Project SensorWeb is a crowdsourcing sensor network.",
-	"wait.sensor.help": "Get notified if an air quality sensor gets installed near you.",
+	"wait.sensor.description": "Don't want to wait to buy or build a sensor?<br>No worry. Project SensorWeb crowdsources its data, so there is a chance it may expand to cover your community.",
+	"wait.sensor.help": "Subscribe below to get notified if an air quality sensor gets installed near you.",
 
 	"about.description": "<p>Project SensorWeb is a crowdsourcing sensor network. <br>We believe that open data can help revealing significant residential information and making lives better.<p>This website is still in early beta, <br><a href=\"mailto:sensorweb@mozilla.com\">let us know</a> if any questions and comments.",
 
