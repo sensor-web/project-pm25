@@ -22,7 +22,7 @@ db.connect(config.rethinkdb).then(function (db) {
     stations.setAqi(config.aqi);
     data.setDatabase(db);
     stations.batchSaveOrUpdate(ctx, stationsQ).then(function (result) {
-        console.log(result);
+        console.log('saved stations: '+result.length);
         for (var i in dataQ) {
             var key = result[i].existing_keys || result[i].generated_keys;
             if (undefined != key) {
@@ -31,7 +31,7 @@ db.connect(config.rethinkdb).then(function (db) {
         }
         return data.batchSave(ctx, dataQ);
     }, onError).then(function (result) {
-        console.log(result);
+        console.log('saved data: '+result.length);
         db.disconnect();
     }, onError);
 });
