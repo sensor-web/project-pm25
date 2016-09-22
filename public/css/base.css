@@ -340,6 +340,7 @@ ul.requirements li {
   text-align: left !important;
   font-size: .9em;
   float: left;
+  width: 100%;
   height: 40px;
   padding-top: 10px;
   color: #5CC7B9;
@@ -429,10 +430,6 @@ ul.requirements li {
 
 .gps-progress {
   display: none;
-}
-
-.input-wrapper {
-  position: absolute;
 }
 
 /* Buttons */
