@@ -243,7 +243,7 @@ api.post('/pm25/stations/:id', function(req, res) {
         if (valid) {
             stations.updateData(req.ctx, id, entry).then(function () {
                 entry.station_id = id;
-                return data.save(entry);
+                return data.save(req.ctx, entry);
             }).then(function() {
                 res.json({result: 'success'});
             }).catch(serverErrorJson(res));
