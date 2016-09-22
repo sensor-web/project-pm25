@@ -7,7 +7,6 @@
     $('.modal-trigger').leanModal();
     $('.cta .btn-large').click(function(e) {
         var id = $(this).attr('id');
-        console.log(id);
         ga('send', 'event', id, 'subscribe', 'pm25');
     });
     $('.subscribe-form').submit(function(e) {
