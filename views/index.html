@@ -45,12 +45,10 @@
          <h2 class="medium">{{{__ 'nearby.stations.heading'}}}</h2>
          <ul id="nearby-stations">
          </ul>
-         {{#if show_get_sensor}}
             <p>
             {{__ 'get.sensor.help'}}<br>
             <a id="subscribe" class="waves-effect waves-light btn-large" href="/pm25/request/">{{__ 'get.sensor.button'}}</a>
             </p>
-         {{/if}}
       </div>
 
       <div class="card">
@@ -117,12 +115,10 @@
       {{else}}
       <div class="card">
          <h2 class="medium">{{{__ 'sorry.no.region'}}}</h2>
-         {{#if show_get_sensor}}
             <p>
             {{__ 'get.sensor.help'}}<br>
             <a id="subscribe" class="waves-effect waves-light btn-large" href="/pm25/request/">{{__ 'get.sensor.button'}}</a>
             </p>
-         {{/if}}
       </div>
       {{/if}}
       {{> pm25_modal }}

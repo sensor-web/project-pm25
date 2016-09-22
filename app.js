@@ -73,7 +73,6 @@ app.get('/pm25', function(req, res) {
                 region.nearbyRegions = regions;
                 region.stateTop = results[0];
                 region.countryTop = results[1];
-                region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
                 region.show_map_search = config.debug || req.query.map_search == 'true';
                 Promise.all([
                     summary.getWeekAvgMax(req.ctx, region.id, 'pm2_5'),
@@ -90,7 +89,6 @@ app.get('/pm25', function(req, res) {
             }).catch(serverError(res));
         } else {
             var region = (undefined == regions || regions.length == 0) ? {} : regions.shift();
-            region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
             region.show_map_search = config.debug || req.query.map_search == 'true';
             // show messages to inform lack of data.
             res.render('index', region);
@@ -117,7 +115,6 @@ app.get('/pm25/region/:slug', function(req, res) {
                 region.nearbyRegions = results[0];
                 region.stateTop = results[1];
                 region.countryTop = results[2];
-                region.show_get_sensor = config.debug || req.query.get_sensor == 'true';
                 region.show_map_search = config.debug || req.query.map_search == 'true';
                 Promise.all([
                     summary.getWeekAvgMax(req.ctx, region.id, 'pm2_5'),
