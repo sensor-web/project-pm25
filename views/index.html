@@ -42,6 +42,18 @@
       </div>
 
       <div class="card">
+         <h2 class="medium">{{{__ 'nearby.stations.heading'}}}</h2>
+         <ul id="nearby-stations">
+         </ul>
+         {{#if show_get_sensor}}
+            <p>
+            {{__ 'get.sensor.help'}}<br>
+            <a id="subscribe" class="waves-effect waves-light btn-large" href="/pm25/request/">{{__ 'get.sensor.button'}}</a>
+            </p>
+         {{/if}}
+      </div>
+
+      <div class="card">
          <h2 class="medium">{{{__ 'relevant.regions.heading'}}}</h2>
          <ul id="state-rank">
             {{#if nearbyRegions.length}}
@@ -60,18 +72,6 @@
               <li class="nodata">{{__ 'sorry.no.region'}}</li>
             {{/if}}
          </ul>
-      </div>
-
-      <div class="card">
-         <h2 class="medium">{{{__ 'nearby.stations.heading'}}}</h2>
-         <ul id="nearby-stations">
-         </ul>
-         {{#if show_get_sensor}}
-            <p>
-            {{__ 'get.sensor.help'}}<br>
-            <a id="subscribe" class="waves-effect waves-light btn-large" href="/pm25/request/">{{__ 'get.sensor.button'}}</a>
-            </p>
-         {{/if}}
       </div>
 
       <div class="card">

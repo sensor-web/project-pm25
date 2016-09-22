@@ -5,6 +5,7 @@ var geoip = require('geoip');
 var City = geoip.City;
 var city = new City(__dirname + '/data/GeoLiteCity.dat');
 var aqi = require(__dirname + '/lib/aqi');
+var Mailchimp = require('mailchimp-api-v3')
 
 i18n.configure({
     locales: ['zh-TW', 'en'],
@@ -35,6 +36,11 @@ module.exports = {
         "port": 28015
     },
     "db_batch_size": 200,
+    "mailchimp": {
+        "instance": new Mailchimp("cb649f97aa072f6e215f17aec9288fbc-us14"),
+        "pm25_list_id": "8f22c27155",
+        "pm25_interest_id": "4c485fe96e"
+    },
     "smtp": {
         "host": "",
         "port": 25,

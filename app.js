@@ -308,6 +308,7 @@ db.connect(config.rethinkdb).then(function (db) {
     regions.setAqi(config.aqi);
     regions.setGeoip(config.geoip);
     subscriptions.setDatabase(db);
+    subscriptions.setMailchimp(config.mailchimp);
     summary.setDatabase(db);
     data.setDatabase(db);
 

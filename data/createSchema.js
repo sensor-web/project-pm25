@@ -33,6 +33,7 @@ function createIndices() {
 	.then(db.createIndexIfNotExist('summary', 'average_create_time', function(d) {return d('average')('create_time')}))
 	.then(db.createIndexIfNotExist('summary', 'average_pm2_5', function(d) {return d('average')('pm2_5')}))
 	.then(db.createIndexIfNotExist('subscriptions', 'email'))
+	.then(db.createIndexIfNotExist('subscriptions', 'sid'))
 	.then(db.createIndexIfNotExist('subscriptions', 'status'))
 	.then(db.createIndexIfNotExist('subscriptions', 'type'))
 	.then(db.createIndexIfNotExist('subscriptions', 'coords', {geo: true}))
