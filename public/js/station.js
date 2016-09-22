@@ -5,8 +5,10 @@
     var $modal = $('.subscribe-modal');
 
     $('.modal-trigger').leanModal();
-    $('.subscribe').click(function(e) {
-        ga('send', 'event', 'data', 'subscribe', 'pm25');
+    $('.cta .btn-large').click(function(e) {
+        var id = $(this).attr('id');
+        console.log(id);
+        ga('send', 'event', id, 'subscribe', 'pm25');
     });
     $('.subscribe-form').submit(function(e) {
         var $form = $(this);
@@ -23,24 +25,25 @@
                 }
                 Materialize.toast(result.message, 5000);
             }, 'json'
-            );
-        ga('send', 'event', 'data', 'submit-subscription', 'pm25');
+        );
+        var formId = $form.parents('.subscribe-modal').attr('id');
+        ga('send', 'event', formId, 'submit-subscription', 'pm25');
         return false;
     });
     $('.sub-email').on('blur', function() {
-        ga('send', 'event', 'sensor-form', 'email-change', 'pm25');
+        ga('send', 'event', 'subscribe-form', 'email-change', 'pm25');
     });
     $('.sub-name').on('blur', function() {
-        ga('send', 'event', 'sensor-form', 'name-change', 'pm25');
+        ga('send', 'event', 'subscribe-form', 'name-change', 'pm25');
     });
     $('.sub-freq').on('change', function() {
-        ga('send', 'event', 'sensor-form', 'freq-change', 'pm25');
+        ga('send', 'event', 'subscribe-form', 'freq-change', 'pm25');
     });
     $('.sub-reason').on('change', function() {
-        ga('send', 'event', 'sensor-form', 'reason-change', 'pm25');
+        ga('send', 'event', 'subscribe-form', 'reason-change', 'pm25');
     });
     $('.sub-reason-join').on('blur', function() {
-        ga('send', 'event', 'sensor-form', 'reason-join-change', 'pm25');
+        ga('send', 'event', 'subscribe-form', 'reason-join-change', 'pm25');
     });
     $('#state-rank li a').click(function () {
         ga('send', 'event', 'state-rank-stations', 'click', $(this).find('.location').text());

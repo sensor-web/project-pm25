@@ -18,7 +18,9 @@
          <h3 id="update">{{__ 'last.update'}}<time id="latest-time" data-livestamp="{{ data.create_time }}"></time></h3>
          <div id="latest-status">{{{ data.statusText }}}</div>
          <br>
-         <a id="subscribe" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
+         <div class="cta">
+         <a id="subscribe-station" class="waves-effect waves-light btn-large modal-trigger" href="#subscribe-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
+         </div>
       </div>
       <div class="card">
          <h2 class="medium">{{{__ 'relevant.stations.heading'}}}</h2>

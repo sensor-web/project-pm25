@@ -55,6 +55,7 @@ module.exports = {
         "debug": true
     },
     "parties": ["legacy", "ProbeCube", "EPA", "LASS", "Indie", "Airbox", "Webduino"],
+    "capitals": {"tw": "臺灣臺北市"},
     "test_ip": "118.163.10.190",
     "i18n": i18n,
     "geoip": city,
