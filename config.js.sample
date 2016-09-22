@@ -26,7 +26,7 @@ aqi.setI18n(i18n);
 
 module.exports = {
     "site_url": "https://sensorweb.io",
-    "fb_app_id": "557124531078753",
+    "fb_app_id": "",
     "port": 8082,
     "api_port": 8083,
     "api_url": "http://localhost:8083",
@@ -37,9 +37,9 @@ module.exports = {
     },
     "db_batch_size": 200,
     "mailchimp": {
-        "instance": new Mailchimp("cb649f97aa072f6e215f17aec9288fbc-us14"),
-        "pm25_list_id": "8f22c27155",
-        "pm25_interest_id": "4c485fe96e"
+        "instance": new Mailchimp(""),
+        "pm25_list_id": "",
+        "pm25_interest_id": ""
     },
     "smtp": {
         "host": "",
