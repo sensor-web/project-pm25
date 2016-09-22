@@ -25,7 +25,7 @@
 	"aqi.status.extreme": "<span class=\"marked\">Air quality is Extremely Dangerous.</span> Anyone with any ill conditions should seriously consider to stay indoors.",
 
 	"subscribe.modal.heading.pm25": "Subscribe for PM2.5 Notification ",
-	"subscribe.modal.heading.buy.sensor": "Subscribe for Sensors Instock Notification",
+	"subscribe.modal.heading.buy.sensor": "Subscribe for Sensor Availability",
 	"subscribe.modal.heading.diy.sensor": "Get an API Key",
 	"subscribe.modal.heading.new.sensor": "Subscribe for Newly Set up Sensors",
 	"subscribe.region.success": "Thanks! We will send an Email notification when air quality get worse.",

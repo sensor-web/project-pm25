@@ -25,7 +25,7 @@
 	"aqi.status.extreme": "<span class=\"marked\">空氣品質指標<strong>高危險</strong></span>，任何人如果有不適，如眼痛，咳嗽或喉嚨痛等，應減少體力消耗，特別是減少戶外活動。",
 
 	"subscribe.modal.heading.pm25": "訂閱 PM2.5 空氣品質通知",
-	"subscribe.modal.heading.buy.sensor": "訂閱測站購買通知",
+	"subscribe.modal.heading.buy.sensor": "訂閱測站產品通知",
 	"subscribe.modal.heading.diy.sensor": "取得 API 金鑰",
 	"subscribe.modal.heading.new.sensor": "訂閱新設測站通知",
 	"subscribe.region.success": "訂閱成功！我們將在空氣品質變糟時發出電子郵件通知。",
