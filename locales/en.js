@@ -37,7 +37,7 @@
 
 	"input.email.placeholder": "Email address (Required)",
 	"input.setup.station.message": "Location I'd like to set up the sensor:",
-	"input.wait.station.message": "Location you care about:",
+	"input.wait.station.message": "Location I care about:",
 	"input.request.gps": "Reset Location",
 	"input.frequency.prompt": "Do you come here often?",
 	"input.frequency.placeholder": "Please pick one",
