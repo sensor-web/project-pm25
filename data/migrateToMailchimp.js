@@ -13,7 +13,6 @@ db.connect(config.rethinkdb).then(function (db) {
         console.log('updated SIDs');
         return subscriptions.list(ctx, true);
     }).then(function (results) {
-        console.log(results);
         console.log('merge all subscriptions');
         var subs = {};
         var subsQ = [];
