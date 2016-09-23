@@ -396,6 +396,9 @@ function convertLegacyData(entry) {
     if (undefined != entry.pm25 || undefined != entry.pm25Index) {
         data.pm2_5 = entry.pm25 || entry.pm25Index;
     }
+    if (undefined != entry.pm10) {
+        data.pm1 = entry.pm10;
+    }
     if (undefined != entry.pm100) {
         data.pm10 = entry.pm100;
     }
