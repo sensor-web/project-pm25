@@ -234,7 +234,7 @@ api.get('/pm25/stations', function(req, res) {
     }
 });
 
-api.post('/pm25/stations/:id', function(req, res) {
+api.post('/pm25/stations/:id/data', function(req, res) {
     var id = req.params.id;
     var entry = req.body;
     var apiKey = entry.api_key;
@@ -251,6 +251,21 @@ api.post('/pm25/stations/:id', function(req, res) {
             res.json({result: 'failed', message: res.__('invalid.api.key')})
         }
     }).catch(serverErrorJson(res));
+});
+
+api.post('/sensors/:id/data', function(req, res) {
+    var id = req.params.id;
+    var entry = convertLegacyData(req.body);
+    if (undefined != entry.pm2_5 && undefined != req.body.apiKey) {
+        stations.updateData(req.ctx, id, entry).then(function () {
+            entry.station_id = id;
+            return data.save(req.ctx, entry);
+        }).then(function() {
+            res.json({result: 'success'});
+        }).catch(serverErrorJson(res));
+    } else {
+        res.json({result: 'failed', message: res.__('invalid.api.key')})
+    }
 });
 
 api.get('/pm25/regions', function(req, res) {
@@ -374,4 +389,15 @@ function params2JsonPoints(params) {
         points.push({latitude: Number.parseFloat(point[0]), longitude: Number.parseFloat(point[1])});
     }
     return points;
+}
+
+function convertLegacyData(entry) {
+    var data = {};
+    if (undefined != entry.pm25 || undefined != entry.pm25Index) {
+        data.pm2_5 = entry.pm25 || entry.pm25Index;
+    }
+    if (undefined != entry.pm100) {
+        data.pm10 = entry.pm100;
+    }
+    return data;
 }
