@@ -257,7 +257,7 @@ api.post('/sensors/:id/data', function(req, res) {
     var id = req.params.id;
     var entry = convertLegacyData(req.body);
     if (undefined != entry.pm2_5 && undefined != req.body.apiKey) {
-        stations.updateData(req.ctx, id, entry).then(function () {
+        stations.updateData(req.ctx, id, entry, true).then(function () {
             entry.station_id = id;
             return data.save(req.ctx, entry);
         }).then(function() {
