@@ -8,10 +8,17 @@ var stationsData = require('./stations.json');
 var stationsQ = [];
 var dataQ = [];
 var ctx = {batchSize: config.db_batch_size};
+var now = new Date();
 
 for (var slug in stationsData) {
-    stationsQ.push(stationsData[slug]);
-    dataQ.push(JSON.parse(JSON.stringify(stationsData[slug].data)));
+    if (stationsData[slug].data.pm2_5 && stationsData[slug].data.create_time) {
+        var ctime = new Date(stationsData[slug].data.create_time);
+        console.log(ctime);
+        if (now.getTime() - ctime.getTime() < 1000 * 60 * 60 * 1.5) {
+            stationsQ.push(stationsData[slug]);
+            dataQ.push(JSON.parse(JSON.stringify(stationsData[slug].data)));
+        }
+    }
 }
 function onError(error) {
     console.error(error);
