@@ -60,7 +60,7 @@
                         <span class="concentration-value {{ this.average.status }}">{{ this.average.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
                      </span>
                      <span class="location">@{{ this.display_name }}</span>
-                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
+                     <time class="update-time" data-livestamp="{{ this.average.create_time }}"></time>
                   </a>
                </li>
             {{/each}}
