@@ -58,6 +58,8 @@
 	"input.privacy.note": "By clicking \"Submit,\" I agree Mozilla to deal with my personal information follows the <a href=\"https://www.mozilla.org/privacy/\" target=\"_blank\">Privacy Policy</a>.",
 	"input.error.no.coords": "Please pick a location on the map.",
 
+	"index.title": "Subscribe for Realtime PM2.5 Concentration - Project SensorWeb",
+
 	"region.%s.title": "%s PM2.5 Average Concentration - Project SensorWeb",
 	"nearby.stations.heading": "Nearby <span class=\"marked\">PM2.5</span> Sensors",
 	"region.%s.top.heading": "Top 10 <span class=\"marked\">PM2.5</span> Sensors  in %s",

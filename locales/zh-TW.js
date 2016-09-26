@@ -58,6 +58,8 @@
 	"input.privacy.note": "點擊「提交」之後，即代表我同意 Mozilla 依照此份<a href=\"https://www.mozilla.org/privacy/\" target=\"_blank\">隱私權政策</a>所述，處理我的個人資料。",
 	"input.error.no.coords": "請在地圖上選擇地點",
 
+	"index.title": "訂閱 PM2.5 即時濃度 - Project SensorWeb",
+
 	"region.%s.title": "%s PM2.5 即時濃度平均 - Project SensorWeb",
 	"nearby.stations.heading": "離我最近的 <span class=\"marked\">PM2.5</span> 監測站",
 	"region.%s.top.heading": "%s測站 <span class=\"marked\">PM2.5</span> 即時排行",

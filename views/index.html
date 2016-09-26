@@ -1,13 +1,7 @@
 
 <html>
    <head>
-      {{#if slug}}
-      {{> meta page_title=(__ 'region.%s.title' display_name)}}
-      {{else if coords}}
-      {{> meta page_title=(__ 'region.%s.title' region_name)}}
-      {{else}}
-      {{> meta page_title=(__ 'region.%s.title' '')}}
-      {{/if}}
+      {{> meta page_title=(__ 'index.title')}}
       {{> styles }}
       {{> head_scripts}}
       {{> map_config}}
@@ -157,6 +151,10 @@
       <script src="/pm25/js/index.js"></script>
       <!-- Go to www.addthis.com/dashboard to customize your tools -->
       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57857d9efaca9ced"></script>
+      <script>
+        var PAGE_TITLE = '{{#if slug}}{{__ 'region.%s.title' display_name}}{{else if coords}}{{__ 'region.%s.title' region_name}}{{else}}{{__ 'region.%s.title' ''}}{{/if}}';
+        $('title').text(PAGE_TITLE);
+      </script>
    </body>
 </html>
 
