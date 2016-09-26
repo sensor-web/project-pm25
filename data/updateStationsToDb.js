@@ -13,7 +13,7 @@ var now = new Date();
 for (var slug in stationsData) {
     if (stationsData[slug].data.pm2_5 && stationsData[slug].data.create_time) {
         var ctime = new Date(stationsData[slug].data.create_time);
-        if (now.getTime() - ctime.getTime() < 1000 * 60 * 60 * 1.5) {
+        if (now.getTime() - ctime.getTime() < 1000 * 60 * 60) {
             stationsQ.push(stationsData[slug]);
             dataQ.push(JSON.parse(JSON.stringify(stationsData[slug].data)));
         }
