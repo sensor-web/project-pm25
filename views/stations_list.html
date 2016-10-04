@@ -1,0 +1,9 @@
+            {{#if stations.length}}
+            {{#each stations}}
+              {{> concentration_listitem display_name=this.display_name path='/pm25/station/' slug=this.slug data=this.data distance=this.distance locale=../req.locale}}
+            {{/each}}
+            {{else if no_data_msg_key }}
+               <li class="nodata">{{__ no_data_msg_key}}</li>
+            {{else}}
+               <li class="nodata">{{__ 'sorry.no.station'}}</li>
+            {{/if}}

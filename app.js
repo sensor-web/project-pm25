@@ -171,6 +171,33 @@ app.get('/pm25/station/:slug/', function(req, res) {
     }).catch(serverError(res));
 });
 
+app.get('/pm25/stations', function(req, res) {
+    if (req.query.latitude != undefined && req.query.longitude != undefined) {
+        stations.listByNearestCoords(req.ctx, {latitude: req.query.latitude, longitude: req.query.longitude})
+        .then(function (stations) {
+            res.render('stations_list', {no_data_msg_key: req.query.no_data_msg_key, stations: stations});
+        }).catch(serverErrorJson(res));
+    } else if (req.query.no_data_msg_key) {
+        res.render('stations_list', {no_data_msg_key: req.query.no_data_msg_key});
+    } else {
+        res.render('stations_list');
+    }
+});
+
+app.get('/pm25/regions', function(req, res) {
+    if (req.query.latitude != undefined && req.query.longitude != undefined) {
+        regions.listByNearestCoords(req.ctx, {latitude: req.query.latitude, longitude: req.query.longitude}, req.query.country_code)
+        .then(function (regions) {
+            res.render('regions_list', {no_data_msg_key: req.query.no_data_msg_key, regions: regions});
+        }).catch(serverErrorJson(res));
+    } else if (req.query.no_data_msg_key) {
+        res.render('regions_list', {no_data_msg_key: req.query.no_data_msg_key});
+    } else {
+        res.render('regions_list');
+    }
+});
+
+
 app.get('/pm25/about', function(req, res) {
     if (addTrailingSlash(req, res)) {
         return;
@@ -231,6 +258,8 @@ api.get('/pm25/stations', function(req, res) {
         .then(function (stations) {
             res.json(stations);
         }).catch(serverErrorJson(res));
+    } else {
+        notFoundJson(res)();
     }
 });
 
@@ -289,6 +318,8 @@ api.get('/pm25/regions', function(req, res) {
         .then(function (regions) {
             res.json(regions);
         }).catch(serverErrorJson(res));
+    } else {
+        notFoundJson(res)();
     }
 });
 

@@ -42,7 +42,7 @@
          <ul id="nearby-regions">
             {{#if nearbyRegions.length}}
             {{#each nearbyRegions}}
-              {{> concentration_listitem display_name=this.display_name path='/pm25/region/' slug=this.slug data=this.average}}
+              {{> concentration_listitem display_name=this.display_name path='/pm25/region/' slug=this.slug data=this.average distance=false}}
             {{/each}}
             {{else}}
               <li class="nodata">{{__ 'sorry.no.region'}}</li>
@@ -90,21 +90,8 @@
       {{> footer}}
       <script type="text/javascript">
          /* templates for javascript */
-         const getStationListItem = function (station) {
-             return `
-                  <li>
-                      <a href="/pm25/station/${station.slug}/">
-                         <span class="concentration"><span class="concentration-value ${station.data.status}">${ station.data.pm2_5 }</span><span id="unit">&micro;g/m&sup3;</span></span>
-                         <span class="location">@${ station.display_name } <span class="distance">({{__ 'distance'}} ${station.distance/1000} {{__ 'km'}})</span></span>
-                         <time class="update-time" data-livestamp="${ station.data.create_time }"></time>
-                      </a>
-                   </li>`;
-         };
          const getProgressListItem = function () {
              return '<li class="nodata"><div class="progress"><div class="indeterminate"></div></div></li>';
-         };
-         const getNoDataListItem = function () {
-             return '<li class="nodata">{{__ "sorry.no.nearby.station"}}</li>';
          };
          const getErrorListItem = function () {
              return '<li class="nodata">{{{__ "sorry.no.gps"}}}</li>';

@@ -136,16 +136,9 @@
     function loadNearbyStations() {
         $nearbyStations.html(getProgressListItem());
         getGeolocation().then(function(coords) {
-            $.get(API_URL+'/pm25/stations', coords, function(stations) {
-                if (0 == stations.length) {
-                    $nearbyStations.html(getNoDataListItem());
-                    return;
-                }
-                var items = '';
-                for (var station of stations) {
-                    items += getStationListItem(station);
-                }
-                $nearbyStations.html(items);
+            coords.no_data_msg_key = 'sorry.no.nearby.station';
+            $.get(APP_URL+'/pm25/stations', coords, function(stations) {
+                $nearbyStations.html(stations);
                 $nearbyStations.find('li a').click(function () {
                     ga('send', 'event', 'nearby-stations', 'click', $(this).find('.location').text());
                 });
