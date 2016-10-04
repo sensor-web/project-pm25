@@ -1,11 +1,11 @@
-{{! params: String display_name, String path, String slug, Object data }}
+{{! params: String display_name, String path, String slug, Object data, Number distance, String locale}}
 
                <li>
                   <a href="{{ path }}{{ slug }}/">
                      <span class="concentration">
                         <span class="concentration-value {{ data.status }}">{{ data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
                      </span>
-                     <span class="location">@{{ display_name }}</span>
+                     <span class="location">@{{ display_name }}{{#if distance}}<span class="distance">({{__l 'distance' locale}} {{ distance }} {{__l 'km' locale}})</span>{{/if}}</span>
                      <time class="update-time" data-livestamp="{{ data.create_time }}"></time>
                   </a>
                </li>

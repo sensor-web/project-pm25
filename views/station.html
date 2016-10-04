@@ -16,7 +16,7 @@
          <ul id="country-rank">
             {{#if nearbyStations.length}}
             {{#each nearbyStations}}
-              {{> concentration_listitem display_name=this.display_name path='/pm25/station/' slug=this.slug data=this.data}}
+              {{> concentration_listitem display_name=this.display_name path='/pm25/station/' slug=this.slug data=this.data distance=this.distance locale=../req.locale}}
             {{/each}}
             {{else}}
                <li class="nodata">{{__ 'sorry.no.nearby.station'}}</li>
