@@ -1,0 +1,16 @@
+{{! params: String display_name, form_type, String type, Object data, Object week }}
+
+      <div class="card">
+         <!-- Go to www.addthis.com/dashboard to customize your tools -->
+         <div class="addthis_sharing_toolbox"></div>
+         <h1><span id="latest-pm25" class="{{ data.status }}">{{ data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
+         <h2 id="pm25">{{{__ 'pm25.concentration.average'}}}<a class="question-mark" href="javascript:void(0);"><!--googleoff: index--><i class="material-icons">help_outline</i><!--googleon: index--></a></h2>
+         <span id="week-range">{{__ 'week.range'}}<span class="{{week.minStatus}}">{{ week.min }}</span> ~ <span class="{{week.maxStatus}}">{{ week.max }}</span></span>
+         <h3 id="location">@{{ display_name }}</h3>
+         <h3 id="update">{{__ 'last.update'}} <time id="latest-time" data-livestamp="{{ data.create_time }}"></time></h3>
+         <div id="latest-status">{{{ data.statusText }}}</div>
+         <br>
+         <div class="cta">
+         <a id="subscribe-{{ form_type }}" class="waves-effect waves-light btn-large modal-trigger" href="#{{ form_type }}-subscribe-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
+         </div>
+      </div>

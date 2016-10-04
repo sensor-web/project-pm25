@@ -1,0 +1,11 @@
+{{! params: String display_name, String path, String slug, Object data }}
+
+               <li>
+                  <a href="{{ path }}{{ slug }}/">
+                     <span class="concentration">
+                        <span class="concentration-value {{ data.status }}">{{ data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
+                     </span>
+                     <span class="location">@{{ display_name }}</span>
+                     <time class="update-time" data-livestamp="{{ data.create_time }}"></time>
+                  </a>
+               </li>

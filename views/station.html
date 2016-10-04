@@ -8,34 +8,15 @@
    <body>
       {{> header}}
       {{> fb}}
-      <div class="card">
-         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-         <div class="addthis_sharing_toolbox"></div>
-         <h1><span id="latest-pm25" class="{{ data.status }}">{{ data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
-         <h2 id="pm25">{{{__ 'pm25.concentration'}}}<a class="question-mark" href="javascript:void(0);"><!--googleoff: index--><i class="material-icons">help_outline</i><!--googleon: index--></a></h2>
-         <span id="week-range">{{__ 'week.range'}}<span class="{{week.minStatus}}">{{ week.min }}</span> ~ <span class="{{week.maxStatus}}">{{ week.max }}</span></span>
-         <h3 id="location">@{{ display_name }}</h3>
-         <h3 id="update">{{__ 'last.update'}}<time id="latest-time" data-livestamp="{{ data.create_time }}"></time></h3>
-         <div id="latest-status">{{{ data.statusText }}}</div>
-         <br>
-         <div class="cta">
-         <a id="subscribe-station" class="waves-effect waves-light btn-large modal-trigger" href="#station-subscribe-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
-         </div>
-      </div>
+
+      {{> concentration display_name=display_name form_type='station' data=data week=week}}
+
       <div class="card">
          <h2 class="medium">{{{__ 'relevant.stations.heading'}}}</h2>
          <ul id="country-rank">
             {{#if nearbyStations.length}}
             {{#each nearbyStations}}
-               <li>
-                  <a class="clearfix" href="/pm25/station/{{ this.slug }}/">
-                     <span class="concentration">
-                        <span class="concentration-value {{ this.data.status }}">{{ this.data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
-                     </span>
-                     <span class="location">@{{ this.slug }} <span class="distance">({{__l 'distance' ../req.locale}} {{ this.distance }} {{__l 'km' ../req.locale}})</span></span>
-                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
-                  </a>
-               </li>
+              {{> concentration_listitem display_name=this.display_name path='/pm25/station/' slug=this.slug data=this.data}}
             {{/each}}
             {{else}}
                <li class="nodata">{{__ 'sorry.no.nearby.station'}}</li>

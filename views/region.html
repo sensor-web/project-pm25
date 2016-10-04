@@ -8,34 +8,15 @@
    <body>
       {{> header}}
       {{> fb}}
-      <div class="card">
-         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-         <div class="addthis_sharing_toolbox"></div>
-         <h1><span id="latest-pm25" class="{{ average.status }}">{{ average.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span></h1>
-         <h2 id="pm25">{{{__ 'pm25.concentration.average'}}}<a class="question-mark" href="javascript:void(0);"><!--googleoff: index--><i class="material-icons">help_outline</i><!--googleon: index--></a></h2>
-         <span id="week-range">{{__ 'week.range'}}<span class="{{week.minStatus}}">{{ week.min }}</span> ~ <span class="{{week.maxStatus}}">{{ week.max }}</span></span>
-         <h3 id="location">@{{ display_name }}</h3>
-         <h3 id="update">{{__ 'last.update'}} <time id="latest-time" data-livestamp="{{ average.create_time }}"></time></h3>
-         <div id="latest-status">{{{ average.statusText }}}</div>
-         <br>
-         <div class="cta">
-         <a id="subscribe-region" class="waves-effect waves-light btn-large modal-trigger" href="#region-subscribe-form"><!--googleoff: index--><i class="material-icons">add_alert</i><!--googleon: index-->{{__ 'pm25.subscribe.button'}}</a>
-         </div>
-      </div>
+
+      {{> concentration display_name=display_name form_type='region' data=average week=week}}
+
       <div class="card">
          <h2 class="medium">{{{__ 'relevant.regions.heading'}}}</h2>
-         <ul id="state-rank">
+         <ul id="nearby-regions">
             {{#if nearbyRegions.length}}
             {{#each nearbyRegions}}
-               <li>
-                  <a href="/pm25/region/{{ this.slug }}/">
-                     <span class="concentration">
-                        <span class="concentration-value {{ this.average.status }}">{{ this.average.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
-                     </span>
-                     <span class="location">@{{ this.display_name }}</span>
-                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
-                  </a>
-               </li>
+              {{> concentration_listitem display_name=this.display_name path='/pm25/region/' slug=this.slug data=this.average}}
             {{/each}}
             {{else}}
               <li class="nodata">{{__ 'sorry.no.region'}}</li>
@@ -47,15 +28,7 @@
          <ul id="state-rank">
             {{#if stateTop.length}}
             {{#each stateTop}}
-               <li>
-                  <a href="/pm25/station/{{ this.slug }}/">
-                     <span class="concentration">
-                        <span class="concentration-value {{ this.data.status }}">{{ this.data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
-                     </span>
-                     <span class="location">@{{ this.display_name }}</span>
-                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
-                  </a>
-               </li>
+              {{> concentration_listitem display_name=this.display_name path='/pm25/station/' slug=this.slug data=this.data}}
             {{/each}}
             {{else}}
               <li class="nodata">{{__ 'sorry.no.station'}}</li>
@@ -67,15 +40,7 @@
          <ul id="country-rank">
             {{#if countryTop.length}}
             {{#each countryTop}}
-               <li>
-                  <a class="clearfix" href="/pm25/station/{{ this.slug }}/">
-                     <span class="concentration">
-                        <span class="concentration-value {{ this.data.status }}">{{ this.data.pm2_5 }}</span><span id="unit">&micro;g/m&sup3;</span>
-                     </span>
-                     <span class="location">@{{ this.slug }}</span>
-                     <time class="update-time" data-livestamp="{{ this.data.create_time }}"></time>
-                  </a>
-               </li>
+              {{> concentration_listitem display_name=this.display_name path='/pm25/station/' slug=this.slug data=this.data}}
             {{/each}}
             {{else}}
               <li class="nodata">{{__ 'sorry.no.station'}}</li>
