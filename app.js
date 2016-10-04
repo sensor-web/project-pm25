@@ -139,7 +139,7 @@ app.get('/pm25/region/:slug', function(req, res) {
     }).catch(serverError(res));
 });
 
-app.get('/pm25/station/:slug/', function(req, res) {
+app.get('/pm25/station/:slug', function(req, res) {
     if (addTrailingSlash(req, res)) {
         return;
     }
@@ -196,7 +196,6 @@ app.get('/pm25/regions', function(req, res) {
         res.render('regions_list');
     }
 });
-
 
 app.get('/pm25/about', function(req, res) {
     if (addTrailingSlash(req, res)) {
